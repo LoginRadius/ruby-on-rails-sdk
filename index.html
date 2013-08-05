@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Ruby-on-rails-gem : Ruby wrapper for the LoginRadius API. Get social graph information and send messages using LoginRadius' many social network clients!" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ruby-on-rails-gem</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/LoginRadius/Ruby-on-rails-gem">View on GitHub</a>
+
+          <h1 id="project_title">Ruby-on-rails-gem</h1>
+          <h2 id="project_tagline">Ruby wrapper for the LoginRadius API. Get social graph information and send messages using LoginRadius' many social network clients!</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/LoginRadius/Ruby-on-rails-gem/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/LoginRadius/Ruby-on-rails-gem/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="loginradius" class="anchor" href="#loginradius"><span class="octicon octicon-link"></span></a>LoginRadius</h1>
+
+<p>Ruby wrapper for the LoginRadius API. Get social graph information and send messages using LoginRadius'
+many social network clients!</p>
+
+<p>Optional Asynchronous EventMachine friendly option!</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'login_radius'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install login_radius
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Take a peek:</p>
+
+<pre><code>@user_profile = LoginRadius::UserProfile.new({
+  :token =&gt; "TOKEN",
+  :secret =&gt; "SECRET",
+  :async =&gt; false #Set to true if using EventMachine driven frameworks(must use Em Synchrony)
+})
+@user_profile.login
+my_contacts = @user_profile.contacts
+</code></pre>
+
+<p>That's right, folks. It's that simple. In order to get access to LoginRadius API, you only
+need to create a UserProfile object with a user's login token and your apps secret, and login.</p>
+
+<h3>
+<a name="how-to-get-a-token-and-actually-make-a-client" class="anchor" href="#how-to-get-a-token-and-actually-make-a-client"><span class="octicon octicon-link"></span></a>How to get a token and actually make a client</h3>
+
+<p>On the LoginRadius website, you are able to enter your own callback URL for your app. You will need
+to setup a route on whatever framework you use, maybe "/callback." Then, get the gem forward(<a href="http://www.forwardhq.com">www.forwardhq.com</a>)
+and use it to set up a public web address for your localhost server. Then, you can enter the callback on LoginRadius
+as <a href="https://jordanmatthew.fwd.wf/callback">https://jordanmatthew.fwd.wf/callback</a>, for instance.</p>
+
+<p>Paste their example login stuff onto your index page, and then enter your FB/Twitter credentials on their site.</p>
+
+<p>Now you're ready to go with testing!</p>
+
+<p>When LoginRadius hits your callback after a user logs in, you'll see parameters like this:</p>
+
+<p>Parameters: {"token"=&gt;"yourtokenhere"}</p>
+
+<p>This token is the token used in the above example. This is what you'll need to get your user's profile.
+Just paste it into the code above, and you can immediately grab their user profile on the callback,
+login, and grab their contacts.</p>
+
+<h3>
+<a name="some-examples" class="anchor" href="#some-examples"><span class="octicon octicon-link"></span></a>Some examples</h3>
+
+<p>Below is just code exemplifying some of the more interesting methods and what they return.
+Note if you have a user authed via facebook, and not twitter, methods like </p>
+
+<pre><code>@user_profile.twitter_timeline
+=&gt; false
+</code></pre>
+
+<p>Will return false, indicating you don't have access to that stream.</p>
+
+<h4>
+<a name="facebook-stuff" class="anchor" href="#facebook-stuff"><span class="octicon octicon-link"></span></a>Facebook Stuff</h4>
+
+<pre><code>@user_profile.facebook_groups
+=&gt; [{:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"}]
+
+@user_profile.facebook_groups
+=&gt; [{:id=&gt;"11111", :name=&gt;"Name"},
+ {:id=&gt;"11111", :name=&gt;"Name"}]
+
+
+@user_profile.facebook_events
+=&gt; [{:id=&gt;"11111",
+  :name=&gt;"Name",
+  :start_time=&gt;"3/14/2015 9:00:00 AM",
+  :rsvp_status=&gt;"attending",
+  :location=&gt;"Across the world!"}]
+</code></pre>
+
+<p>And, finally, you can also make facebook posts:</p>
+
+<pre><code>params = {
+  :title =&gt; "Testing",
+  :url =&gt; "www.loginradius.com",
+  :status =&gt; "Wizzup",
+  :caption =&gt; "Testly",
+  :description =&gt; "Testing"
+}
+@user_profile.make_facebook_post(params)
+=&gt; true
+</code></pre>
+
+<p>Note that as of publishing, the :to option on facebook params does not work. You can't post to
+other people's walls.</p>
+
+<h4>
+<a name="linkedin-stuff" class="anchor" href="#linkedin-stuff"><span class="octicon octicon-link"></span></a>LinkedIn Stuff</h4>
+
+<p>To send messages over linked in:</p>
+
+<pre><code>@user_profile.send_linked_in_message(@user_profile.contacts.first[:id], "Testing", "This is a test.")
+=&gt; true
+</code></pre>
+
+<p>Notice how I grabbed my first contact and used his :id property.</p>
+
+<p>Also, you can grab a user's linked in companies:</p>
+
+<pre><code>@user_profile.linked_in_companies
+=&gt; [{:id=&gt;11111, :name=&gt;"Name"}]
+</code></pre>
+
+<h4>
+<a name="twitter-stuff" class="anchor" href="#twitter-stuff"><span class="octicon octicon-link"></span></a>Twitter Stuff</h4>
+
+<p>To send messages over twitter:</p>
+
+<pre><code>@user_profile.send_linked_in_message(@user_profile.contacts.first[:id], "Testing", "This is a test.")
+=&gt; true
+</code></pre>
+
+<p>Notice how I grabbed my first contact and used his :id property.</p>
+
+<p>Grab your timelines and mentions:</p>
+
+<pre><code>@user_profile.twitter_timeline
+=&gt; [{:id=&gt;"11111",
+    :text=&gt;"Stuff",
+    :date_time=&gt;"5/20/2013 4:53:52 PM",
+    :likes=&gt;0,
+    :place=&gt;"",
+    :source=&gt;
+     "&lt;a href=\"http://twitterfeed.com\" rel=\"nofollow\"&gt;twitterfeed&lt;/a&gt;",
+    :image_url=&gt;nil,
+    :link_url=&gt;nil,
+    :name=&gt;"Name"}]
+
+@user_profile.twitter_mentions
+=&gt; [{:id=&gt;"11111",
+    :text=&gt;"Stuff",
+    :date_time=&gt;"3/31/2013 7:54:10 PM",
+    :likes=&gt;0,
+    :place=&gt;"",
+    :source=&gt;"web",
+    :image_url=&gt;nil,
+    :link_url=&gt;nil,
+    :name=&gt;"Name"}]
+</code></pre>
+
+<h4>
+<a name="social-network-contacts" class="anchor" href="#social-network-contacts"><span class="octicon octicon-link"></span></a>Social Network Contacts</h4>
+
+<p>Note this is all the contacts from every social network the user is connected to.</p>
+
+<pre><code>@user_profile.contacts
+=&gt; [{:name=&gt;"Name",
+  :email_id=&gt;"",
+  :phone_number=&gt;"",
+  :id=&gt;"11111",
+  :profile_url=&gt;nil,
+  :image_url=&gt;nil,
+  :status=&gt;nil,
+  :industry=&gt;nil,
+  :country=&gt;nil,
+  :gender=&gt;nil}]
+</code></pre>
+
+<h4>
+<a name="user-profile-stuff" class="anchor" href="#user-profile-stuff"><span class="octicon octicon-link"></span></a>User Profile Stuff</h4>
+
+<p>When you login, the API returns a hash of user profile information, which is then turned into methods
+on the LoginRadius::UserProfile object for your accessing pleasure. A quick call to methods will show this. </p>
+
+<pre><code>@user_profile.methods
+=&gt;[:id,
+ :provider,
+ :prefix,
+ :first_name,
+ :middle_name,
+ :last_name,
+ :suffix,
+ :full_name,
+ :nick_name,
+ :profile_name,
+ :birth_date,
+ :gender,
+ :website,
+ :email,
+ :country,
+ ...]
+</code></pre>
+
+<p>Calling .methods on a user profile right after a successful login call will reveal these. 
+For more information, please read the section in caveats on the matter, as it's a bit esoteric.</p>
+
+<h2>
+<a name="caveats" class="anchor" href="#caveats"><span class="octicon octicon-link"></span></a>Caveats</h2>
+
+<p>This section is for the nitpickers. It's got notes about the finer pickings of this API for those
+who are wondering, but is not strictly necessary reading.</p>
+
+<h3>
+<a name="the-bang-methods" class="anchor" href="#the-bang-methods"><span class="octicon octicon-link"></span></a>The Bang Methods</h3>
+
+<p>When authenticated, a method like contacts will return </p>
+
+<pre><code>@user_profile.authenticated?
+=&gt; true
+@user_profile.contacts 
+=&gt; [{:name=&gt;"Name",
+  :email_id=&gt;"",
+  :phone_number=&gt;"",
+  :id=&gt;"11111",
+  :profile_url=&gt;nil,
+  :image_url=&gt;nil,
+  :status=&gt;nil,
+  :industry=&gt;nil,
+  :country=&gt;nil,
+  :gender=&gt;nil},
+  ...
+</code></pre>
+
+<p>When unauthenticated, a method like contacts will return false.</p>
+
+<pre><code>@user_profile.authenticated?
+=&gt; false
+@user_profile.contacts
+=&gt; false
+</code></pre>
+
+<p>However, if you want to be a bit more flammable, try using contacts!, the bang version. It still returns
+the same results when authed, but when unauthed, will actually raise a LoginRadius::Exception.</p>
+
+<h3>
+<a name="the-loginradiususerprofile-object-before-and-after-login" class="anchor" href="#the-loginradiususerprofile-object-before-and-after-login"><span class="octicon octicon-link"></span></a>The LoginRadius::UserProfile object before and after login</h3>
+
+<p>Once you've got a valid user_profile, you have many methods available to you. Let's quickly take a look 
+at the methods in a LoginRadius::UserProfile object that hasn't yet been authenticated:</p>
+
+<pre><code>@user_profile.authenticated?
+=&gt; false
+
+@user_profile.methods - Object.new.methods
+=&gt; [:secret,
+ :secret=,
+ :token,
+ :token=,
+ :async,
+ :async=,
+ :guid_valid?,
+ :authenticated?,
+ :call_api,
+ :send_twitter_message,
+ :send_linkedin_message,
+ :make_facebook_post,
+ :login!,
+ :login,
+ :twitter_mentions!,
+ :twitter_mentions,
+ :twitter_timeline!,
+ :twitter_timeline,
+ :linked_in_companies!,
+ :linked_in_companies,
+ :contacts!,
+ :contacts,
+ :facebook_groups!,
+ :facebook_groups,
+ :facebook_posts!,
+ :facebook_posts,
+ :facebook_events!,
+ :facebook_events]
+</code></pre>
+
+<p>Notice we've got a lot of stuff we can access. But we're not yet authenticated. Running login and then checking
+the new methods created, we see we have much more than before!</p>
+
+<pre><code>@user_profile.login
+=&gt; true
+@user_profile.authenticated?
+=&gt; true
+@user_profile.methods - Object.new.methods
+=&gt; [:id,
+:provider,
+:prefix,
+:first_name,
+:middle_name,
+:last_name,
+:suffix,
+:full_name,
+:nick_name,
+:profile_name,
+:birth_date,
+:gender,
+:website,
+:email,
+:country,
+:thumbnail_image_url,
+:image_url,
+:favicon,
+:profile_url,
+:home_town,
+:state,
+:city,
+:industry,
+:about,
+:time_zone,
+:local_language,
+:language,
+:verified,
+:updated_time,
+:positions,
+:educations,
+:phone_numbers,
+:im_accounts,
+:addresses,
+:main_address,
+:created,
+:local_city,
+:profile_city,
+:local_country,
+:profile_country,
+:relationship_status,
+:quota,
+:interested_in,
+:interests,
+:religion,
+:political,
+:sports,
+:inspirational_people,
+:https_image_url,
+:followers_count,
+:friends_count,
+:is_geo_enabled,
+:total_statuses_count,
+:associations,
+:num_recommenders,
+:honors,
+:skills,
+:current_status,
+:certifications,
+:courses,
+:volunteer,
+:recommendations_received,
+:languages,
+:public_repository,
+:hireable,
+:repository_url,
+:age,
+:patents,
+:favorite_things,
+:professional_headline,
+:provider_access_credential,
+:secret,
+:secret=,
+:token,
+:token=,
+:async,
+:async=,
+:guid_valid?,
+:authenticated?,
+:call_api,
+:send_twitter_message,
+:send_linkedin_message,
+:make_facebook_post,
+:login!,
+:login,
+:twitter_mentions!,
+:twitter_mentions,
+:twitter_timeline!,
+:twitter_timeline,
+:linked_in_companies!,
+:linked_in_companies,
+:contacts!,
+:contacts,
+:facebook_groups!,
+:facebook_groups,
+:facebook_posts!,
+:facebook_posts,
+:facebook_events!,
+:facebook_events]
+</code></pre>
+
+<p>Holy moly we got a whole bunch of new methods! That's because on login, all the user profile information
+returned by the API is turned into dynamically generated GETTERs on the object that you can then use later.</p>
+
+<h3>
+<a name="running-the-tests-in-testunit" class="anchor" href="#running-the-tests-in-testunit"><span class="octicon octicon-link"></span></a>Running the tests in test/unit</h3>
+
+<p>The base_test.rb file isn't meant to be run, it is inherited by user_profile_test.rb. In that file
+you'll notice the lines at the top of the file:</p>
+
+<pre><code>TOKEN = "yourtokenhere"
+SECRET = "yoursecrethere"
+</code></pre>
+
+<p>These are meant to be changed to your API secret and some user's token. What I do is I run a dummy
+rails app locally and use the forward gem so that it can receive requests from the internet. Then I setup
+a callback route and login page on the app and use it to have LoginRadius ping me with tokens that I can
+paste into this test file.</p>
+
+<p><em>Beware, LoginRadius invalidates any token after 15 minutes, so during testing, you'll have to repeat the token
+creation A LOT</em></p>
+
+<p>To run the tests, do:</p>
+
+<pre><code>bundle exec ruby -Itest test/unit/user_profile_test.rb
+</code></pre>
+
+<p>If you login with a facebook user, for instance, you'll notice all the twitter/linked in tests failing.
+This is to be expected, you don't have access to those streams!</p>
+
+<h3>
+<a name="evented-frameworks" class="anchor" href="#evented-frameworks"><span class="octicon octicon-link"></span></a>Evented Frameworks</h3>
+
+<p>I've built this gem to work with frameworks like Cramp. I've done a little bit of testing by creating
+a basic event loop script in basic_async_test.rb in the test folder, which you can run to see that
+things work there.</p>
+
+<p>I've also done some AB testing using a Cramp framework elsewhere, but you should take caution in using
+this gem in evented frameworks and make sure to use apache bench to test it for nonblocking yourself.</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ruby-on-rails-gem maintained by <a href="https://github.com/LoginRadius">LoginRadius</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-22321867-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
