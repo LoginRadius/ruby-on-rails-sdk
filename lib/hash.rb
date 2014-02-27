@@ -10,4 +10,16 @@ class Hash
         value
      end
   end
+  
+  def symbolize_keys!
+    transform_keys!{ |key| key.to_sym rescue key }
+  end
+
+  def transform_keys!
+    keys.each do |key|
+      self[yield(key)] = delete(key)
+    end
+    self
+  end
+  
 end
