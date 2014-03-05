@@ -16,5 +16,6 @@ Gem::Specification.new do |gem|
 
 	gem.add_dependency 'em-http-request'
 	gem.add_dependency 'em-synchrony'
+	gem.add_dependency 'json'
 	
 end
