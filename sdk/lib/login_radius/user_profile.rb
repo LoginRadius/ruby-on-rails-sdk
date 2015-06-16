@@ -4,7 +4,7 @@ module LoginRadius
     include UserProfileGetters
     include Messages
     
-    attr_accessor :secret, :token, :async
+    attr_accessor :secret, :token, :async, :ssl_verify_peer
     
     API_ROOT = "https://api.loginradius.com/"
 
@@ -12,12 +12,13 @@ module LoginRadius
     # and uses it to auth against the LoginRadius API. Then it returns the Account object. The
     # async key is optional, if set to true, will use Em::HTTP instead of Net::HTTP.
     # 
-    # @param opts [Hash] Must have keys :token, :secret, and :async(optional)
+    # @param opts [Hash] Must have keys :token, :secret, :async(optional) and :ssl_verify_peer(optional)
     # @return [LoginRadius::Account]
     def initialize(opts = {})
       self.token = opts[:token]
       self.secret = opts[:secret]
       self.async = opts[:async]
+	  self.ssl_verify_peer = opts[:ssl_verify_peer]
       raise LoginRadius::Exception.new("Invalid Request") unless token
       raise LoginRadius::Exception.new("Invalid Token") unless guid_valid?(token)
       raise LoginRadius::Exception.new("Invalid Secret") unless guid_valid?(secret)
@@ -59,8 +60,10 @@ module LoginRadius
         url_obj.query = URI.encode_www_form(params)
         
         http = Net::HTTP.new(url_obj.host, url_obj.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+		http.use_ssl = true
+        if !ssl_verify_peer
+			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+		end
         response = http.get(url_obj.request_uri)
         
         if response.is_a?(Net::HTTPTemporaryRedirect)
@@ -94,7 +97,7 @@ module LoginRadius
         #                      unconverted_response.map { |item| Hash.lr_convert_hash_keys(item).symbolize_keys! 
 	return converted_response
       rescue JSON::ParserError => e
-        raise LoginRadius::Exception.new("A JSON parsing error occured because the API returned an HTML page instead of JSON. This happens mostly when you're using an expired Token. Specifics: #{e.message}")
+        raise LoginRadius::Exception.new("A JSON parsing error occurred because the API returned an HTML page instead of JSON. This happens mostly when you're using an expired Token. Specifics: #{e.message}")
       end 
     end
   end

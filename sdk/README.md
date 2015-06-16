@@ -27,9 +27,10 @@ Take a peek:
       :token => "TOKEN",
       :secret => "SECRET",
       :async => false #Set to true if using EventMachine driven frameworks(must use Em Synchrony)
+	  :ssl_verify_peer => false #Set to true if using ssl verify certificate
     })
     @user_profile.userprofile
-    my_contacts = @user_profile.contacts
+    my_contacts = @user_profile.contact
 		
 That's right, folks. It's that simple. In order to get access to LoginRadius API, you only
 need to create a UserProfile object with a user's login token and your apps secret, and login.

@@ -7,7 +7,8 @@ class UserProfileTest < BaseTest
     @user_profile = LoginRadius::UserProfile.new({
       :token => TOKEN,
       :secret => SECRET,
-      :async => false
+      :async => false,#:async(optional)
+	  :ssl_verify_peer => false#:ssl_verify_peer(optional)
     })
     @user_profile.access_token
   end

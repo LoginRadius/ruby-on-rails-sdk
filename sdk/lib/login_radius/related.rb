@@ -1,6 +1,6 @@
 module LoginRadius
   module Related
-    # fetch images with respact album id. Params hash takes following keys:
+    # fetch images with respect album id. Params hash takes following keys:
     # access_token :- [Required parameter] access token 
     # albumid :- [Required parameter] albumid for fetch images from album
     #
@@ -16,7 +16,7 @@ module LoginRadius
       false
     end
     
-    # fetch page with respact PageNameOrId. Params hash takes following keys:
+    # fetch page with respect PageNameOrId. Params hash takes following keys:
     # access_token :- [Required parameter] access token 
     # pagename :- [Required parameter] pagename for fetch page details from provider
     #
