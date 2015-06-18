@@ -3,6 +3,7 @@ module LoginRadius
   class UserProfile
     include UserProfileGetters
     include Messages
+    include Related
     
     attr_accessor :secret, :token, :async, :ssl_verify_peer
     
@@ -18,7 +19,7 @@ module LoginRadius
       self.token = opts[:token]
       self.secret = opts[:secret]
       self.async = opts[:async]
-	  self.ssl_verify_peer = opts[:ssl_verify_peer]
+    self.ssl_verify_peer = opts[:ssl_verify_peer]
       raise LoginRadius::Exception.new("Invalid Request") unless token
       raise LoginRadius::Exception.new("Invalid Token") unless guid_valid?(token)
       raise LoginRadius::Exception.new("Invalid Secret") unless guid_valid?(secret)
@@ -60,10 +61,10 @@ module LoginRadius
         url_obj.query = URI.encode_www_form(params)
         
         http = Net::HTTP.new(url_obj.host, url_obj.port)
-		http.use_ssl = true
+    http.use_ssl = true
         if !ssl_verify_peer
-			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-		end
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
         response = http.get(url_obj.request_uri)
         
         if response.is_a?(Net::HTTPTemporaryRedirect)
@@ -95,7 +96,7 @@ module LoginRadius
         #converted_response = unconverted_response.is_a?(Hash) ?
         #                      Hash.lr_convert_hash_keys(unconverted_response).symbolize_keys! : 
         #                      unconverted_response.map { |item| Hash.lr_convert_hash_keys(item).symbolize_keys! 
-	return converted_response
+  return converted_response
       rescue JSON::ParserError => e
         raise LoginRadius::Exception.new("A JSON parsing error occurred because the API returned an HTML page instead of JSON. This happens mostly when you're using an expired Token. Specifics: #{e.message}")
       end 

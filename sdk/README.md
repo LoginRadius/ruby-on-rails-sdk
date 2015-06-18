@@ -27,7 +27,7 @@ Take a peek:
       :token => "TOKEN",
       :secret => "SECRET",
       :async => false #Set to true if using EventMachine driven frameworks(must use Em Synchrony)
-	  :ssl_verify_peer => false #Set to true if using ssl verify certificate
+	  :ssl_verify_peer =>false #Set to true if using ssl verify certificate
     })
     @user_profile.userprofile
     my_contacts = @user_profile.contact

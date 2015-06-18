@@ -82,11 +82,6 @@ module LoginRadius
         :params => {:access_token => :access_token}
       },
       {
-        :method => :photo,
-        :route => "api/v2/photo",
-        :params => {:access_token => :access_token, :id => :id}
-      },
-      {
         :method => :audio,
         :route => "api/v2/audio",
         :params => {:access_token => :access_token}
@@ -95,11 +90,6 @@ module LoginRadius
         :method => :video,
         :route => "api/v2/video",
         :params => {:access_token => :access_token}
-      },
-      {
-        :method => :page,
-        :route => "api/v2/page",
-        :params => {:access_token => :access_token, :pagename => :PageNameOrId}
       }
     ].each do |method_info|
       define_method(method_info[:method].to_s + "!") do

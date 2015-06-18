@@ -1,14 +1,14 @@
 require_relative 'base_test.rb'
 class UserProfileTest < BaseTest
-  TOKEN = "8f3e154f-fa1f-4e4d-9c83-d5e9e84e052e"
-  SECRET = "8e391ca0-54df-4ac3-8c6d-884080f9305e"
+  TOKEN = "LOGINRADIUS_API_KEY"
+  SECRET = "LOGINRADIUS_SECRET_KEY"
   
   def setup
     @user_profile = LoginRadius::UserProfile.new({
       :token => TOKEN,
       :secret => SECRET,
-      :async => false,#:async(optional)
-	  :ssl_verify_peer => false#:ssl_verify_peer(optional)
+      :async => false,
+	  :ssl_verify_peer =>false #Set to true if using ssl verify certificate
     })
     @user_profile.access_token
   end
@@ -60,14 +60,31 @@ class UserProfileTest < BaseTest
     assert(@user_profile.video.is_a?(Array))
   end
   
+  test "photo" do
+    params  = {
+	:access_token => @user_profile.access_token,
+	:albumid => 'PASS_ALBUM_ID'
+  }
+    assert(@user_profile.photo(params))
+  end
+  
+  test "page" do
+    page  = {
+	:access_token => @user_profile.access_token,
+	:pagename => 'PASS_PAGE_NAME'
+   }
+    assert(@user_profile.page(params))
+  end
+  
   test "post_status" do
     params = {
       :access_token => :access_token,
-      :title => "loginradius title for testing",
-      :url => "https://www.loginradius.com",
-      :status => "loginradius status for testing",
-      :caption => "loginradius caption for testing",
-      :description => "loginradius description for testing"
+      :title => URI.encode("LoginRadius SDK Title"),
+	  :url => URI.encode("https://loginradius.com"),
+	  :imageurl => URI.encode(""),
+	  :status => URI.encode("LoginRadius SDK Status"),
+	  :caption => URI.encode("LoginRadius SDK caption"),
+	  :description => URI.encode("LoginRadius SDK description")
     }
     assert(@user_profile.post_status(params))
   end
@@ -75,9 +92,9 @@ class UserProfileTest < BaseTest
   test "direct_message" do
     params = {
       :access_token => :access_token,
-      :to => @user_profile.contacts.first[:id],
-      :subject => "loginradius subject for testing",
-      :message => "loginradius message for testing"
+      :to => 'SOCIAL_FRIEND_ID',
+      :subject => "LoginRadius SDK Subject",
+	  :message => "LoginRadius SDK message"
     }
     assert(@user_profile.direct_message(params))
   end  
