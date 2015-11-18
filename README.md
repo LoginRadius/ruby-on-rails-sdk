@@ -24,4 +24,4 @@ Or install it yourself as:
 
     $ gem install login_radius
 
-Please visit http://apidocs.loginradius.com/ruby/index.html for more information.
+Please visit http://apidocs.loginradius.com/docs/ruby for more information.
