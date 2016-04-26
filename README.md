@@ -1,27 +1,30 @@
-# LoginRadius
+# LoginRadius Ruby SDK
 
-LoginRadius Ruby wrapper provides access to LoginRadius.
 
-Optional Asynchronous EventMachine friendly option!
+![Home Image](https://d2lvlj7xfpldmj.cloudfront.net/support/github/banner-1544x500.png)
 
-LoginRadius is a unified social API platform that combines 30 major social platforms into a single simplified and maintenance-free API. With LoginRadius' API, 
-websites and mobile apps can implement social login, capture user social data, enable social sharing, add single sign-on, and more.
+## Introduction ##
 
-LoginRadius helps businesses boost user engagement on their web/mobile platform, manage online identities, utilize social media for marketing, 
-capture accurate consumer data, and get unique social insight into their customer base.
+LoginRadius Customer Registration wrapper provides access to LoginRadius Identity Management Platform API.
 
-## Installation
+LoginRadius is an Identity Management Platform that simplifies user registration while securing data. LoginRadius Platform simplifies and secures your user registration process, increases conversion with Social Login that combines 30 major social platforms, and offers a full solution with Traditional Customer Registration. You can gather a wealth of user profile data from Social Login or Traditional Customer Registration. 
 
-Add this line to your application's Gemfile:
+LoginRadius centralizes it all in one place, making it easy to manage and access. Easily integrate LoginRadius with all of your third-party applications, like MailChimp, Google Analytics, Livefyre and many more, making it easy to utilize the data you are capturing.
 
-    gem 'login_radius'
+LoginRadius helps businesses boost user engagement on their web/mobile platform, manage online identities, utilize social media for marketing, capture accurate consumer data, and get unique social insight into their customer base.
 
-And then execute:
+Please visit [here](http://www.loginradius.com/) for more information.
 
-    $ bundle install
 
-Or install it yourself as:
+## Contents ##
 
-    $ gem install login_radius
+* [Demo](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master/Demo): It contains a basic demo of Social Login and a full Customer Registration Demo.
 
-Please visit http://apidocs.loginradius.com/docs/ruby for more information.
+
+## Documentation
+
+* [Configuration](http://apidocs.loginradius.com/docs/ruby) - Everything you need to begin using the Social SDK.
+* [Customer Registration](http://apidocs.loginradius.com/docs/user-registration) - Everything you need to implement the full LoginRadius Customer Registration system including Social Login.
+
+
+General documentation regarding the Ruby REST API and related flows can be found on the [LoginRadius API Documentations](http://apidocs.loginradius.com/) site. 
