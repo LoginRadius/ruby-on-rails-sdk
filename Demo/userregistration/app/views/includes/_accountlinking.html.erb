@@ -1,0 +1,35 @@
+<!-- Login social icons -->
+<!-- Spans are easier to manage than divs. But remember to not nest a div inside a span -->
+<div class="lr-login-buttons-frame lr-space-fix">
+	<script type="text/html" id="loginradiuscustom_tmpl">
+
+		<# if(isLinked) { #>
+		<div class="lr-linked">
+		<div class="lr-linked-id"><span class="lr-icon-frame">
+		<span class="lr-icon lr-raas-<#= Name.toLowerCase() #>">
+		</span>
+		</span>
+
+		<span class="lr-linked-label"><#= Name #> is connected</span>
+		<span class="lr-unlink lr-pull-right lr-tooltip" data-title="Unlink"
+		onclick='return unLinkAccount(\"<#= Name.toLowerCase() #>\",\"<#= providerId #>\")'>&#215;</span>
+		</div>
+		</div>
+		<# }  else {#>
+		<div class="lr-unlinked">
+		<span class="lr-icon-frame">
+		<span class="lr-icon lr-raas-<#= Name.toLowerCase() #>"
+		onclick="return $SL.util.openWindow('<#= Endpoint #>&is_access_token=true&callback=<#= window.location #>');">
+		</span>
+		</span>
+		</div>
+		<# } #>
+
+	</script>
+
+	<div class="interfacecontainerdiv" id="interfacecontainerdiv"></div>
+	<div class="lr-linked-data lr-linked-frame"></div>
+	<div style="clear:both"></div>
+	<div class="lr-unlinked-data lr-not-linked-frame"></div>
+	<div style="clear:both"></div>
+</div>

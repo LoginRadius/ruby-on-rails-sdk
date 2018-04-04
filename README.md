@@ -18,49 +18,13 @@ Please visit [here](http://www.loginradius.com/) for more information.
 
 ## Contents ##
 
-* [Demo](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master/demo): It contains a demo of LoginRadius Flow.
+* [Demo](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master/Demo): It contains a basic demo of Social Login and a full Customer Registration Demo.
 
 
 ## Documentation
 
-* [Configuration](https://docs.loginradius.com/api/v2/sdk-libraries/ruby) - Everything you need to begin using the LoginRadius SDK.
+* [Configuration](http://apidocs.loginradius.com/docs/ruby) - Everything you need to begin using the Social SDK.
+* [Customer Registration](http://apidocs.loginradius.com/docs/user-registration) - Everything you need to implement the full LoginRadius Customer Registration system including Social Login.
 
 
-
-# LoginRadius
-
-Ruby wrapper for the LoginRadius API. Get social graph information and send messages using LoginRadius'
-many social network clients!
-
-Optional Asynchronous EventMachine friendly option!
-
-## Installation
-
-Add this line to your application's Gemfile:
-
- ```ruby 
- gem 'login_radius'
- ```
-
-And then execute:
-```ruby
-$ bundle
-```
-
-Or install it yourself as:
-```ruby
-$ gem install login_radius
-```
-
-## Usage
-
-Take a peek:
-```ruby
-  @Config = {
-      :sitename => "<LOGINRADIUS_SITENAME>",
-      :appkey => "<LOGINRADIUS_APPKEY>",
-      :appsecret => "<LOGINRADIUS_APPSECRET>"
-     }
-    @loginradius = LoginRadius::RestRequest.new(@Config);
-```
-		
+General documentation regarding the Ruby REST API and related flows can be found on the [LoginRadius API Documentations](http://apidocs.loginradius.com/) site. 

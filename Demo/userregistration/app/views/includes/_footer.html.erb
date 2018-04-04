@@ -1,0 +1,117 @@
+<% content_for :footer do %> <!-- Footer code -->
+<footer>
+	<div class="overlay" id="fade" style="display: none;">
+		<div class="circle">
+			<div id="imganimation">
+				<img src="//cdn.loginradius.com/demo/common/loading_spinner.gif" alt="LoginRadius Processing"
+				style="margin-top: -66px;margin-left: -73px;width: 338px;height: 338px;">
+			</div>
+		</div>
+		<div></div>
+	</div>
+	<div class="clear"></div>
+	<div class="copy-right">
+		<p>
+			User Registration Demo by <a href="https://www.LoginRadius.com/" target="_blank">LoginRadius</a>
+		</p>
+	</div>
+</footer>
+<%if (session[:message] != nil) %>
+<script>
+	jQuery(document).ready(function(){
+		jQuery('#messageinfo').html('<%=session[:message]%>');
+		jQuery('.messagediv').show();
+	});
+</script>
+<%
+session.delete(:message);
+end;
+%>
+
+<% end; %>
+<% content_for :head do %>
+<script>
+	var LocalDomain = window.location.href;
+	var lrThemeSettings = {
+		raasoption : {
+			apikey : "<%=@LoginRadius[:appkey]%>",
+			appname : "<%=@LoginRadius[:sitename]%>",
+			forgotPasswordUrl : LocalDomain,
+			emailVerificationUrl : LocalDomain
+		},
+		logo : {
+			logo_image_path : "", /* Your logo image path, must be 28px * 28px */
+			logo_alt_text : "" /* Alternative text for Image */
+		},
+		caption_message : {
+			register : "Register",
+			login : "Login",
+			forgot_password : "Forgot Password",
+			reset_password : "Reset Passord",
+			fields_missing : "One Step Left"
+		},
+		success_message : {
+			register : "Succeed, a verification email has been sent to your email address",
+			login : "Login succeed",
+			social_login : "Social login succeed", /* Or maybe go check your emails to verify for Twitter */
+			email_verified : "Email verified successfully, you can login now",
+			forgot_password : "A reset link has been sent to your email address, click to reset your password",
+			reset_password : "Your password has been reset",
+			verify_email : "Email verified successfully, you can login now"
+		},
+		success_function : {
+			register : function() {
+				//alert('register succeed!');
+			},
+			login : function() {
+				//alert('login succeed!');
+			},
+			social_login : function() {
+				//alert('social login succeed!')
+			},
+			forgot_password : function() {
+				//alert('reset link has been sent');
+			},
+			reset_password : function() {
+				//alert('you have successfully reset your password');
+			}
+		},
+		form_render_submit_hook : {
+			start : function() {
+				j('#fade').show();
+				//console.log( 'start' );
+			},
+			end : function() {
+				//console.log( 'end' );
+			}
+		},
+		reset_form_after_close_popup : false,
+		auto_login_after_verify_email : false
+	}
+	
+</script>
+
+<script src="//hub.loginradius.com/include/js/LoginRadius.js"></script>
+<script src="//cdn.loginradius.com/hub/prod/js/LoginRadiusRaaS.js"></script>
+<% if session[:user_profile] != "" %>
+<script type="text/javascript">isloggedin = "true";</script>
+<script type="text/html" id="loginradiuscustom_tmpl_IOS">
+	<span class="lr-provider-label lr-sl-shaded-brick-button lr-flat-<#=Name.toLowerCase()#>"
+	onclick="return $SL.util.openWindow('<#= Endpoint #>&is_access_token=true&callback=<#= window.location #>&callbacktype=hash');"
+	title="Sign up with <#= Name #> IOS" alt="Sign in with <#=Name#> IOS">
+	<span class="lr-sl-icon lr-sl-icon-<#=Name.toLowerCase()#>"></span>
+	Sign up with <#=Name#> IOS
+	</span>
+</script>
+<% else %>
+<script type="text/javascript">isloggedin = "false";</script>
+<script type="text/html" id="loginradiuscustom_tmpl">
+	<span class="lr-provider-label lr-sl-shaded-brick-button lr-flat-<#=Name.toLowerCase()#>"
+	onclick="return $SL.util.openWindow('<#= Endpoint #>&is_access_token=true&callback=<#= window.location #>');"
+	title="Sign up with <#= Name #>" alt="Sign in with <#=Name#>">
+	<span class="lr-sl-icon lr-sl-icon-<#=Name.toLowerCase()#>"></span>
+	Sign up with <#=Name#>
+	</span>
+</script>
+<% end; %>
+<% end; %>
