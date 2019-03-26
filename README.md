@@ -18,7 +18,7 @@ Please visit [here](http://www.loginradius.com/) for more information.
 
 ## Contents ##
 
-* [Demo](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master/demo): It contains a demo of LoginRadius Flow.
+* [Demo](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master/demo) - A simple demo application demonstrating the usage of this SDK.
 
 
 ## Documentation
@@ -26,41 +26,45 @@ Please visit [here](http://www.loginradius.com/) for more information.
 * [Configuration](https://docs.loginradius.com/api/v2/sdk-libraries/ruby) - Everything you need to begin using the LoginRadius SDK.
 
 
-
 # LoginRadius
 
-Ruby wrapper for the LoginRadius API. Get social graph information and send messages using LoginRadius'
-many social network clients!
-
-Optional Asynchronous EventMachine friendly option!
+Ruby wrapper for the LoginRadius API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install the SDK by adding LoginRadius to your application's `Gemfile`.
 
- ```ruby 
+ ```ruby
  gem 'login_radius'
  ```
 
-And then execute:
-```ruby
-$ bundle
-```
-
-Or install it yourself as:
-```ruby
-$ gem install login_radius
-```
+Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master).
 
 ## Usage
 
-Take a peek:
+Before using any of the functions available in the library, its corresponding module must first be instantiated:
+
+Create `login_radius.rb` in `/config/initializers` with the following content: 
+
 ```ruby
-  @Config = {
-      :sitename => "<LOGINRADIUS_SITENAME>",
-      :appkey => "<LOGINRADIUS_APPKEY>",
-      :appsecret => "<LOGINRADIUS_APPSECRET>"
-     }
-    @loginradius = LoginRadius::RestRequest.new(@Config);
+
+require "login_radius"
+
+loginradius_config = {
+  :site_name => ENV["SITE_NAME"],
+  :api_key => ENV["API_KEY"],
+  :api_secret => ENV["API_SECRET"],
+  :custom_api_domain => ENV["CUSTOM_API_DOMAIN"]
+}
+
+::LoginRadiusAccountClient = LoginRadius::Account.new(loginradius_config)
+::LoginRadiusAuthenticationClient = LoginRadius::Authentication.new(loginradius_config)
+::LoginRadiusCustomObjectClient = LoginRadius::CustomObjectManagement.new(loginradius_config)
+::LoginRadiusMultiFactorClient = LoginRadius::MultiFactorAuthentication.new(loginradius_config)
+::LoginRadiusPasswordlessClient = LoginRadius::PasswordlessLogin.new(loginradius_config)
+::LoginRadiusRolesClient = LoginRadius::RolesManagement.new(loginradius_config)
+
 ```
-		
+Please note that you only have to initiate modules you need. 
+
+The API key and secret can be obtained from the LoginRadius dashboard. Details on retrieving your key and secret can be found [here](https://docs.loginradius.com/api/v2/dashboard/get-api-key-and-secret#retrieve-your-api-key-and-secret).
