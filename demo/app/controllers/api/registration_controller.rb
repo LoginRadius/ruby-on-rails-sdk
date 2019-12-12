@@ -3,14 +3,25 @@ module Api
     def registration
       verification_url = params[:"verification_url"]
       data = params[:registration]
-      response = LoginRadiusAuthenticationClient.user_registration_by_email(data, verification_url)
+      email_template = ''
+      fields = ''
+      welcome_email_template = ''
+
+      sott = AuthenticationApi.local_generate_sott(10)
+      # p sott
+      response = AuthenticationApi.user_registration_by_email(data, sott, email_template, fields, verification_url, welcome_email_template)
 
       render :status => response.code, :json => response.body
     end
 
     def registration_verify_email
       verification_token = params[:"verification_token"]
-      response = LoginRadiusAuthenticationClient.verify_email(verification_token)
+
+      fields = ''
+      url = ''
+      welcome_email_template = ''
+
+      response = AuthenticationApi.verify_email(verification_token, fields, url, welcome_email_template)
 
       render :status => response.code, :json => response.body
     end

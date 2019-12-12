@@ -2,9 +2,9 @@ module Api
   class CustomobjectController < ApplicationController
     def create_custom_object_by_access_token
       access_token = params[:auth]
-      obj_name = params[:"object_name"]
-      data = params[:customobject]
-      response = LoginRadiusCustomObjectClient.create_custom_object_by_access_token(access_token, obj_name, data)
+      object_name = params[:"object_name"]
+      payload = params[:customobject]
+      response = CustomObjectApi.create_custom_object_by_token(access_token, object_name, payload)
 
       render :status => response.code, :json => response.body
     end
@@ -12,26 +12,26 @@ module Api
     def get_custom_object_by_access_token
       access_token = params[:auth]
       obj_name = params[:"object_name"]
-      response = LoginRadiusCustomObjectClient.custom_object_by_access_token(access_token, obj_name)
+      response = CustomObjectApi.get_custom_object_by_token(access_token, obj_name)
 
       render :status => response.code, :json => response.body
     end
 
     def update_custom_object_by_access_token
       access_token = params[:auth]
-      obj_id = params[:"object_id"]
-      obj_name = params[:"object_name"]
-      data = params[:customobject]
-      response = LoginRadiusCustomObjectClient.custom_object_update_by_objectrecordid_and_access_token(access_token, obj_id, obj_name, "partialreplace", data)
+      object_record_id = params[:"object_id"]
+      object_name = params[:"object_name"]
+      payload = params[:customobject]
+      response = CustomObjectApi.update_custom_object_by_token(access_token, object_name, object_record_id, payload, 'partialreplace')
 
       render :status => response.code, :json => response.body
     end
 
     def delete_custom_object_by_access_token
       access_token = params[:auth]
-      obj_id = params[:"object_id"]
-      obj_name = params[:"object_name"]
-      response = LoginRadiusCustomObjectClient.custom_object_delete_by_objectrecordid_and_access_token(access_token, obj_id, obj_name)
+      object_record_id = params[:"object_id"]
+      object_name = params[:"object_name"]
+      response = CustomObjectApi.delete_custom_object_by_token(access_token, object_name, object_record_id)
 
       render :status => response.code, :json => response.body
     end

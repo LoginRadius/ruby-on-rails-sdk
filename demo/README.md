@@ -23,7 +23,7 @@ A JavaScript based front-end implementation using Loginradius Login Screen is al
 #### Prerequisites
 You must have Ruby and Rails set up in order to run this demo project. 
 
-Follow [this](https://www.ruby-lang.org/en/documentation/installation/) guide to install Ruby, and [this](https://guides.rubyonrails.org/v5.0/getting_started.html#installing-rails) guide to install Rails. 
+Follow [this](https://www.ruby-lang.org/en/documentation/installation/) guide to install Ruby, and [this](https://guides.rubyonrails.org/) guide to install Rails. 
 
 ##### Set up
 

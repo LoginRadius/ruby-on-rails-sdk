@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
 
+    get "get/profile/byemail", action: "accountProfileByEmail", controller: "login"
+	
+    get "apitest", action: "apitest", controller: "login"
     post "login/email", action: "email_login", controller: "login"
     post "forgotpassword", action: "forgot_password", controller: "login"
     get "login/passwordless", action: "passwordless_login", controller: "login"

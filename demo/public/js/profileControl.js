@@ -495,6 +495,10 @@ let profileUpdate = function () {
     update.FirstName = ret.FirstName;
     update.LastName = ret.LastName;
     update.About = ret.About;
+
+    $("#user-updateaccount-firstname").val(ret.FirstName);
+    $("#user-updateaccount-lastname").val(ret.LastName);
+    $("#user-updateaccount-about").val(ret.About);
   });
 }
 

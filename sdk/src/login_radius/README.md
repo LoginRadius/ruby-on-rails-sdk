@@ -3,124 +3,56 @@
 Install the SDK by adding LoginRadius to your application's `Gemfile`.
 
 ```ruby
-gem 'login_radius'
+gem 'login_radius', '= 10.0.0.pre.beta'
 ```
 
 Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master).
 
 ## Quickstart Guide
 
-Before using any of the functions available in the library, its corresponding module must first be instantiated:
+1)Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
 
-```ruby
-# Account Module
-::LoginRadiusAccountClient = LoginRadius::Account.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Authentication Module
-::LoginRadiusAuthenticationClient = LoginRadius::Authentication.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret (optional, only needed for auth_user_registration_by_email)>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Configuration Module
-::LoginRadiusConfigurationClient = LoginRadius::Configuration.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Custom Object Management Module
-::LoginRadiusCustomObjectClient = LoginRadius::CustomObjectManagement.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Custom Registration Data Module
-::LoginRadiusCustomRegistrationDataClient = LoginRadius::CustomRegistrationData.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Multi Factor Authentication Module
-::LoginRadiusMultiFactorClient = LoginRadius::MultiFactorAuthentication.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# One Touch Login Module
-::LoginRadiusOneTouchClient = LoginRadius::OneTouchLogin.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Passwordless Login Module
-::LoginRadiusPasswordlessClient = LoginRadius::PasswordlessLogin.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Phone Authentication Module
-::LoginRadiusPhoneClient = LoginRadius::PhoneAuthentication.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret (optional, only needed for user registration and remove phone ID)>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Roles Management Module
-::LoginRadiusRolesClient = LoginRadius::RolesManagement.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Smart Login Module
-::LoginRadiusSmartClient = LoginRadius::SmartLogin.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Social Login Module
-::LoginRadiusSocialClient = LoginRadius::SocialLogin.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Token Management Module
-::LoginRadiusTokenClient = LoginRadius::TokenManagement.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
-
-# Webhooks Module
-::LoginRadiusWebhooksClient = LoginRadius::Webhooks.new({
-  :site_name => "<Your LoginRadius AppName>",
-  :api_key => "<Your ApiKey>",
-  :api_secret => "<Your ApiSecret>",
-  :customapidomain => "<Custom API domain (optional)>"
-})
+```
+SITE_NAME: "<site name>"
+API_KEY: "<api-key>"
+API_SECRET: "<api-secret>"
+CUSTOM_API_DOMAIN: "<custom-domain-url-if-any>"
+API_REQUEST_SIGNING: "false"
 ```
 
-The API key and secret can be obtained from the LoginRadius dashboard. Details on retrieving your key and secret can be found [here](https://docs.loginradius.com/api/v2/dashboard/get-api-key-and-secret#retrieve-your-api-key-and-secret).
+2)After define the configuration key details, its corresponding module must first be instantiated:
+
+Create `login_radius.rb` in `/config/initializers`:
+
+
+
+```
+require 'login_radius'
+
+::AccountApi = LoginRadius::AccountApi.new
+::RoleApi = LoginRadius::RoleApi.new
+::SottApi = LoginRadius::SottApi.new
+
+::ConfigurationApi = LoginRadius::ConfigurationApi.new
+::ConsentManagementApi = LoginRadius::ConsentManagementApi.new
+::CustomObjectApi = LoginRadius::CustomObjectApi.new
+::CustomRegistrationDataApi = LoginRadius::CustomRegistrationDataApi.new
+::MultiFactorAuthenticationApi = LoginRadius::MultiFactorAuthenticationApi.new
+::ReAuthenticationApi = LoginRadius::ReAuthenticationApi.new
+::WebHookApi = LoginRadius::WebHookApi.new
+
+::AuthenticationApi = LoginRadius::AuthenticationApi.new
+::OneTouchLoginApi = LoginRadius::OneTouchLoginApi.new
+::PasswordLessLoginApi = LoginRadius::PasswordLessLoginApi.new
+::PhoneAuthenticationApi = LoginRadius::PhoneAuthenticationApi.new
+::PINAuthenticationApi = LoginRadius::PINAuthenticationApi.new
+::RiskBasedAuthenticationApi = LoginRadius::RiskBasedAuthenticationApi.new
+::SmartLoginApi = LoginRadius::SmartLoginApi.new
+
+::NativeSocialApi = LoginRadius::NativeSocialApi.new
+::SocialApi = LoginRadius::SocialApi.new
+```
+
+Please note that you only have to initiate modules you need.
+
+The API key and secret can be obtained from the LoginRadius Admin Console. Details on retrieving your key and secret can be found [here](loginradius.com/docs/api/v2/admin-console/platform-security/api-key-and-secret/).
