@@ -17,9 +17,6 @@ Please visit [here](http://www.loginradius.com/) for more information.
 
 ## Documentation
 
-* [Configuration](https://docs.loginradius.comhttps://www.loginradius.com/docs/api/v2/sdk-libraries/ruby) - Everything you need to begin using the LoginRadius SDK.
-
-
 Welcome to LoginRadius Ruby SDK documentation!
 
 >Disclaimer

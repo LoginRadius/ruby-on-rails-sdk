@@ -1,7 +1,7 @@
 PATH
   remote: vendor/gems/login_radius
   specs:
-    login_radius (10.0.0)
+    login_radius (10.0.0.pre.beta)
 
 GEM
   remote: https://rubygems.org/
@@ -66,7 +66,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    builder (3.2.3)
+    builder (3.2.4)
     byebug (11.0.1)
     capybara (3.29.0)
       addressable
@@ -80,7 +80,7 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     erubi (1.9.0)
-    ffi (1.11.2-x86-mingw32)
+    ffi (1.11.3-x86-mingw32)
     figaro (1.1.1)
       thor (~> 0.14)
     globalid (0.4.2)
@@ -89,7 +89,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
-    loofah (2.3.1)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -103,10 +103,10 @@ GEM
     minitest (5.13.0)
     msgpack (1.3.1-x86-mingw32)
     nio4r (2.5.2)
-    nokogiri (1.10.5-x86-mingw32)
+    nokogiri (1.10.7-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     public_suffix (4.0.1)
-    puma (4.3.0)
+    puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
@@ -181,7 +181,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.1)
+    zeitwerk (2.2.2)
 
 PLATFORMS
   x86-mingw32
@@ -193,7 +193,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.7)
   login_radius!
-  puma (~> 4.1)
+  puma (~> 4.3.1)
   rails (~> 6.0.1)
   sass-rails (>= 6)
   selenium-webdriver
