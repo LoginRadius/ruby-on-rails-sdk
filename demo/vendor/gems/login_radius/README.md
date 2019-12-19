@@ -2,8 +2,8 @@
 
 Install the SDK by adding LoginRadius to your application's `Gemfile`.
 
-```ruby
-gem 'login_radius', '= 10.0.0.pre.beta'
+```
+gem 'login_radius', '= 10.0.0'
 ```
 
 Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master).

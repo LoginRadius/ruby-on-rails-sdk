@@ -35,7 +35,7 @@ Or
 
 
 ````
- gem 'login_radius', '= 10.0.0.pre.beta'
+ gem 'login_radius', '~> 10.0'
 ````
 
 
@@ -52,7 +52,7 @@ Or install it yourself as:
 
 
 ````
- $ gem install login_radius --pre
+ $ gem install login_radius
 ````
 
 
