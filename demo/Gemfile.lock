@@ -1,7 +1,7 @@
 PATH
   remote: vendor/gems/login_radius
   specs:
-    login_radius (10.0.0)
+    login_radius (11.0.0)
 
 GEM
   remote: https://rubygems.org/

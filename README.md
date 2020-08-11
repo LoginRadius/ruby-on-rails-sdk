@@ -35,7 +35,7 @@ Or
 
 
 ````
- gem 'login_radius', '~> 10.0'
+ gem 'login_radius', '~> 11.0'
 ````
 
 
@@ -54,7 +54,6 @@ Or install it yourself as:
 ````
  $ gem install login_radius
 ````
-
 
 #### Usage
 1)Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
@@ -123,13 +122,14 @@ List of APIs in this Section:<br>
 * PUT : [Auth Reset Password by OTP](#ResetPasswordByEmailOTP-put-)<br>
 * PUT : [Auth Reset Password by OTP and UserName](#ResetPasswordByOTPAndUserName-put-)<br>
 * PUT : [Auth Change Password](#ChangePassword-put-)<br>
-* PUT : [Auth Link Social Identities](#LinkSocialIdentities-put-)<br>
 * PUT : [Auth Set or Change UserName](#SetOrChangeUserName-put-)<br>
 * PUT : [Auth Resend Email Verification](#AuthResendEmailVerification-put-)<br>
 * POST : [Auth Add Email](#AddEmail-post-)<br>
 * POST : [Auth Login by Email](#LoginByEmail-post-)<br>
 * POST : [Auth Login by Username](#LoginByUserName-post-)<br>
 * POST : [Auth Forgot Password](#ForgotPassword-post-)<br>
+* POST : [Auth Link Social Identities](#LinkSocialIdentities-post-)<br>
+* POST : [Auth Link Social Identities By Ping](#LinkSocialIdentitiesByPing-post-)<br>
 * POST : [Auth User Registration by Email](#UserRegistrationByEmail-post-)<br>
 * POST : [Auth User Registration By Captcha](#UserRegistrationByCaptcha-post-)<br>
 * GET : [Get Security Questions By Email](#GetSecurityQuestionsByEmail-get-)<br>
@@ -144,7 +144,6 @@ List of APIs in this Section:<br>
 * GET : [Auth Delete Account](#DeleteAccountByDeleteToken-get-)<br>
 * GET : [Auth Check Email Availability](#CheckEmailAvailability-get-)<br>
 * GET : [Auth Verify Email](#VerifyEmail-get-)<br>
-* GET : [Auth Social Identity](#GetSocialIdentity-get-)<br>
 * GET : [Auth Check UserName Availability](#CheckUserNameAvailability-get-)<br>
 * GET : [Auth Privacy Policy Accept](#AcceptPrivacyPolicy-get-)<br>
 * GET : [Auth Privacy Policy History By Access Token](#GetPrivacyPolicyHistoryByAccessToken-get-)<br>
@@ -367,24 +366,6 @@ response = AuthenticationApi.change_password(access_token, new_password, old_pas
   
   
  
-<h6 id="LinkSocialIdentities-put-"> Auth Link Social Identities (PUT)</h6>
- This API is used to link up a social provider account with the specified account based on the access token and the social providers user access token.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-link-social-identities)
-
- 
- 
-
- ```
-
- access_token = "<access_token>" #Required
- candidate_token = "<candidate_token>" #Required
-
-response = AuthenticationApi.link_social_identities(access_token, candidate_token)
-
- ```
- 
-  
-  
- 
 <h6 id="SetOrChangeUserName-put-"> Auth Set or Change UserName (PUT)</h6>
  This API is used to set or change UserName by access token.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-set-or-change-user-name/)
 
@@ -504,6 +485,42 @@ response = AuthenticationApi.login_by_user_name(user_name_authentication_model, 
  email_template = "<email_template>" #Optional
 
 response = AuthenticationApi.forgot_password(email, reset_password_url, email_template)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="LinkSocialIdentities-post-"> Auth Link Social Identities (POST)</h6>
+ This API is used to link up a social provider account with an existing LoginRadius account on the basis of access token and the social providers user access token.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-link-social-identities)
+
+ 
+ 
+
+ ```
+
+ access_token = "<access_token>" #Required
+ candidate_token = "<candidate_token>" #Required
+
+response = AuthenticationApi.link_social_identities(access_token, candidate_token)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="LinkSocialIdentitiesByPing-post-"> Auth Link Social Identities By Ping (POST)</h6>
+ This API is used to link up a social provider account with an existing LoginRadius account on the basis of ping and the social providers user access token.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-link-social-identities-by-ping)
+
+ 
+ 
+
+ ```
+
+ access_token = "<access_token>" #Required
+ client_guid = "<client_guid>" #Required
+
+response = AuthenticationApi.link_social_identities_by_ping(access_token, client_guid)
 
  ```
  
@@ -783,24 +800,6 @@ response = AuthenticationApi.verify_email(verification_token, fields, url, welco
   
   
  
-<h6 id="GetSocialIdentity-get-"> Auth Social Identity (GET)</h6>
- This API is called just after account linking API and it prevents the raas profile of the second account from getting created.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-social-identity)
-
- 
- 
-
- ```
-
- access_token = "<access_token>" #Required
- fields = nil #Optional
-
-response = AuthenticationApi.get_social_identity(access_token, fields)
-
- ```
- 
-  
-  
- 
 <h6 id="CheckUserNameAvailability-get-"> Auth Check UserName Availability (GET)</h6>
  This API is used to check the UserName exists or not on your site.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/authentication/auth-username-availability/)
 
@@ -922,7 +921,6 @@ List of APIs in this Section:<br>
 * PUT : [Account Invalidate Verification Email](#InvalidateAccountEmailVerification-put-)<br>
 * PUT : [Reset phone ID verification](#ResetPhoneIDVerificationByUid-put-)<br>
 * PUT : [Upsert Email](#UpsertEmail-put-)<br>
-* PUT : [Update UID](#AccountUpdateUid-put-)<br>
 * POST : [Account Create](#CreateAccount-post-)<br>
 * POST : [Forgot Password token](#GetForgotPasswordToken-post-)<br>
 * POST : [Email Verification token](#GetEmailVerificationToken-post-)<br>
@@ -943,7 +941,7 @@ List of APIs in this Section:<br>
 
 
 <h6 id="UpdateAccountByUid-put-"> Account Update (PUT)</h6>
- This API is used to update the information of existing accounts in your Cloud Storage. See our Advanced API Usage section <a href='https://www.loginradius.com/docshttps://www.loginradius.com/docs/api/v2/customer-identity-api/advanced-api-usage/'>Here</a> for more capabilities.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/account/account-update)
+ This API is used to update the information of existing accounts in your Cloud Storage. See our Advanced API Usage section <a href='https://www.loginradius.com/docs/api/v2/customer-identity-api/advanced-api-usage/'>Here</a> for more capabilities.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/account/account-update)
 
  
  
@@ -1061,25 +1059,6 @@ response = AccountApi.upsert_email(upsert_email_model, uid, fields)
  ```
  
   
-  
- 
-<h6 id="AccountUpdateUid-put-"> Update UID (PUT)</h6>
- This API is used to update a user's Uid. It will update all profiles, custom objects and consent management logs associated with the Uid.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/account/account-update/)
-
- 
- 
-
- ```
-
-
- update_uid_model ={ 
-"newUid" => "<newUid>"}  #Required
- uid = "<uid>" #Required
-
-response = AccountApi.account_update_uid(update_uid_model, uid)
-
- ```
- 
   
   
  
@@ -1514,8 +1493,9 @@ response = SocialApi.exchange_access_token(token)
 
  access_token = "<access_token>" #Required
  expires_in = 0 #Optional
+ is_web = true #Optional
 
-response = SocialApi.refresh_access_token(access_token, expires_in)
+response = SocialApi.refresh_access_token(access_token, expires_in, is_web)
 
  ```
  
@@ -3234,6 +3214,9 @@ List of APIs in this Section:<br>
 * PUT : [Validate MFA by Google Authenticator Code](#MFAReAuthenticateByGoogleAuth-put-)<br>
 * PUT : [Validate MFA by Password](#MFAReAuthenticateByPassword-put-)<br>
 * PUT : [MFA Re-authentication by PIN](#VerifyPINAuthentication-put-)<br>
+* POST : [Verify Multifactor OTP Authentication](#VerifyMultiFactorOtpReauthentication-post-)<br>
+* POST : [Verify Multifactor Password Authentication](#VerifyMultiFactorPasswordReauthentication-post-)<br>
+* POST : [Verify Multifactor PIN Authentication](#VerifyMultiFactorPINReauthentication-post-)<br>
 * GET : [Multi Factor Re-Authenticate](#MFAReAuthenticate-get-)<br>
 
 
@@ -3334,6 +3317,66 @@ response = ReAuthenticationApi.mfa_re_authenticate_by_password(access_token, pas
  sms_template_2fa = "<sms_template_2fa>" #Optional
 
 response = ReAuthenticationApi.verify_pin_authentication(access_token, pin_auth_event_based_auth_model_with_lockout, sms_template_2fa)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="VerifyMultiFactorOtpReauthentication-post-"> Verify Multifactor OTP Authentication (POST)</h6>
+ This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by OTP.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/mfa/re-auth-validate-mfa/)
+
+ 
+ 
+
+ ```
+
+
+ event_based_multi_factor_token ={ 
+"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
+ uid = "<uid>" #Required
+
+response = ReAuthenticationApi.verify_multi_factor_otp_reauthentication(event_based_multi_factor_token, uid)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="VerifyMultiFactorPasswordReauthentication-post-"> Verify Multifactor Password Authentication (POST)</h6>
+ This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by password.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/re-auth-validate-password/)
+
+ 
+ 
+
+ ```
+
+
+ event_based_multi_factor_token ={ 
+"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
+ uid = "<uid>" #Required
+
+response = ReAuthenticationApi.verify_multi_factor_password_reauthentication(event_based_multi_factor_token, uid)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="VerifyMultiFactorPINReauthentication-post-"> Verify Multifactor PIN Authentication (POST)</h6>
+ This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by PIN.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/pin/re-auth-validate-pin/)
+
+ 
+ 
+
+ ```
+
+
+ event_based_multi_factor_token ={ 
+"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
+ uid = "<uid>" #Required
+
+response = ReAuthenticationApi.verify_multi_factor_pin_reauthentication(event_based_multi_factor_token, uid)
 
  ```
  
@@ -4473,6 +4516,8 @@ List of APIs in this Section:<br>
 * GET : [Access Token using google JWT token for Native Mobile Login](#GetAccessTokenByGoogleJWTAccessToken-get-)<br>
 * GET : [Access Token via Linkedin Token](#GetAccessTokenByLinkedinAccessToken-get-)<br>
 * GET : [Get Access Token By Foursquare Access Token](#GetAccessTokenByFoursquareAccessToken-get-)<br>
+* GET : [Access Token via Apple Id Code](#GetAccessTokenByAppleIdCode-get-)<br>
+* GET : [Access Token via WeChat Code](#GetAccessTokenByWeChatCode-get-)<br>
 * GET : [Access Token via Vkontakte Token](#GetAccessTokenByVkontakteAccessToken-get-)<br>
 * GET : [Access Token via Google AuthCode](#GetAccessTokenByGoogleAuthCode-get-)<br>
 
@@ -4487,8 +4532,9 @@ List of APIs in this Section:<br>
  ```
 
  fb_access_token = "<fb_access_token>" #Required
+ social_app_name = "<social_app_name>" #Optional
 
-response = NativeSocialApi.get_access_token_by_facebook_access_token(fb_access_token)
+response = NativeSocialApi.get_access_token_by_facebook_access_token(fb_access_token, social_app_name)
 
  ```
  
@@ -4505,8 +4551,9 @@ response = NativeSocialApi.get_access_token_by_facebook_access_token(fb_access_t
 
  tw_access_token = "<tw_access_token>" #Required
  tw_token_secret = "<tw_token_secret>" #Required
+ social_app_name = "<social_app_name>" #Optional
 
-response = NativeSocialApi.get_access_token_by_twitter_access_token(tw_access_token, tw_token_secret)
+response = NativeSocialApi.get_access_token_by_twitter_access_token(tw_access_token, tw_token_secret, social_app_name)
 
  ```
  
@@ -4524,8 +4571,9 @@ response = NativeSocialApi.get_access_token_by_twitter_access_token(tw_access_to
  google_access_token = "<google_access_token>" #Required
  client_id = "<client_id>" #Optional
  refresh_token = "<refresh_token>" #Optional
+ social_app_name = "<social_app_name>" #Optional
 
-response = NativeSocialApi.get_access_token_by_google_access_token(google_access_token, client_id, refresh_token)
+response = NativeSocialApi.get_access_token_by_google_access_token(google_access_token, client_id, refresh_token, social_app_name)
 
  ```
  
@@ -4558,8 +4606,9 @@ response = NativeSocialApi.get_access_token_by_google_j_w_t_access_token(id_toke
  ```
 
  ln_access_token = "<ln_access_token>" #Required
+ social_app_name = "<social_app_name>" #Optional
 
-response = NativeSocialApi.get_access_token_by_linkedin_access_token(ln_access_token)
+response = NativeSocialApi.get_access_token_by_linkedin_access_token(ln_access_token, social_app_name)
 
  ```
  
@@ -4577,6 +4626,41 @@ response = NativeSocialApi.get_access_token_by_linkedin_access_token(ln_access_t
  fs_access_token = "<fs_access_token>" #Required
 
 response = NativeSocialApi.get_access_token_by_foursquare_access_token(fs_access_token)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="GetAccessTokenByAppleIdCode-get-"> Access Token via Apple Id Code (GET)</h6>
+ The API is used to get LoginRadius access token by sending a valid Apple ID OAuth Code. It will be valid for the specific duration of time specified in the response.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/native-social-login-api/access-token-via-apple-id-code)
+
+ 
+ 
+
+ ```
+
+ code = "<code>" #Required
+ social_app_name = "<social_app_name>" #Optional
+
+response = NativeSocialApi.get_access_token_by_apple_id_code(code, social_app_name)
+
+ ```
+ 
+  
+  
+ 
+<h6 id="GetAccessTokenByWeChatCode-get-"> Access Token via WeChat Code (GET)</h6>
+ This API is used to retrieve a LoginRadius access token by passing in a valid WeChat OAuth Code.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/native-social-login-api/access-token-via-wechat-code)
+
+ 
+ 
+
+ ```
+
+ code = "<code>" #Required
+
+response = NativeSocialApi.get_access_token_by_we_chat_code(code)
 
  ```
  
@@ -4609,8 +4693,9 @@ response = NativeSocialApi.get_access_token_by_vkontakte_access_token(vk_access_
  ```
 
  google_authcode = "<google_authcode>" #Required
+ social_app_name = "<social_app_name>" #Optional
 
-response = NativeSocialApi.get_access_token_by_google_auth_code(google_authcode)
+response = NativeSocialApi.get_access_token_by_google_auth_code(google_authcode, social_app_name)
 
  ```
  
@@ -4706,79 +4791,6 @@ response = WebHookApi.web_hook_unsubscribe(web_hook_subscribe_model)
  
  
 
-### ReAuthentication API
-
-
-List of APIs in this Section:<br>
-
-* POST : [Verify Multifactor OTP Authentication](#VerifyMultiFactorOtpReauthentication-post-)<br>
-* POST : [Verify Multifactor Password Authentication](#VerifyMultiFactorPasswordReauthentication-post-)<br>
-* POST : [Verify Multifactor PIN Authentication](#VerifyMultiFactorPINReauthentication-post-)<br>
-
-
-
-<h6 id="VerifyMultiFactorOtpReauthentication-post-"> Verify Multifactor OTP Authentication (POST)</h6>
- This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by OTP.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/mfa/re-auth-validate-mfa/)
-
- 
- 
-
- ```
-
-
- event_based_multi_factor_token ={ 
-"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
- uid = "<uid>" #Required
-
-response = ReAuthenticationApi.verify_multi_factor_otp_reauthentication(event_based_multi_factor_token, uid)
-
- ```
- 
-  
-  
- 
-<h6 id="VerifyMultiFactorPasswordReauthentication-post-"> Verify Multifactor Password Authentication (POST)</h6>
- This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by password.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/re-auth-validate-password/)
-
- 
- 
-
- ```
-
-
- event_based_multi_factor_token ={ 
-"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
- uid = "<uid>" #Required
-
-response = ReAuthenticationApi.verify_multi_factor_password_reauthentication(event_based_multi_factor_token, uid)
-
- ```
- 
-  
-  
- 
-<h6 id="VerifyMultiFactorPINReauthentication-post-"> Verify Multifactor PIN Authentication (POST)</h6>
- This API is used on the server-side to validate and verify the re-authentication token created by the MFA re-authentication API. This API checks re-authentications created by PIN.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/re-authentication/pin/re-auth-validate-pin/)
-
- 
- 
-
- ```
-
-
- event_based_multi_factor_token ={ 
-"secondFactorValidationToken" => "<secondFactorValidationToken>"}  #Required
- uid = "<uid>" #Required
-
-response = ReAuthenticationApi.verify_multi_factor_pin_reauthentication(event_based_multi_factor_token, uid)
-
- ```
- 
-  
-  
- 
- 
-
 ### Demo
 We have a demo web application using the Ruby SDK, which includes the following features:
 
@@ -4810,5 +4822,6 @@ SET UP:
 1. Run `bundle install`
 2. Run `bundle exec figaro install`, then configure the generated `/config/application.yml` based on `config/application.yml.example`
 3. Run the server using `rails server`
+
 
 To configure the login screen implementation, create `options.js` in `/public/js` based on the example provided in `/public/options.js.sample` 

@@ -48,10 +48,11 @@ module LoginRadius
     #
     # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
     # @param expires_in - Allows you to specify a desired expiration time in minutes for the newly issued access token.
+    # @param is_web - Is web or not.
     #
     # @return Response containing Definition of Complete Token data
     # 20.2
-    def refresh_access_token(access_token, expires_in)
+    def refresh_access_token(access_token, expires_in, is_web = false)
       if isNullOrWhiteSpace(access_token)
         raise LoginRadius::Error.new, getValidationMessage('access_token')
       end
@@ -61,6 +62,9 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
       unless expires_in == false
         query_parameters['expiresIn'] = expires_in
+      end
+      unless is_web == false
+        query_parameters['isWeb'] = is_web
       end
 
       resource_path = 'api/v2/access_token/refresh'

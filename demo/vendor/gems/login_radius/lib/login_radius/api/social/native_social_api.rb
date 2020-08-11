@@ -28,10 +28,11 @@ module LoginRadius
     # The API is used to get LoginRadius access token by sending Facebook's access token. It will be valid for the specific duration of time specified in the response.
     #
     # @param fb__access__token - Facebook Access Token
+    # @param social_app_name - Name of Social provider APP
     #
     # @return Response containing Definition of Complete Token data
     # 20.3
-    def get_access_token_by_facebook_access_token(fb__access__token)
+    def get_access_token_by_facebook_access_token(fb__access__token, social_app_name = '')
       if isNullOrWhiteSpace(fb__access__token)
         raise LoginRadius::Error.new, getValidationMessage('fb__access__token')
       end
@@ -39,6 +40,9 @@ module LoginRadius
       query_parameters = {}
       query_parameters['fb_Access_Token'] = fb__access__token
       query_parameters['key'] = @api_key
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
+      end
 
       resource_path = 'api/v2/access_token/facebook'
       get_request(resource_path, query_parameters, nil)
@@ -48,10 +52,11 @@ module LoginRadius
     #
     # @param tw__access__token - Twitter Access Token
     # @param tw__token__secret - Twitter Token Secret
+    # @param social_app_name - Name of Social provider APP
     #
     # @return Response containing Definition of Complete Token data
     # 20.4
-    def get_access_token_by_twitter_access_token(tw__access__token, tw__token__secret)
+    def get_access_token_by_twitter_access_token(tw__access__token, tw__token__secret, social_app_name = '')
       if isNullOrWhiteSpace(tw__access__token)
         raise LoginRadius::Error.new, getValidationMessage('tw__access__token')
       end
@@ -63,6 +68,9 @@ module LoginRadius
       query_parameters['key'] = @api_key
       query_parameters['tw_Access_Token'] = tw__access__token
       query_parameters['tw_Token_Secret'] = tw__token__secret
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
+      end
 
       resource_path = 'api/v2/access_token/twitter'
       get_request(resource_path, query_parameters, nil)
@@ -73,10 +81,11 @@ module LoginRadius
     # @param google__access__token - Google Access Token
     # @param client_id - Google Client ID
     # @param refresh_token - LoginRadius refresh token
+    # @param social_app_name - Name of Social provider APP
     #
     # @return Response containing Definition of Complete Token data
     # 20.5
-    def get_access_token_by_google_access_token(google__access__token, client_id = '', refresh_token = '')
+    def get_access_token_by_google_access_token(google__access__token, client_id = '', refresh_token = '', social_app_name = '')
       if isNullOrWhiteSpace(google__access__token)
         raise LoginRadius::Error.new, getValidationMessage('google__access__token')
       end
@@ -89,6 +98,9 @@ module LoginRadius
       end
       unless isNullOrWhiteSpace(refresh_token)
         query_parameters['refresh_token'] = refresh_token
+      end
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
       end
 
       resource_path = 'api/v2/access_token/google'
@@ -117,10 +129,11 @@ module LoginRadius
     # The API is used to get LoginRadius access token by sending Linkedin's access token. It will be valid for the specific duration of time specified in the response.
     #
     # @param ln__access__token - Linkedin Access Token
+    # @param social_app_name - Name of Social provider APP
     #
     # @return Response containing Definition of Complete Token data
     # 20.7
-    def get_access_token_by_linkedin_access_token(ln__access__token)
+    def get_access_token_by_linkedin_access_token(ln__access__token, social_app_name = '')
       if isNullOrWhiteSpace(ln__access__token)
         raise LoginRadius::Error.new, getValidationMessage('ln__access__token')
       end
@@ -128,6 +141,9 @@ module LoginRadius
       query_parameters = {}
       query_parameters['key'] = @api_key
       query_parameters['ln_Access_Token'] = ln__access__token
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
+      end
 
       resource_path = 'api/v2/access_token/linkedin'
       get_request(resource_path, query_parameters, nil)
@@ -149,6 +165,48 @@ module LoginRadius
       query_parameters['key'] = @api_key
 
       resource_path = 'api/v2/access_token/foursquare'
+      get_request(resource_path, query_parameters, nil)
+    end
+
+    # The API is used to get LoginRadius access token by sending a valid Apple ID OAuth Code. It will be valid for the specific duration of time specified in the response.
+    #
+    # @param code - Apple Code
+    # @param social_app_name - Name of Social provider APP
+    #
+    # @return Response containing Definition of Complete Token data
+    # 20.12
+    def get_access_token_by_apple_id_code(code, social_app_name = '')
+      if isNullOrWhiteSpace(code)
+        raise LoginRadius::Error.new, getValidationMessage('code')
+      end
+
+      query_parameters = {}
+      query_parameters['code'] = code
+      query_parameters['key'] = @api_key
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
+      end
+
+      resource_path = 'api/v2/access_token/apple'
+      get_request(resource_path, query_parameters, nil)
+    end
+
+    # This API is used to retrieve a LoginRadius access token by passing in a valid WeChat OAuth Code.
+    #
+    # @param code - WeChat Code
+    #
+    # @return Response containing Definition of Complete Token data
+    # 20.13
+    def get_access_token_by_we_chat_code(code)
+      if isNullOrWhiteSpace(code)
+        raise LoginRadius::Error.new, getValidationMessage('code')
+      end
+
+      query_parameters = {}
+      query_parameters['code'] = code
+      query_parameters['key'] = @api_key
+
+      resource_path = 'api/v2/access_token/wechat'
       get_request(resource_path, query_parameters, nil)
     end
 
@@ -174,10 +232,11 @@ module LoginRadius
     # The API is used to get LoginRadius access token by sending Google's AuthCode. It will be valid for the specific duration of time specified in the response.
     #
     # @param google_authcode - Google AuthCode
+    # @param social_app_name - Name of Social provider APP
     #
     # @return Response containing Definition of Complete Token data
     # 20.16
-    def get_access_token_by_google_auth_code(google_authcode)
+    def get_access_token_by_google_auth_code(google_authcode, social_app_name = '')
       if isNullOrWhiteSpace(google_authcode)
         raise LoginRadius::Error.new, getValidationMessage('google_authcode')
       end
@@ -185,6 +244,9 @@ module LoginRadius
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['google_authcode'] = google_authcode
+      unless isNullOrWhiteSpace(social_app_name)
+        query_parameters['socialAppName'] = social_app_name
+      end
 
       resource_path = 'api/v2/access_token/google'
       get_request(resource_path, query_parameters, nil)
