@@ -2,7 +2,7 @@
 
 
 ### Version 11.0.0
-Release on **August 11,2020**
+Released on **August 11,2020**
 
 ## Enhancements:
 - Added a parameter isWeb in "RefreshAccessToken" API.
