@@ -103,6 +103,40 @@ Please note that you only have to initiate modules you need.
 
 The API key and secret can be obtained from the LoginRadius Admin-console.
 
+## Demo
+We have a demo web application using the Ruby SDK, which includes the following features:
+
+* Traditional email login
+* Multi-Factor login
+* Passwordless login
+* Social login
+* Register
+* Email verification
+* Forgot password
+* Reset password
+* Change password
+* Set password
+* Update account
+* Account linking
+* Custom object management
+* Roles management
+
+You can get a copy of our demo project at [GitHub](https://github.com/LoginRadius/ruby-on-rails-sdk).
+
+<br>
+
+### Prerequisites
+Follow this guide to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/), and [this](https://guides.rubyonrails.org/) guide to install Rails.
+
+
+SET UP:
+
+1. Run `bundle install`
+2. Run `bundle exec figaro install`, then configure the generated `/config/application.yml` based on `config/application.yml.example`
+3. Run the server using `rails server`
+
+
+To configure the login screen implementation, create `options.js` in `/public/js` based on the example provided in `/public/options.js.sample` 
 
 
 ## APIs
@@ -4785,43 +4819,3 @@ response = WebHookApi.webhook_test()
 response = WebHookApi.web_hook_unsubscribe(web_hook_subscribe_model)
 
  ```
- 
-  
-  
- 
- 
-
-### Demo
-We have a demo web application using the Ruby SDK, which includes the following features:
-
-* Traditional email login
-* Multi-Factor login
-* Passwordless login
-* Social login
-* Register
-* Email verification
-* Forgot password
-* Reset password
-* Change password
-* Set password
-* Update account
-* Account linking
-* Custom object management
-* Roles management
-
-You can get a copy of our demo project at [GitHub](https://github.com/LoginRadius/ruby-on-rails-sdk).
-
-<br>
-
-#### Prerequisites
-Follow this guide to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/), and [this](https://guides.rubyonrails.org/) guide to install Rails.
-
-
-SET UP:
-
-1. Run `bundle install`
-2. Run `bundle exec figaro install`, then configure the generated `/config/application.yml` based on `config/application.yml.example`
-3. Run the server using `rails server`
-
-
-To configure the login screen implementation, create `options.js` in `/public/js` based on the example provided in `/public/options.js.sample` 
