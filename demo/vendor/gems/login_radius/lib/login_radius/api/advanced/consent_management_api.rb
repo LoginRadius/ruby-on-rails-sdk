@@ -41,7 +41,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/consent/logs'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is to submit consent form using consent token.
@@ -83,7 +83,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/consent/logs'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # API to provide a way to end user to submit a consent form for particular event type.
@@ -132,7 +132,7 @@ module LoginRadius
       query_parameters['isCustom'] = is_custom
 
       resource_path = 'identity/v2/auth/consent/verify'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is to update consents using access token.

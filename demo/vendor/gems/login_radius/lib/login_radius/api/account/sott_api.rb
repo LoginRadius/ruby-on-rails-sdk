@@ -41,7 +41,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account/sott'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

@@ -41,7 +41,7 @@ module LoginRadius
       query_parameters['token'] = token
 
       resource_path = 'api/v2/access_token'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Refresh Access Token API is used to refresh the provider access token after authentication. It will be valid for up to 60 days on LoginRadius depending on the provider. In order to use the access token in other APIs, always refresh the token using this API.<br><br><b>Supported Providers :</b> Facebook,Yahoo,Google,Twitter, Linkedin.<br><br> Contact LoginRadius support team to enable this API.
@@ -68,7 +68,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/refresh'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API validates access token, if valid then returns a response with its expiry otherwise error.
@@ -88,7 +88,7 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
 
       resource_path = 'api/v2/access_token/validate'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api invalidates the active access token or expires an access token validity.
@@ -108,7 +108,7 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
 
       resource_path = 'api/v2/access_token/invalidate'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api is use to get all active session by Access Token.
@@ -128,7 +128,7 @@ module LoginRadius
       query_parameters['token'] = token
 
       resource_path = 'api/v2/access_token/activesession'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api is used to get all active sessions by AccountID(UID).
@@ -148,7 +148,7 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
 
       resource_path = 'api/v2/access_token/activesession'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api is used to get all active sessions by ProfileId.
@@ -168,7 +168,7 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
 
       resource_path = 'api/v2/access_token/activesession'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # <b>Supported Providers:</b> Facebook, Google, Live, Vkontakte.<br><br> This API returns the photo albums associated with the passed in access tokens Social Profile.
@@ -186,7 +186,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/album'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # <b>Supported Providers:</b> Facebook, Google, Live, Vkontakte.<br><br> This API returns the photo albums associated with the passed in access tokens Social Profile.
@@ -209,7 +209,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/album'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Audio API is used to get audio files data from the user's social account.<br><br><b>Supported Providers:</b> Live, Vkontakte
@@ -227,7 +227,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/audio'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Audio API is used to get audio files data from the user's social account.<br><br><b>Supported Providers:</b> Live, Vkontakte
@@ -250,7 +250,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/audio'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Check In API is used to get check Ins data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Foursquare, Vkontakte
@@ -268,7 +268,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/checkin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Check In API is used to get check Ins data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Foursquare, Vkontakte
@@ -291,7 +291,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/checkin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Contact API is used to get contacts/friends/connections data from the user's social account.This is one of the APIs that makes up the LoginRadius Friend Invite System. The data will normalized into LoginRadius' standard data format. This API requires setting permissions in your LoginRadius Dashboard. <br><br><b>Note:</b> Facebook restricts access to the list of friends that is returned. When using the Contacts API with Facebook you will only receive friends that have accepted some permissions with your app. <br><br><b>Supported Providers:</b> Facebook, Foursquare, Google, LinkedIn, Live, Twitter, Vkontakte, Yahoo
@@ -313,7 +313,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/contact'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Event API is used to get the event data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Live
@@ -331,7 +331,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/event'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Event API is used to get the event data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Live
@@ -354,7 +354,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/event'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # Get the following user list from the user's social account.<br><br><b>Supported Providers:</b> Twitter
@@ -372,7 +372,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/following'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # Get the following user list from the user's social account.<br><br><b>Supported Providers:</b> Twitter
@@ -395,7 +395,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/following'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Group API is used to get group data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Vkontakte
@@ -413,7 +413,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/group'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Group API is used to get group data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Vkontakte
@@ -436,7 +436,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/group'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Like API is used to get likes data from the user's social account.<br><br><b>Supported Providers:</b> Facebook
@@ -454,7 +454,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/like'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Like API is used to get likes data from the user's social account.<br><br><b>Supported Providers:</b> Facebook
@@ -477,7 +477,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/like'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Mention API is used to get mentions data from the user's social account.<br><br><b>Supported Providers:</b> Twitter
@@ -495,7 +495,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/mention'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # Post Message API is used to post messages to the user's contacts.<br><br><b>Supported Providers:</b> Twitter, LinkedIn <br><br>The Message API is used to post messages to the user?s contacts. This is one of the APIs that makes up the LoginRadius Friend Invite System. After using the Contact API, you can send messages to the retrieved contacts. This API requires setting permissions in your LoginRadius Dashboard.<br><br>GET & POST Message API work the same way except the API method is different
@@ -528,7 +528,7 @@ module LoginRadius
       query_parameters['to'] = to
 
       resource_path = 'api/v2/message'
-      post_request(resource_path, query_parameters, nil)
+      post_request(resource_path, query_parameters, {})
     end
 
     # The Page API is used to get the page data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook, LinkedIn
@@ -551,7 +551,7 @@ module LoginRadius
       query_parameters['pageName'] = page_name
 
       resource_path = 'api/v2/page'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Photo API is used to get photo data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook, Foursquare, Google, Live, Vkontakte
@@ -574,7 +574,7 @@ module LoginRadius
       query_parameters['albumId'] = album_id
 
       resource_path = 'api/v2/photo'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Post API is used to get post message data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook
@@ -592,7 +592,7 @@ module LoginRadius
       query_parameters['access_token'] = access_token
 
       resource_path = 'api/v2/post'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Status API is used to update the status on the user's wall.<br><br><b>Supported Providers:</b>  Facebook, Twitter, LinkedIn
@@ -644,7 +644,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/status'
-      post_request(resource_path, query_parameters, nil)
+      post_request(resource_path, query_parameters, {})
     end
 
     # The Trackable status API works very similar to the Status API but it returns a Post id that you can use to track the stats(shares, likes, comments) for a specific share/post/status update. This API requires setting permissions in your LoginRadius Dashboard.<br><br> The Trackable Status API is used to update the status on the user's wall and return an Post ID value. It is commonly referred to as Permission based sharing or Push notifications.<br><br> POST Input Parameter Format: application/x-www-form-urlencoded
@@ -714,7 +714,7 @@ module LoginRadius
       query_parameters['url'] = url
 
       resource_path = 'api/v2/status/trackable/js'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Trackable status API works very similar to the Status API but it returns a Post id that you can use to track the stats(shares, likes, comments) for a specific share/post/status update. This API requires setting permissions in your LoginRadius Dashboard.<br><br> This API is used to retrieve a tracked post based on the passed in post ID value. This API requires setting permissions in your LoginRadius Dashboard.<br><br> <b>Note:</b> To utilize this API you need to find the ID for the post you want to track, which might require using Trackable Status Posting API first.
@@ -733,29 +733,7 @@ module LoginRadius
       query_parameters['secret'] = @api_secret
 
       resource_path = 'api/v2/status/trackable'
-      get_request(resource_path, query_parameters, nil)
-    end
-
-    # The User Profile API is used to get social profile data from the user's social account after authentication.<br><br><b>Supported Providers:</b>  All
-    #
-    # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
-    # @param fields - The fields parameter filters the API response so that the response only includes a specific set of fields
-    #
-    # @return Response containing Definition for Complete UserProfile data
-    # 38.1
-    def get_social_user_profile(access_token, fields = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
-      end
-
-      query_parameters = {}
-      query_parameters['access_token'] = access_token
-      unless isNullOrWhiteSpace(fields)
-        query_parameters['fields'] = fields
-      end
-
-      resource_path = 'api/v2/userprofile'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The User Profile API is used to get the latest updated social profile data from the user's social account after authentication. The social profile will be retrieved via oAuth and OpenID protocols. The data is normalized into LoginRadius' standard data format. This API should be called using the access token retrieved from the refresh access token API.
@@ -777,7 +755,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/userprofile/refresh'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Video API is used to get video files data from the user's social account.<br><br><b>Supported Providers:</b>   Facebook, Google, Live, Vkontakte
@@ -800,7 +778,7 @@ module LoginRadius
       query_parameters['nextCursor'] = next_cursor
 
       resource_path = 'api/v2/video'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

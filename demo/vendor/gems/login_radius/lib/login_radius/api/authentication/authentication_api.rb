@@ -41,7 +41,7 @@ module LoginRadius
       query_parameters['email'] = email
 
       resource_path = 'identity/v2/auth/securityquestion/email'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve the list of questions that are configured on the respective LoginRadius site.
@@ -60,7 +60,7 @@ module LoginRadius
       query_parameters['userName'] = user_name
 
       resource_path = 'identity/v2/auth/securityquestion/username'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve the list of questions that are configured on the respective LoginRadius site.
@@ -79,7 +79,7 @@ module LoginRadius
       query_parameters['phone'] = phone
 
       resource_path = 'identity/v2/auth/securityquestion/phone'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve the list of questions that are configured on the respective LoginRadius site.
@@ -98,7 +98,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/securityquestion/accesstoken'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api validates access token, if valid then returns a response with its expiry otherwise error.
@@ -117,7 +117,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/access_token/validate'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api call invalidates the active access token or expires an access token's validity.
@@ -140,7 +140,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/access_token/invalidate'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This api call provide the active access token Information
@@ -159,17 +159,20 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/access_token'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API retrieves a copy of the user data based on the access token.
     #
     # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
     # @param fields - The fields parameter filters the API response so that the response only includes a specific set of fields
+    # @param email_template - 
+    # @param verification_url - 
+    # @param welcome_email_template - 
     #
     # @return Response containing Definition for Complete profile data
     # 5.2
-    def get_profile_by_access_token(access_token, fields = '')
+    def get_profile_by_access_token(access_token, fields = '', email_template = '', verification_url = '', welcome_email_template = '')
       if isNullOrWhiteSpace(access_token)
         raise LoginRadius::Error.new, getValidationMessage('access_token')
       end
@@ -180,9 +183,18 @@ module LoginRadius
       unless isNullOrWhiteSpace(fields)
         query_parameters['fields'] = fields
       end
+      unless isNullOrWhiteSpace(email_template)
+        query_parameters['emailTemplate'] = email_template
+      end
+      unless isNullOrWhiteSpace(verification_url)
+        query_parameters['verificationUrl'] = verification_url
+      end
+      unless isNullOrWhiteSpace(welcome_email_template)
+        query_parameters['welcomeEmailTemplate'] = welcome_email_template
+      end
 
       resource_path = 'identity/v2/auth/account'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API sends a welcome email
@@ -205,7 +217,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/account/sendwelcomeemail'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to update the user's profile by passing the access token.
@@ -275,7 +287,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/account'
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API is used to delete an account by passing it a delete token.
@@ -294,7 +306,7 @@ module LoginRadius
       query_parameters['deletetoken'] = deletetoken
 
       resource_path = 'identity/v2/auth/account/delete'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to allow a customer with a valid access token to unlock their account provided that they successfully pass the prompted Bot Protection challenges. The Block or Suspend block types are not applicable for this API. For additional details see our Auth Security Configuration documentation.You are only required to pass the Post Parameters that correspond to the prompted challenges.
@@ -320,6 +332,41 @@ module LoginRadius
       put_request(resource_path, query_parameters, unlock_profile_model)
     end
 
+    # This API is used to get a user's profile using the clientGuid parameter if no callback feature enabled
+    #
+    # @param client_guid - ClientGuid
+    # @param email_template - EmailTemplate
+    # @param fields - Fields
+    # @param verification_url - VerificationUrl
+    # @param welcome_email_template - WelcomeEmailTemplate
+    #
+    # @return Response containing User Profile Data and access token
+    # 5.16
+    def get_profile_by_ping(client_guid, email_template = '', fields = '', verification_url = '', welcome_email_template = '')
+      if isNullOrWhiteSpace(client_guid)
+        raise LoginRadius::Error.new, getValidationMessage('client_guid')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['clientGuid'] = client_guid
+      unless isNullOrWhiteSpace(email_template)
+        query_parameters['emailTemplate'] = email_template
+      end
+      unless isNullOrWhiteSpace(fields)
+        query_parameters['fields'] = fields
+      end
+      unless isNullOrWhiteSpace(verification_url)
+        query_parameters['verificationUrl'] = verification_url
+      end
+      unless isNullOrWhiteSpace(welcome_email_template)
+        query_parameters['welcomeEmailTemplate'] = welcome_email_template
+      end
+
+      resource_path = 'identity/v2/auth/account/ping'
+      get_request(resource_path, query_parameters, {})
+    end
+
     # This API is used to check the email exists or not on your site.
     #
     # @param email - Email of the user
@@ -336,7 +383,7 @@ module LoginRadius
       query_parameters['email'] = email
 
       resource_path = 'identity/v2/auth/email'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to verify the email of user. Note: This API will only return the full profile if you have 'Enable auto login after email verification' set in your LoginRadius Admin Console's Email Workflow settings under 'Verification Email'.
@@ -367,7 +414,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/email'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to verify the email of user when the OTP Email verification flow is enabled, please note that you must contact LoginRadius to have this feature enabled.
@@ -827,7 +874,7 @@ module LoginRadius
       query_parameters['username'] = username
 
       resource_path = 'identity/v2/auth/username'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to update the privacy policy stored in the user's profile by providing the access token of the user accepting the privacy policy
@@ -850,7 +897,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/privacypolicy/accept'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API will return all the accepted privacy policies for the user by providing the access token of that user.
@@ -869,7 +916,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/privacypolicy/history'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API creates a user in the database as well as sends a verification email to the user.

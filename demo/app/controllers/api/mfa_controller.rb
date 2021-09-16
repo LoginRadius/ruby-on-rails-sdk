@@ -5,12 +5,12 @@ module Api
       email = params[:Email]
       password = params[:Password]
       email_template = ''
+      email_template2_f_a=''
       fields = ''
       login_url = ''
       sms_template = ''
       sms_template2_f_a = ''
-      response = MultiFactorAuthenticationApi.mfa_email_login(email, password, email_template, fields, login_url, sms_template, sms_template2_f_a, verification_url)
-
+      response = MultiFactorAuthenticationApi.mfa_login_by_email(email, password, email_template, fields, login_url, sms_template, sms_template2_f_a, verification_url,email_template2_f_a)
       render :status => response.code, :json => response.body
     end
 
@@ -25,9 +25,11 @@ module Api
       second_factor_authentication_token = params[:"multi_factor_auth_token"]
       google_authenticator_code = params[:googleauthenticatorcode]
       fields = ''
-      sms_template2_f_a = ''
-
-      response = MultiFactorAuthenticationApi.mfa_validate_google_auth_code(google_authenticator_code, second_factor_authentication_token, fields, sms_template2_f_a)
+      rba_browser_email_template = ''
+      rba_city_email_template = ''
+      rba_country_email_template = ''
+      rba_ip_email_template = ''
+      response = MultiFactorAuthenticationApi.mfa_validate_google_auth_code(google_authenticator_code, second_factor_authentication_token, fields,  rba_browser_email_template , rba_city_email_template, rba_country_email_template, rba_ip_email_template)
 
       render :status => response.code, :json => response.body
     end

@@ -52,7 +52,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/registrationdata/' + type
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API allows you to validate code for a particular dropdown member.
@@ -109,7 +109,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/registrationdata/' + type
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API allows you to fill data into a dropdown list which you have created for user Registration. For more details on how to use this API please see our Custom Registration Data Overview
@@ -170,7 +170,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/registrationdata/' + record_id
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API allows you to delete all records contained in a datasource.
@@ -189,7 +189,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/registrationdata/type/' + type
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
   end
 end

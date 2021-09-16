@@ -48,6 +48,10 @@ module LoginRadius
         params.delete('sott')
       end
 
+      unless ENV['Origin_IP'] == "" || ENV['Origin_IP'] == nil
+        headers['X-Origin-IP'] = ENV['Origin_IP']       
+      end
+      
       uri_obj.query = URI.encode_www_form(params)
       http = Net::HTTP.new(uri_obj.host, uri_obj.port)
       http.use_ssl = true
@@ -106,6 +110,10 @@ module LoginRadius
         params.delete('sott')
       end
 
+      unless ENV['Origin_IP'] == "" || ENV['Origin_IP'] == nil
+        headers['X-Origin-IP'] = ENV['Origin_IP']       
+      end
+
       uri_obj.query = URI.encode_www_form(params)
       http = Net::HTTP.new(uri_obj.host, uri_obj.port)
       http.use_ssl = true
@@ -156,6 +164,10 @@ module LoginRadius
         params.delete('sott')
       end
 
+      unless ENV['Origin_IP'] == "" || ENV['Origin_IP'] == nil
+        headers['X-Origin-IP'] = ENV['Origin_IP']       
+      end
+
       uri_obj.query = URI.encode_www_form(params)
       http = Net::HTTP.new(uri_obj.host, uri_obj.port)
       http.use_ssl = true
@@ -202,6 +214,10 @@ module LoginRadius
       if params.key?('sott') # has_key
         headers['X-LoginRadius-Sott'] = params['sott']
         params.delete('sott')
+      end
+
+      unless ENV['Origin_IP'] == "" || ENV['Origin_IP'] == nil
+        headers['X-Origin-IP'] = ENV['Origin_IP']       
       end
 
       uri_obj.query = URI.encode_www_form(params)

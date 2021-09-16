@@ -29,8 +29,8 @@ module Api
 
     def delete_custom_object_by_access_token
       access_token = params[:auth]
-      object_record_id = params[:"object_id"]
       object_name = params[:"object_name"]
+      object_record_id = params[:"object_id"]
       response = CustomObjectApi.delete_custom_object_by_token(access_token, object_name, object_record_id)
 
       render :status => response.code, :json => response.body

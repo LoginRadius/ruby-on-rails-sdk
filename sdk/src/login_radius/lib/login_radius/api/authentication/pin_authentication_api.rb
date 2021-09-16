@@ -310,7 +310,7 @@ module LoginRadius
       query_parameters['session_token'] = session_token
 
       resource_path = 'identity/v2/auth/session_token/invalidate'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

@@ -110,7 +110,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/auth/customobject'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve the Custom Object data for the specified account.
@@ -138,7 +138,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/auth/customobject/' + object_record_id
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to remove the specified Custom Object data using ObjectRecordId of a specified account.
@@ -166,7 +166,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/auth/customobject/' + object_record_id
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API is used to write information in JSON format to the custom object for the specified account.
@@ -254,7 +254,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/manage/account/' + uid + '/customobject'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve the Custom Object data for the specified account.
@@ -282,7 +282,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/manage/account/' + uid + '/customobject/' + object_record_id
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to remove the specified Custom Object data using ObjectRecordId of specified account.
@@ -310,7 +310,7 @@ module LoginRadius
       query_parameters['objectName'] = object_name
 
       resource_path = 'identity/v2/manage/account/' + uid + '/customobject/' + object_record_id
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
   end
 end

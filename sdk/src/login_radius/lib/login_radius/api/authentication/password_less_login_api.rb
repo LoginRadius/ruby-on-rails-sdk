@@ -71,7 +71,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/passwordlesslogin/otp'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to send a Passwordless Login verification link to the provided Email ID
@@ -98,7 +98,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/passwordlesslogin/email'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to send a Passwordless Login Verification Link to a customer by providing their UserName
@@ -125,7 +125,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/passwordlesslogin/email'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to verify the Passwordless Login verification link. Note: If you are using Passwordless Login by Phone you will need to use the Passwordless Login Phone Verification API
@@ -152,7 +152,51 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/passwordlesslogin/email/verify'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to verify the otp sent to the email when doing a passwordless login. 
+    #
+    # @param password_less_login_by_email_and_otp_model - payload
+    # @param fields - Fields
+    #
+    # @return Response containing User Profile Data and access token
+    # 9.23
+    def passwordless_login_verification_by_email_and_otp(password_less_login_by_email_and_otp_model, fields = '')
+      if password_less_login_by_email_and_otp_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('password_less_login_by_email_and_otp_model')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      unless isNullOrWhiteSpace(fields)
+        query_parameters['fields'] = fields
+      end
+
+      resource_path = 'identity/v2/auth/login/passwordlesslogin/email/verifyotp'
+      post_request(resource_path, query_parameters, password_less_login_by_email_and_otp_model)
+    end
+
+    # This API is used to verify the otp sent to the email when doing a passwordless login.
+    #
+    # @param password_less_login_by_user_name_and_otp_model - payload
+    # @param fields - Fields
+    #
+    # @return Response containing User Profile Data and access token
+    # 9.24
+    def passwordless_login_verification_by_user_name_and_otp(password_less_login_by_user_name_and_otp_model, fields = '')
+      if password_less_login_by_user_name_and_otp_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('password_less_login_by_user_name_and_otp_model')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      unless isNullOrWhiteSpace(fields)
+        query_parameters['fields'] = fields
+      end
+
+      resource_path = 'identity/v2/auth/login/passwordlesslogin/username/verifyotp'
+      post_request(resource_path, query_parameters, password_less_login_by_user_name_and_otp_model)
     end
   end
 end

@@ -131,7 +131,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/email/onetouchlogin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to check if the One Touch Login link has been clicked or not.
@@ -154,7 +154,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/smartlogin/ping'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

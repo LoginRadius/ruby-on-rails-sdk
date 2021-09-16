@@ -42,7 +42,7 @@ module LoginRadius
       query_parameters['event'] = event
 
       resource_path = 'api/v2/webhook'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # API can be used to configure a WebHook on your LoginRadius site. Webhooks also work on subscribe and notification model, subscribe your hook and get a notification. Equivalent to RESThook but these provide security on basis of signature and RESThook work on unique URL. Following are the events that are allowed by LoginRadius to trigger a WebHook service call.
@@ -76,7 +76,7 @@ module LoginRadius
       query_parameters['apisecret'] = @api_secret
 
       resource_path = 'api/v2/webhook/test'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # API can be used to unsubscribe a WebHook configured on your LoginRadius site.

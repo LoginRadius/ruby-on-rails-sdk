@@ -45,7 +45,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/facebook'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Twitter's access token. It will be valid for the specific duration of time specified in the response.
@@ -73,7 +73,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/twitter'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Google's access token. It will be valid for the specific duration of time specified in the response.
@@ -104,7 +104,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/google'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to Get LoginRadius Access Token using google jwt id token for google native mobile login/registration.
@@ -123,7 +123,7 @@ module LoginRadius
       query_parameters['key'] = @api_key
 
       resource_path = 'api/v2/access_token/googlejwt'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Linkedin's access token. It will be valid for the specific duration of time specified in the response.
@@ -146,7 +146,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/linkedin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Foursquare's access token. It will be valid for the specific duration of time specified in the response.
@@ -165,7 +165,7 @@ module LoginRadius
       query_parameters['key'] = @api_key
 
       resource_path = 'api/v2/access_token/foursquare'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending a valid Apple ID OAuth Code. It will be valid for the specific duration of time specified in the response.
@@ -188,7 +188,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/apple'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve a LoginRadius access token by passing in a valid WeChat OAuth Code.
@@ -207,7 +207,7 @@ module LoginRadius
       query_parameters['key'] = @api_key
 
       resource_path = 'api/v2/access_token/wechat'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Vkontakte's access token. It will be valid for the specific duration of time specified in the response.
@@ -226,7 +226,7 @@ module LoginRadius
       query_parameters['vk_access_token'] = vk_access_token
 
       resource_path = 'api/v2/access_token/vkontakte'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to get LoginRadius access token by sending Google's AuthCode. It will be valid for the specific duration of time specified in the response.
@@ -249,7 +249,7 @@ module LoginRadius
       end
 
       resource_path = 'api/v2/access_token/google'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

@@ -1,8 +1,61 @@
 > **LoginRadius Ruby On Rails SDK Change Log** provides information regarding what has changed, more specifically what changes, improvements and bug fix has been made to the SDK. For more details please refer to the [LoginRadius API Documention](https://docs.loginradius.com/api/v2/sdk-libraries/ruby)
 
+# Version 11.2.0
+Release on September 15, 2021
+
+## Enhancements
+
+ - Added X-Origin-IP header support.
+ - Added 429 error code handling for "Too Many Request in a particular time frame".
+
+
+## Added new multiple APIs for better user experience
+
+ - Get Profile By Ping.
+ - Passwordless Login Verification By Email And OTP.
+ - Passwordless Login Verification By User Name And OTP.
+ - MFAEmailOtpByAccessToken
+ - MFAValidateEmailOtpByAccessToken
+ - MFAResetEmailOtpAuthenticatorByAccessToken
+ - MFASecurityQuestionAnswerByAccessToken
+ - MFAResetSecurityQuestionAuthenticatorByAccessToken
+ - MFAEmailOTP
+ - MFAValidateEmailOtp
+ - MFASecurityQuestionAnswer
+ - MFASecurityQuestionAnswerVerification
+ - MFAResetEmailOtpAuthenticatorByUid
+ - MFAResetSecurityQuestionAuthenticatorByUid
+ - ReAuthValidateEmailOtp
+ - ReAuthSendEmailOtp
+ - ReAuthBySecurityQuestion
+
+## Removed APIs:
+
+- GetSocialUserProfile
+
+Added `EmailTemplate2FA` parameter in the following API
+
+- MFALoginByEmail
+- MFALoginByUserName
+- MFALoginByPhone
+
+
+Added `RbaBrowserEmailTemplate`, `RbaCityEmailTemplate` ,`RbaCountryEmailTemplate` , `RbaIpEmailTemplate` parameter in the following API
+
+- MFAValidateOTPByPhone
+- MFAValidateGoogleAuthCode
+- MFAValidateBackupCode
+
+Added `emailTemplate`, `verificationUrl` ,`welcomeEmailTemplate`  parameter in the following API
+
+- GetProfileByAccessToken
+
+## Removed `smsTemplate2FA`  parameter from the following API
+
+- mfaValidateGoogleAuthCode
 
 ### Version 11.0.0
-Released on **August 11,2020**
+Release on **July 28,2020**
 
 ## Enhancements:
 - Added a parameter isWeb in "RefreshAccessToken" API.
@@ -19,6 +72,7 @@ Released on **August 11,2020**
 ## Removed APIs:
  - linkSocialIdentity API(PUT)
  - getSocialIdentity API(GET)
+ 
 
 ### Version 10.0.0
 Released on **Dec 19, 2019**

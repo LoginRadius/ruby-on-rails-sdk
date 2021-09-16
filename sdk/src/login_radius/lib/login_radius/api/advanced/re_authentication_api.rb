@@ -45,7 +45,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/account/reauth/2fa'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to re-authenticate via Multi-factor authentication by passing the One Time Password received via SMS
@@ -238,6 +238,80 @@ module LoginRadius
 
       resource_path = 'identity/v2/auth/account/reauth/pin'
       put_request(resource_path, query_parameters, pin_auth_event_based_auth_model_with_lockout)
+    end
+
+    # This API is used to validate the triggered MFA authentication flow with an Email OTP.
+    #
+    # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
+    # @param reauth_by_email_otp_model - payload
+    #
+    # @return Response containing Definition response of MFA reauthentication
+    # 42.14
+    def re_auth_validate_email_otp(access_token, reauth_by_email_otp_model)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if reauth_by_email_otp_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('reauth_by_email_otp_model')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/reauth/2fa/otp/email/verify'
+      put_request(resource_path, query_parameters, reauth_by_email_otp_model)
+    end
+
+    # This API is used to send the MFA Email OTP to the email for Re-authentication
+    #
+    # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
+    # @param email_id - EmailId
+    # @param email_template2_f_a - EmailTemplate2FA
+    #
+    # @return Response containing Definition of Complete Validation data
+    # 42.15
+    def re_auth_send_email_otp(access_token, email_id, email_template2_f_a = '')
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if isNullOrWhiteSpace(email_id)
+        raise LoginRadius::Error.new, getValidationMessage('email_id')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+      query_parameters['emailId'] = email_id
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
+
+      resource_path = 'identity/v2/auth/account/reauth/2fa/otp/email'
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to validate the triggered MFA re-authentication flow with security questions answers.
+    #
+    # @param access_token - Uniquely generated identifier key by LoginRadius that is activated after successful authentication.
+    # @param security_question_answer_update_model - payload
+    #
+    # @return Response containing Definition response of MFA reauthentication
+    # 42.16
+    def re_auth_by_security_question(access_token, security_question_answer_update_model)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if security_question_answer_update_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/reauth/2fa/securityquestionanswer/verify'
+      post_request(resource_path, query_parameters, security_question_answer_update_model)
     end
   end
 end

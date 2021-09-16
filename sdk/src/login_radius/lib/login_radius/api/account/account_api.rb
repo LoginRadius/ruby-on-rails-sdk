@@ -41,7 +41,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/privacypolicy/history'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to create an account in Cloud Storage. This API bypass the normal email verification process and manually creates the user. <br><br>In order to use this API, you need to format a JSON request body with all of the mandatory fields
@@ -88,7 +88,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve all of the profile data associated with the specified account by user name in Cloud Storage.
@@ -112,7 +112,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve all of the profile data, associated with the account by phone number in Cloud Storage.
@@ -136,7 +136,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to retrieve all of the profile data, associated with the account by uid in Cloud Storage.
@@ -159,7 +159,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account/' + uid
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to update the information of existing accounts in your Cloud Storage. See our Advanced API Usage section <a href='https://www.loginradius.com/docs/api/v2/customer-identity-api/advanced-api-usage/'>Here</a> for more capabilities.
@@ -239,7 +239,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/password'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to set the password of an account in Cloud Storage.
@@ -284,7 +284,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API is used to invalidate the Email Verification status on an account.
@@ -311,7 +311,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account/' + uid + '/invalidateemail'
-      put_request(resource_path, query_parameters, nil)
+      put_request(resource_path, query_parameters, {})
     end
 
     # This API Returns a Forgot Password Token it can also be used to send a Forgot Password email to the customer. Note: If you have the UserName workflow enabled, you may replace the 'email' parameter with 'username' in the body.
@@ -387,7 +387,7 @@ module LoginRadius
       query_parameters['uid'] = uid
 
       resource_path = 'identity/v2/manage/account/access_token'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API Allows you to reset the phone no verification of an end user’s account.
@@ -410,7 +410,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account/' + uid + '/invalidatephone'
-      put_request(resource_path, query_parameters, nil)
+      put_request(resource_path, query_parameters, {})
     end
 
     # This API is used to add/upsert another emails in account profile by different-different email types. If the email type is same then it will simply update the existing email, otherwise it will add a new email in Email array.
@@ -487,7 +487,7 @@ module LoginRadius
       query_parameters['refresh_Token'] = refresh__token
 
       resource_path = 'identity/v2/manage/account/access_token/refresh'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The Revoke Refresh Access Token API is used to revoke a refresh token or the Provider Access Token, revoking an existing refresh token will invalidate the refresh token but the associated access token will work until the expiry.
@@ -507,7 +507,7 @@ module LoginRadius
       query_parameters['refresh_Token'] = refresh__token
 
       resource_path = 'identity/v2/manage/account/access_token/refresh/revoke'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # Note: This is intended for specific workflows where an email may be associated to multiple UIDs. This API is used to retrieve all of the identities (UID and Profiles), associated with a specified email in Cloud Storage.
@@ -531,7 +531,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/manage/account/identities'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to delete all user profiles associated with an Email.
@@ -551,7 +551,7 @@ module LoginRadius
       query_parameters['email'] = email
 
       resource_path = 'identity/v2/manage/account'
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API is used to update a user's Uid. It will update all profiles, custom objects and consent management logs associated with the Uid.

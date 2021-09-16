@@ -41,7 +41,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/role'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to assign your desired roles to a given user.
@@ -106,7 +106,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/rolecontext'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # The API is used to retrieve role context by the context name.
@@ -125,7 +125,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/rolecontext/' + context_name
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API creates a Context with a set of Roles
@@ -171,7 +171,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/account/' + uid + '/rolecontext/' + context_name
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API Deletes the specified Role from a Context.
@@ -240,7 +240,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/role'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API creates a role with permissions.
@@ -278,7 +278,7 @@ module LoginRadius
       query_parameters['apiSecret'] = @api_secret
 
       resource_path = 'identity/v2/manage/role/' + role
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API is used to add permissions to a given role.

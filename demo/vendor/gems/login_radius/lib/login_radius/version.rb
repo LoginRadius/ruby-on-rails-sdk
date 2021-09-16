@@ -1,3 +1,3 @@
 module LoginRadius
-  VERSION = "11.0.0"
+  VERSION = "11.2.0"
 end

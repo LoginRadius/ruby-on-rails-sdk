@@ -45,7 +45,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/email/smartlogin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API sends a Smart Login link to the user's Email Id.
@@ -81,7 +81,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/smartlogin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API sends a Smart Login link to the user's Email Id.
@@ -117,7 +117,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/smartlogin'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to check if the Smart Login link has been clicked or not
@@ -140,7 +140,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/smartlogin/ping'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

@@ -51,7 +51,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/serverinfo'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

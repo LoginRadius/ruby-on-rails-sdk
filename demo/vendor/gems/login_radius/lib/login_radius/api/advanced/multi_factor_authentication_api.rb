@@ -45,7 +45,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/account/2fa'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to trigger the Multi-factor authentication settings after login for secure actions
@@ -198,7 +198,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/account/2fa/backupcode'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # API is used to reset the backup codes on a given account via the access token. This API call will generate 10 new codes, each code can only be consumed once
@@ -217,7 +217,119 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/account/2fa/backupcode/reset'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is created to send the OTP to the email if email OTP authenticator is enabled in app's MFA configuration.
+    #
+    # @param access_token - access_token
+    # @param email_id - EmailId
+    # @param email_template2_f_a - EmailTemplate2FA
+    #
+    # @return Response containing Definition of Complete Validation data
+    # 5.17
+    def mfa_email_otp_by_access_token(access_token, email_id, email_template2_f_a = '')
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if isNullOrWhiteSpace(email_id)
+        raise LoginRadius::Error.new, getValidationMessage('email_id')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+      query_parameters['emailId'] = email_id
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
+
+      resource_path = 'identity/v2/auth/account/2fa/otp/email'
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to set up MFA Email OTP authenticator on profile after login.
+    #
+    # @param access_token - access_token
+    # @param multi_factor_auth_model_by_email_otp_with_lockout - payload
+    #
+    # @return Response containing Definition for Complete profile data
+    # 5.18
+    def mfa_validate_email_otp_by_access_token(access_token, multi_factor_auth_model_by_email_otp_with_lockout)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if multi_factor_auth_model_by_email_otp_with_lockout.blank?
+        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_email_otp_with_lockout')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/2fa/verification/otp/email'
+      put_request(resource_path, query_parameters, multi_factor_auth_model_by_email_otp_with_lockout)
+    end
+
+    # This API is used to reset the Email OTP Authenticator settings for an MFA-enabled user
+    #
+    # @param access_token - access_token
+    #
+    # @return Response containing Definition of Delete Request
+    # 5.19
+    def mfa_reset_email_otp_authenticator_by_access_token(access_token)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/2fa/authenticator/otp/email'
+      delete_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to set up MFA Security Question authenticator on profile after login.
+    #
+    # @param access_token - access_token
+    # @param security_question_answer_model_by_access_token - payload
+    #
+    # @return Response containing Definition of Complete Validation data
+    # 5.20
+    def mfa_security_question_answer_by_access_token(access_token, security_question_answer_model_by_access_token)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+      if security_question_answer_model_by_access_token.blank?
+        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_model_by_access_token')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/2fa/securityquestionanswer'
+      put_request(resource_path, query_parameters, security_question_answer_model_by_access_token)
+    end
+
+    # This API is used to Reset MFA Security Question Authenticator By Access Token
+    #
+    # @param access_token - access_token
+    #
+    # @return Response containing Definition of Delete Request
+    # 5.21
+    def mfa_reset_security_question_authenticator_by_access_token(access_token)
+      if isNullOrWhiteSpace(access_token)
+        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      end
+
+      query_parameters = {}
+      query_parameters['access_token'] = access_token
+      query_parameters['apiKey'] = @api_key
+
+      resource_path = 'identity/v2/auth/account/2fa/authenticator/securityquestionanswer'
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API can be used to login by emailid on a Multi-factor authentication enabled LoginRadius site.
@@ -230,10 +342,11 @@ module LoginRadius
     # @param sms_template - SMS Template name
     # @param sms_template2_f_a - SMS Template Name
     # @param verification_url - Email verification url
+    # @param email_template2_f_a - 2FA Email Template name
     #
     # @return Complete user UserProfile data
     # 9.8.1
-    def mfa_login_by_email(email, password, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '')
+    def mfa_login_by_email(email, password, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
       if isNullOrWhiteSpace(email)
         raise LoginRadius::Error.new, getValidationMessage('email')
       end
@@ -261,6 +374,9 @@ module LoginRadius
       unless isNullOrWhiteSpace(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
 
       body_parameters = {}
       body_parameters['email'] = email
@@ -280,10 +396,11 @@ module LoginRadius
     # @param sms_template - SMS Template name
     # @param sms_template2_f_a - SMS Template Name
     # @param verification_url - Email verification url
+    # @param email_template2_f_a - 2FA Email Template name
     #
     # @return Complete user UserProfile data
     # 9.8.2
-    def mfa_login_by_user_name(password, username, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '')
+    def mfa_login_by_user_name(password, username, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
       if isNullOrWhiteSpace(password)
         raise LoginRadius::Error.new, getValidationMessage('password')
       end
@@ -311,6 +428,9 @@ module LoginRadius
       unless isNullOrWhiteSpace(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
 
       body_parameters = {}
       body_parameters['password'] = password
@@ -330,10 +450,11 @@ module LoginRadius
     # @param sms_template - SMS Template name
     # @param sms_template2_f_a - SMS Template Name
     # @param verification_url - Email verification url
+    # @param email_template2_f_a - 2FA Email Template name
     #
     # @return Complete user UserProfile data
     # 9.8.3
-    def mfa_login_by_phone(password, phone, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '')
+    def mfa_login_by_phone(password, phone, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
       if isNullOrWhiteSpace(password)
         raise LoginRadius::Error.new, getValidationMessage('password')
       end
@@ -361,6 +482,9 @@ module LoginRadius
       unless isNullOrWhiteSpace(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
 
       body_parameters = {}
       body_parameters['password'] = password
@@ -376,10 +500,14 @@ module LoginRadius
     # @param second_factor_authentication_token - A Uniquely generated MFA identifier token after successful authentication
     # @param fields - The fields parameter filters the API response so that the response only includes a specific set of fields
     # @param sms_template2_f_a - SMS Template Name
+    # @param rba_browser_email_template - 
+    # @param rba_city_email_template - 
+    # @param rba_country_email_template - 
+    # @param rba_ip_email_template - 
     #
     # @return Complete user UserProfile data
     # 9.12
-    def mfa_validate_otp_by_phone(multi_factor_auth_model_with_lockout, second_factor_authentication_token, fields = '', sms_template2_f_a = '')
+    def mfa_validate_otp_by_phone(multi_factor_auth_model_with_lockout, second_factor_authentication_token, fields = '', sms_template2_f_a = '' ,rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if multi_factor_auth_model_with_lockout.blank?
         raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_with_lockout')
       end
@@ -396,6 +524,18 @@ module LoginRadius
       unless isNullOrWhiteSpace(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
+      unless isNullOrWhiteSpace(rba_browser_email_template)
+        query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
+      end
+      unless isNullOrWhiteSpace(rba_city_email_template)
+        query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
+      end
+      unless isNullOrWhiteSpace(rba_country_email_template)
+        query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
+      end
+      unless isNullOrWhiteSpace(rba_ip_email_template)
+        query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
+      end
 
       resource_path = 'identity/v2/auth/login/2fa/verification/otp'
       put_request(resource_path, query_parameters, multi_factor_auth_model_with_lockout)
@@ -404,13 +544,16 @@ module LoginRadius
     # This API is used to login via Multi-factor-authentication by passing the google authenticator code.
     #
     # @param google_authenticator_code - The code generated by google authenticator app after scanning QR code
-    # @param second_factor_authentication_token - A Uniquely generated MFA identifier token after successful authentication
+    # @param second_factor_authentication_token - SecondFactorAuthenticationToken
     # @param fields - The fields parameter filters the API response so that the response only includes a specific set of fields
-    # @param sms_template2_f_a - SMS Template Name
+    # @param rba_browser_email_template - RbaBrowserEmailTemplate
+    # @param rba_city_email_template - RbaCityEmailTemplate
+    # @param rba_country_email_template - RbaCountryEmailTemplate
+    # @param rba_ip_email_template - RbaIpEmailTemplate
     #
     # @return Complete user UserProfile data
     # 9.13
-    def mfa_validate_google_auth_code(google_authenticator_code, second_factor_authentication_token, fields = '', sms_template2_f_a = '')
+    def mfa_validate_google_auth_code(google_authenticator_code, second_factor_authentication_token, fields = '', rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if isNullOrWhiteSpace(google_authenticator_code)
         raise LoginRadius::Error.new, getValidationMessage('google_authenticator_code')
       end
@@ -424,8 +567,17 @@ module LoginRadius
       unless isNullOrWhiteSpace(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template2_f_a)
-        query_parameters['smsTemplate2FA'] = sms_template2_f_a
+      unless isNullOrWhiteSpace(rba_browser_email_template)
+        query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
+      end
+      unless isNullOrWhiteSpace(rba_city_email_template)
+        query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
+      end
+      unless isNullOrWhiteSpace(rba_country_email_template)
+        query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
+      end
+      unless isNullOrWhiteSpace(rba_ip_email_template)
+        query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
       body_parameters = {}
@@ -440,10 +592,14 @@ module LoginRadius
     # @param multi_factor_auth_model_by_backup_code - Model Class containing Definition of payload for MultiFactorAuth By BackupCode API
     # @param second_factor_authentication_token - A Uniquely generated MFA identifier token after successful authentication
     # @param fields - The fields parameter filters the API response so that the response only includes a specific set of fields
+    # @param rba_browser_email_template - 
+    # @param rba_city_email_template - 
+    # @param rba_country_email_template - 
+    # @param rba_ip_email_template - 
     #
     # @return Complete user UserProfile data
     # 9.14
-    def mfa_validate_backup_code(multi_factor_auth_model_by_backup_code, second_factor_authentication_token, fields = '')
+    def mfa_validate_backup_code(multi_factor_auth_model_by_backup_code, second_factor_authentication_token, fields = '', rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if multi_factor_auth_model_by_backup_code.blank?
         raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_backup_code')
       end
@@ -456,6 +612,18 @@ module LoginRadius
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
       unless isNullOrWhiteSpace(fields)
         query_parameters['fields'] = fields
+      end
+      unless isNullOrWhiteSpace(rba_browser_email_template)
+        query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
+      end
+      unless isNullOrWhiteSpace(rba_city_email_template)
+        query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
+      end
+      unless isNullOrWhiteSpace(rba_country_email_template)
+        query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
+      end
+      unless isNullOrWhiteSpace(rba_ip_email_template)
+        query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
       resource_path = 'identity/v2/auth/login/2fa/verification/backupcode'
@@ -512,7 +680,135 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/login/2fa/resend'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # An API designed to send the MFA Email OTP to the email.
+    #
+    # @param email_id_model - payload
+    # @param second_factor_authentication_token - SecondFactorAuthenticationToken
+    # @param email_template2_f_a - EmailTemplate2FA
+    #
+    # @return Response containing Definition of Complete Validation data
+    # 9.18
+    def mfa_email_otp(email_id_model, second_factor_authentication_token, email_template2_f_a = '')
+      if email_id_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('email_id_model')
+      end
+      if isNullOrWhiteSpace(second_factor_authentication_token)
+        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
+      unless isNullOrWhiteSpace(email_template2_f_a)
+        query_parameters['emailTemplate2FA'] = email_template2_f_a
+      end
+
+      resource_path = 'identity/v2/auth/login/2fa/otp/email'
+      post_request(resource_path, query_parameters, email_id_model)
+    end
+
+    # This API is used to Verify MFA Email OTP by MFA Token
+    #
+    # @param multi_factor_auth_model_by_email_otp - payload
+    # @param second_factor_authentication_token - SecondFactorAuthenticationToken
+    # @param rba_browser_email_template - RbaBrowserEmailTemplate
+    # @param rba_city_email_template - RbaCityEmailTemplate
+    # @param rba_country_email_template - RbaCountryEmailTemplate
+    # @param rba_ip_email_template - RbaIpEmailTemplate
+    #
+    # @return Response Containing Access Token and Complete Profile Data
+    # 9.25
+    def mfa_validate_email_otp(multi_factor_auth_model_by_email_otp, second_factor_authentication_token, rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
+      if multi_factor_auth_model_by_email_otp.blank?
+        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_email_otp')
+      end
+      if isNullOrWhiteSpace(second_factor_authentication_token)
+        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
+      unless isNullOrWhiteSpace(rba_browser_email_template)
+        query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
+      end
+      unless isNullOrWhiteSpace(rba_city_email_template)
+        query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
+      end
+      unless isNullOrWhiteSpace(rba_country_email_template)
+        query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
+      end
+      unless isNullOrWhiteSpace(rba_ip_email_template)
+        query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
+      end
+
+      resource_path = 'identity/v2/auth/login/2fa/verification/otp/email'
+      put_request(resource_path, query_parameters, multi_factor_auth_model_by_email_otp)
+    end
+
+    # This API is used to set the security questions on the profile with the MFA token when MFA flow is required.
+    #
+    # @param security_question_answer_update_model - payload
+    # @param second_factor_authentication_token - SecondFactorAuthenticationToken
+    #
+    # @return Response Containing Access Token and Complete Profile Data
+    # 9.26
+    def mfa_security_question_answer(security_question_answer_update_model, second_factor_authentication_token)
+      if security_question_answer_update_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+      end
+      if isNullOrWhiteSpace(second_factor_authentication_token)
+        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
+
+      resource_path = 'identity/v2/auth/login/2fa/securityquestionanswer'
+      put_request(resource_path, query_parameters, security_question_answer_update_model)
+    end
+
+    # This API is used to resending the verification OTP to the provided phone number
+    #
+    # @param security_question_answer_update_model - payload
+    # @param second_factor_authentication_token - SecondFactorAuthenticationToken
+    # @param rba_browser_email_template - RbaBrowserEmailTemplate
+    # @param rba_city_email_template - RbaCityEmailTemplate
+    # @param rba_country_email_template - RbaCountryEmailTemplate
+    # @param rba_ip_email_template - RbaIpEmailTemplate
+    #
+    # @return Response Containing Access Token and Complete Profile Data
+    # 9.27
+    def mfa_security_question_answer_verification(security_question_answer_update_model, second_factor_authentication_token, rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
+      if security_question_answer_update_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+      end
+      if isNullOrWhiteSpace(second_factor_authentication_token)
+        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
+      unless isNullOrWhiteSpace(rba_browser_email_template)
+        query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
+      end
+      unless isNullOrWhiteSpace(rba_city_email_template)
+        query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
+      end
+      unless isNullOrWhiteSpace(rba_country_email_template)
+        query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
+      end
+      unless isNullOrWhiteSpace(rba_ip_email_template)
+        query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
+      end
+
+      resource_path = 'identity/v2/auth/login/2fa/verification/securityquestionanswer'
+      post_request(resource_path, query_parameters, security_question_answer_update_model)
     end
 
     # This API resets the SMS Authenticator configurations on a given account via the UID.
@@ -580,7 +876,7 @@ module LoginRadius
       query_parameters['uid'] = uid
 
       resource_path = 'identity/v2/manage/account/2fa/backupcode'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to reset the backup codes on a given account via the UID. This API call will generate 10 new codes, each code can only be consumed once.
@@ -600,7 +896,47 @@ module LoginRadius
       query_parameters['uid'] = uid
 
       resource_path = 'identity/v2/manage/account/2fa/backupcode/reset'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to reset the Email OTP Authenticator settings for an MFA-enabled user.
+    #
+    # @param uid - UID, the unified identifier for each user account
+    #
+    # @return Response containing Definition of Delete Request
+    # 18.42
+    def mfa_reset_email_otp_authenticator_by_uid(uid)
+      if isNullOrWhiteSpace(uid)
+        raise LoginRadius::Error.new, getValidationMessage('uid')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['apiSecret'] = @api_secret
+      query_parameters['uid'] = uid
+
+      resource_path = 'identity/v2/manage/account/2fa/authenticator/otp/email'
+      delete_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to reset the Security Question Authenticator settings for an MFA-enabled user.
+    #
+    # @param uid - UID, the unified identifier for each user account
+    #
+    # @return Response containing Definition of Delete Request
+    # 18.43
+    def mfa_reset_security_question_authenticator_by_uid(uid)
+      if isNullOrWhiteSpace(uid)
+        raise LoginRadius::Error.new, getValidationMessage('uid')
+      end
+
+      query_parameters = {}
+      query_parameters['apiKey'] = @api_key
+      query_parameters['apiSecret'] = @api_secret
+      query_parameters['uid'] = uid
+
+      resource_path = 'identity/v2/manage/account/2fa/authenticator/securityquestionanswer'
+      delete_request(resource_path, query_parameters, {})
     end
   end
 end

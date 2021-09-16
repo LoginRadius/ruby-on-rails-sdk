@@ -157,7 +157,7 @@ module LoginRadius
       end
 
       resource_path = 'identity/v2/auth/phone/otp'
-      put_request(resource_path, query_parameters, nil)
+      put_request(resource_path, query_parameters, {})
     end
 
     # This API is used to resend a verification OTP to verify a user's Phone Number. The user will receive a verification code that they will need to input
@@ -261,7 +261,7 @@ module LoginRadius
       query_parameters['phone'] = phone
 
       resource_path = 'identity/v2/auth/phone'
-      get_request(resource_path, query_parameters, nil)
+      get_request(resource_path, query_parameters, {})
     end
 
     # This API is used to delete the Phone ID on a user's account via the access token
@@ -280,7 +280,7 @@ module LoginRadius
       query_parameters['apiKey'] = @api_key
 
       resource_path = 'identity/v2/auth/phone'
-      delete_request(resource_path, query_parameters, nil)
+      delete_request(resource_path, query_parameters, {})
     end
 
     # This API registers the new users into your Cloud Storage and triggers the phone verification process.

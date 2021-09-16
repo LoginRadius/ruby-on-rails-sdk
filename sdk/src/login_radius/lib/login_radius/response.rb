@@ -5,8 +5,14 @@ module LoginRadius
     attr_accessor :code, :body
 
     def initialize(response)
-      self.code = response.code
-      self.body = JSON.parse(response.body, :symbolize_names => true)
+      if response.code == '429'
+        too_many_request='{"Message":"Too Many Request in particular time frame","ErrorCode":429,"Description":"Too Many Request in particular time frame"}'
+        self.code = response.code
+        self.body = JSON.parse(too_many_request, :symbolize_names => true)
+      else
+        self.code = response.code
+        self.body = JSON.parse(response.body, :symbolize_names => true)
+      end      
     end
   end
 end
