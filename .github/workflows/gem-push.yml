@@ -23,6 +23,7 @@ jobs:
 
 
     - name: Publish to RubyGems
+      working-directory: ./sdk/src/login_radius/
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
