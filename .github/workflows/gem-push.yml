@@ -16,10 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 3.0.2
+      - name: Set up Ruby 
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
-        with:
-          ruby-version: 3.0.2
+
       - run: bundle install
         working-directory: ./sdk/src/login_radius
 
