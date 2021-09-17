@@ -9,10 +9,7 @@ on:
 jobs:
   build:
     name: Build + Publish
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
