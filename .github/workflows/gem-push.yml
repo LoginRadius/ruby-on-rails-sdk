@@ -26,10 +26,13 @@ jobs:
           ruby-version: 3.0.2
    
       # Bundle install
+      - working-directory:  ./sdk/src/login_radius/
       - run: bundle install
       
       # Publish
       - name: publish gem
+      - working-directory:  ./sdk/src/login_radius/
+
         run: |
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
