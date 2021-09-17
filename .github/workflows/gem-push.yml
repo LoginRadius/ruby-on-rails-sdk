@@ -20,11 +20,7 @@ jobs:
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
           ruby-version: 2.6
-      - name: Bundle Install
-        run: |
-           cd sdk/src/login_radius
-           ls
-           bundle install
+
       
       - name: Publish to RubyGems
         run: |
@@ -32,7 +28,8 @@ jobs:
           touch $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
           printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build ./sdk/src/login_radius/login_radius.gemspec
-          gem push ./sdk/src/login_radius/*.gem
+          cd sdk/src/login_radius
+          gem build login_radius.gemspec
+          gem push *.gem
         env:
           GEM_HOST_API_KEY: "${{secrets.GEM_HOST_API_KEY}}"
