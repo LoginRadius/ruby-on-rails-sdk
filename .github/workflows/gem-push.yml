@@ -20,11 +20,11 @@ jobs:
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
           ruby-version: 2.6
+      - name: Bundle Install
       - run: |
            ls
-           working-directory: ./sdk/src/login_radius
            bundle install
-
+           working-directory: sdk/src/login_radius
       - name: Publish to RubyGems
         run: |
           mkdir -p $HOME/.gem
