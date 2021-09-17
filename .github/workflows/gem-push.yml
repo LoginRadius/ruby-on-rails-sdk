@@ -22,8 +22,9 @@ jobs:
           ruby-version: 2.6
       - name: Bundle Install
         run: |
+           cd sdk/src/login_radius
+           ls
            bundle install
-        working-directory: ./sdk/src/login_radius
       
       - name: Publish to RubyGems
         run: |
