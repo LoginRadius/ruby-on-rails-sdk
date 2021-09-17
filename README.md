@@ -35,7 +35,7 @@ Or
 
 
 ````
- gem 'login_radius', '~> 11.2.0'
+ gem 'login_radius', '~> 11.2.1'
 ````
 
 

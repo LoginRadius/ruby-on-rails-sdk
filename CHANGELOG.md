@@ -1,6 +1,6 @@
 > **LoginRadius Ruby On Rails SDK Change Log** provides information regarding what has changed, more specifically what changes, improvements and bug fix has been made to the SDK. For more details please refer to the [LoginRadius API Documention](https://docs.loginradius.com/api/v2/sdk-libraries/ruby)
 
-# Version 11.2.0
+# Version 11.2.1
 Release on September 15, 2021
 
 ## Enhancements
