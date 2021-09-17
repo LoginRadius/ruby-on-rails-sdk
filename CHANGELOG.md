@@ -29,7 +29,7 @@ Release on September 15, 2021
  - ReAuthSendEmailOtp
  - ReAuthBySecurityQuestion
 
-## Removed APIs:
+## Removed APIs :
 
 - GetSocialUserProfile
 
