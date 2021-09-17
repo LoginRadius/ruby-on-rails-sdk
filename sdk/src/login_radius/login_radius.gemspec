@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
 
 
   # Specify which files should be added to the gem when it is released.
-  spec.files       = Dir['lib/**/*'] # Dir['lib/**/{*,.*}']
+  spec.files         = %x(git ls-files -z).split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
