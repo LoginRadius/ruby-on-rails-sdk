@@ -6,30 +6,40 @@ on:
   pull_request:
     branches: [ master ]
 
+
 jobs:
-  build:
-    name: Build + Publish
+  release-please:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 3.0.2
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0.2
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        id: release
+        with:
+          release-type: ruby
+          package-name: login_radius
+          bump-minor-pre-major: true
+      # Checkout code if release was created
+      - uses: actions/checkout@v2
+       
+      # Setup ruby if a release was created
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+   
+      # Bundle install
+      - run: bundle install
+      
+      # Publish
+      - name: publish gem
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+        env:
+          # Make sure to update the secret name
+          # if yours isn't named RUBYGEMS_AUTH_TOKEN
+          GEM_HOST_API_KEY: "${{secrets.GEM_HOST_API_KEY}}"
 
 
-    - name: Publish to RubyGems
-      working-directory: ./sdk/src/login_radius/
-      run: |
-        mkdir -p $HOME/.gem
-        touch $HOME/.gem/credentials
-        chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push *.gem
-      env:
-        GEM_HOST_API_KEY: "${{secrets.GEM_HOST_API_KEY}}"
