@@ -31,7 +31,7 @@ jobs:
         working-directory:  ./sdk/src/login_radius/
       # Publish
       - name: publish gem
-        working-directory:  ./sdk/src/login_radius/
+       
 
         run: |
           mkdir -p $HOME/.gem
@@ -40,6 +40,7 @@ jobs:
           printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
+          working-directory:  ./sdk/src/login_radius/
         env:
           # Make sure to update the secret name
           # if yours isn't named RUBYGEMS_AUTH_TOKEN
