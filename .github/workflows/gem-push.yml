@@ -9,26 +9,26 @@ on:
 jobs:
   build:
     name: Build + Publish
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 
+      - name: Set up Ruby 3.0.2
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
-          ruby-version: 2.6
+          ruby-version: 3.0.2
       - run: bundle install
-        working-directory: ./sdk/src/login_radius
 
-
-      - name: Build Ruby Gem
+      - name: Publish to RubyGems
         run: |
-         gem build login_radius.gemspec
-         working-directory: ./sdk/src/login_radius
-         env:
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          gem build .sdk/src/login_radius/login_radius.gemspec
+          gem push .sdk/src/login_radius/*.gem
+        env:
           GEM_HOST_API_KEY: "${{secrets.GEM_HOST_API_KEY}}"
-      - name: Build Ruby Gem
-        run: |
-          gem push login_radius-11.2.0.gem(login_radius.gemspec)
-          working-directory: ./sdk/src/login_radius
-        
