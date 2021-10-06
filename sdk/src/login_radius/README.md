@@ -2,7 +2,7 @@
 
 Install the SDK by adding LoginRadius to your application's `Gemfile`.
 
-```
+```rb
 gem 'login_radius', '~> 11.2.2'
 ```
 
@@ -10,9 +10,9 @@ Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https:
 
 ## Quickstart Guide
 
-1)Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
+1) Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
 
-```
+```yml
 SITE_NAME: "<site name>"
 API_KEY: "<api-key>"
 API_SECRET: "<api-secret>"
@@ -20,13 +20,13 @@ CUSTOM_API_DOMAIN: "<custom-domain-url-if-any>"
 API_REQUEST_SIGNING: "false"
 ```
 
-2)After define the configuration key details, its corresponding module must first be instantiated:
+2) After define the configuration key details, its corresponding module must first be instantiated:
 
 Create `login_radius.rb` in `/config/initializers`:
 
 
 
-```
+```rb
 require 'login_radius'
 
 ::AccountApi = LoginRadius::AccountApi.new
