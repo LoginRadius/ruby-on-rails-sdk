@@ -32,8 +32,8 @@ module LoginRadius
     # @return Complete Policy History data
     # 15.1.1
     def get_privacy_policy_history_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -53,13 +53,13 @@ module LoginRadius
     # 18.1
     def create_account(account_create_model, fields = '')
       if account_create_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('account_create_model')
+        raise LoginRadius::Error.new, get_validation_message('account_create_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -75,15 +75,15 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.2
     def get_account_profile_by_email(email, fields = '')
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
       query_parameters['email'] = email
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -99,15 +99,15 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.3
     def get_account_profile_by_user_name(user_name, fields = '')
-      if isNullOrWhiteSpace(user_name)
-        raise LoginRadius::Error.new, getValidationMessage('user_name')
+      if is_null_or_white_space(user_name)
+        raise LoginRadius::Error.new, get_validation_message('user_name')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
       query_parameters['userName'] = user_name
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -123,15 +123,15 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.4
     def get_account_profile_by_phone(phone, fields = '')
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
       query_parameters['phone'] = phone
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -147,14 +147,14 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.5
     def get_account_profile_by_uid(uid, fields = '')
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -173,16 +173,16 @@ module LoginRadius
     # 18.15
     def update_account_by_uid(account_user_profile_update_model, uid, fields = '', null_support = false)
       if account_user_profile_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('account_user_profile_update_model')
+        raise LoginRadius::Error.new, get_validation_message('account_user_profile_update_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
       unless null_support == false
@@ -202,17 +202,17 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.16
     def update_phone_id_by_uid(phone, uid, fields = '')
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -230,8 +230,8 @@ module LoginRadius
     # @return Response containing Definition for Complete PasswordHash data
     # 18.17
     def get_account_password_hash_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -250,11 +250,11 @@ module LoginRadius
     # @return Response containing Definition for Complete PasswordHash data
     # 18.18
     def set_account_password_by_uid(password, uid)
-      if isNullOrWhiteSpace(password)
-        raise LoginRadius::Error.new, getValidationMessage('password')
+      if is_null_or_white_space(password)
+        raise LoginRadius::Error.new, get_validation_message('password')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -275,8 +275,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.19
     def delete_account_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -296,17 +296,17 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 18.20
     def invalidate_account_email_verification(uid, email_template = '', verification_url = '')
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 
@@ -324,17 +324,17 @@ module LoginRadius
     # @return Response containing Definition of Complete Forgot Password data
     # 18.22
     def get_forgot_password_token(email, email_template = '', reset_password_url = '', send_email = false)
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(reset_password_url)
+      unless is_null_or_white_space(reset_password_url)
         query_parameters['resetPasswordUrl'] = reset_password_url
       end
       unless send_email == false
@@ -355,8 +355,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Verification data
     # 18.23
     def get_email_verification_token(email)
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
@@ -377,8 +377,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 18.24
     def get_access_token_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -398,14 +398,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 18.27
     def reset_phone_id_verification_by_uid(uid, sms_template = '')
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -423,16 +423,16 @@ module LoginRadius
     # 18.29
     def upsert_email(upsert_email_model, uid, fields = '')
       if upsert_email_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('upsert_email_model')
+        raise LoginRadius::Error.new, get_validation_message('upsert_email_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -449,17 +449,17 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 18.30
     def remove_email(email, uid, fields = '')
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -477,8 +477,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 18.31
     def refresh_access_token_by_refresh_token(refresh__token)
-      if isNullOrWhiteSpace(refresh__token)
-        raise LoginRadius::Error.new, getValidationMessage('refresh__token')
+      if is_null_or_white_space(refresh__token)
+        raise LoginRadius::Error.new, get_validation_message('refresh__token')
       end
 
       query_parameters = {}
@@ -497,8 +497,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.32
     def revoke_refresh_token(refresh__token)
-      if isNullOrWhiteSpace(refresh__token)
-        raise LoginRadius::Error.new, getValidationMessage('refresh__token')
+      if is_null_or_white_space(refresh__token)
+        raise LoginRadius::Error.new, get_validation_message('refresh__token')
       end
 
       query_parameters = {}
@@ -518,15 +518,15 @@ module LoginRadius
     # @return Complete user Identity data
     # 18.35
     def get_account_identities_by_email(email, fields = '')
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['apiSecret'] = @api_secret
       query_parameters['email'] = email
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -541,8 +541,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.36
     def account_delete_by_email(email)
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
@@ -563,10 +563,10 @@ module LoginRadius
     # 18.41
     def account_update_uid(update_uid_model, uid)
       if update_uid_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('update_uid_model')
+        raise LoginRadius::Error.new, get_validation_message('update_uid_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}

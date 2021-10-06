@@ -35,15 +35,15 @@ module LoginRadius
     # 9.6
     def passwordless_login_phone_verification(password_less_login_otp_model, fields = '', sms_template = '')
       if password_less_login_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('password_less_login_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('password_less_login_otp_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -59,14 +59,14 @@ module LoginRadius
     # @return Response Containing Definition of SMS Data
     # 9.15
     def passwordless_login_by_phone(phone, sms_template = '')
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['phone'] = phone
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -83,17 +83,17 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 9.18.1
     def passwordless_login_by_email(email, password_less_login_template = '', verification_url = '')
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['email'] = email
-      unless isNullOrWhiteSpace(password_less_login_template)
+      unless is_null_or_white_space(password_less_login_template)
         query_parameters['passwordLessLoginTemplate'] = password_less_login_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 
@@ -110,17 +110,17 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 9.18.2
     def passwordless_login_by_user_name(username, password_less_login_template = '', verification_url = '')
-      if isNullOrWhiteSpace(username)
-        raise LoginRadius::Error.new, getValidationMessage('username')
+      if is_null_or_white_space(username)
+        raise LoginRadius::Error.new, get_validation_message('username')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['username'] = username
-      unless isNullOrWhiteSpace(password_less_login_template)
+      unless is_null_or_white_space(password_less_login_template)
         query_parameters['passwordLessLoginTemplate'] = password_less_login_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 
@@ -137,17 +137,17 @@ module LoginRadius
     # @return Response containing User Profile Data and access token
     # 9.19
     def passwordless_login_verification(verification_token, fields = '', welcome_email_template = '')
-      if isNullOrWhiteSpace(verification_token)
-        raise LoginRadius::Error.new, getValidationMessage('verification_token')
+      if is_null_or_white_space(verification_token)
+        raise LoginRadius::Error.new, get_validation_message('verification_token')
       end
 
       query_parameters = {}
       query_parameters['apikey'] = @api_key
       query_parameters['verificationToken'] = verification_token
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 
@@ -164,12 +164,12 @@ module LoginRadius
     # 9.23
     def passwordless_login_verification_by_email_and_otp(password_less_login_by_email_and_otp_model, fields = '')
       if password_less_login_by_email_and_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('password_less_login_by_email_and_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('password_less_login_by_email_and_otp_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -186,12 +186,12 @@ module LoginRadius
     # 9.24
     def passwordless_login_verification_by_user_name_and_otp(password_less_login_by_user_name_and_otp_model, fields = '')
       if password_less_login_by_user_name_and_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('password_less_login_by_user_name_and_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('password_less_login_by_user_name_and_otp_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 

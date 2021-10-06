@@ -36,18 +36,18 @@ module LoginRadius
     # 1.2
     def one_touch_login_by_email(one_touch_login_by_email_model, one_touch_login_email_template = '', redirecturl = '', welcomeemailtemplate = '')
       if one_touch_login_by_email_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('one_touch_login_by_email_model')
+        raise LoginRadius::Error.new, get_validation_message('one_touch_login_by_email_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(one_touch_login_email_template)
+      unless is_null_or_white_space(one_touch_login_email_template)
         query_parameters['oneTouchLoginEmailTemplate'] = one_touch_login_email_template
       end
-      unless isNullOrWhiteSpace(redirecturl)
+      unless is_null_or_white_space(redirecturl)
         query_parameters['redirecturl'] = redirecturl
       end
-      unless isNullOrWhiteSpace(welcomeemailtemplate)
+      unless is_null_or_white_space(welcomeemailtemplate)
         query_parameters['welcomeemailtemplate'] = welcomeemailtemplate
       end
 
@@ -64,12 +64,12 @@ module LoginRadius
     # 1.4
     def one_touch_login_by_phone(one_touch_login_by_phone_model, sms_template = '')
       if one_touch_login_by_phone_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('one_touch_login_by_phone_model')
+        raise LoginRadius::Error.new, get_validation_message('one_touch_login_by_phone_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -87,20 +87,20 @@ module LoginRadius
     # @return Response Containing Access Token and Complete Profile Data
     # 1.5
     def one_touch_login_otp_verification(otp, phone, fields = '', sms_template = '')
-      if isNullOrWhiteSpace(otp)
-        raise LoginRadius::Error.new, getValidationMessage('otp')
+      if is_null_or_white_space(otp)
+        raise LoginRadius::Error.new, get_validation_message('otp')
       end
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['otp'] = otp
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -119,14 +119,14 @@ module LoginRadius
     # @return Complete verified response data
     # 8.4.2
     def one_touch_email_verification(verification_token, welcome_email_template = '')
-      if isNullOrWhiteSpace(verification_token)
-        raise LoginRadius::Error.new, getValidationMessage('verification_token')
+      if is_null_or_white_space(verification_token)
+        raise LoginRadius::Error.new, get_validation_message('verification_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['verificationToken'] = verification_token
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 
@@ -142,14 +142,14 @@ module LoginRadius
     # @return Response containing User Profile Data and access token
     # 9.21.2
     def one_touch_login_ping(client_guid, fields = '')
-      if isNullOrWhiteSpace(client_guid)
-        raise LoginRadius::Error.new, getValidationMessage('client_guid')
+      if is_null_or_white_space(client_guid)
+        raise LoginRadius::Error.new, get_validation_message('client_guid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['clientGuid'] = client_guid
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 

@@ -50,60 +50,60 @@ module LoginRadius
     # 9.2.4
     def rba_login_by_email(email_authentication_model, email_template = '', fields = '', login_url = '', password_delegation = false, password_delegation_app = '', rba_browser_email_template = '', rba_browser_sms_template = '', rba_city_email_template = '', rba_city_sms_template = '', rba_country_email_template = '', rba_country_sms_template = '', rba_ip_email_template = '', rba_ip_sms_template = '', rba_oneclick_email_template = '', rba_otp_sms_template = '', sms_template = '', verification_url = '')
       if email_authentication_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('email_authentication_model')
+        raise LoginRadius::Error.new, get_validation_message('email_authentication_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
       unless password_delegation == false
         query_parameters['passwordDelegation'] = password_delegation
       end
-      unless isNullOrWhiteSpace(password_delegation_app)
+      unless is_null_or_white_space(password_delegation_app)
         query_parameters['passwordDelegationApp'] = password_delegation_app
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_browser_sms_template)
+      unless is_null_or_white_space(rba_browser_sms_template)
         query_parameters['rbaBrowserSmsTemplate'] = rba_browser_sms_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_sms_template)
+      unless is_null_or_white_space(rba_city_sms_template)
         query_parameters['rbaCitySmsTemplate'] = rba_city_sms_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_sms_template)
+      unless is_null_or_white_space(rba_country_sms_template)
         query_parameters['rbaCountrySmsTemplate'] = rba_country_sms_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_sms_template)
+      unless is_null_or_white_space(rba_ip_sms_template)
         query_parameters['rbaIpSmsTemplate'] = rba_ip_sms_template
       end
-      unless isNullOrWhiteSpace(rba_oneclick_email_template)
+      unless is_null_or_white_space(rba_oneclick_email_template)
         query_parameters['rbaOneclickEmailTemplate'] = rba_oneclick_email_template
       end
-      unless isNullOrWhiteSpace(rba_otp_sms_template)
+      unless is_null_or_white_space(rba_otp_sms_template)
         query_parameters['rbaOTPSmsTemplate'] = rba_otp_sms_template
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 
@@ -136,60 +136,60 @@ module LoginRadius
     # 9.2.5
     def rba_login_by_user_name(user_name_authentication_model, email_template = '', fields = '', login_url = '', password_delegation = false, password_delegation_app = '', rba_browser_email_template = '', rba_browser_sms_template = '', rba_city_email_template = '', rba_city_sms_template = '', rba_country_email_template = '', rba_country_sms_template = '', rba_ip_email_template = '', rba_ip_sms_template = '', rba_oneclick_email_template = '', rba_otp_sms_template = '', sms_template = '', verification_url = '')
       if user_name_authentication_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('user_name_authentication_model')
+        raise LoginRadius::Error.new, get_validation_message('user_name_authentication_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
       unless password_delegation == false
         query_parameters['passwordDelegation'] = password_delegation
       end
-      unless isNullOrWhiteSpace(password_delegation_app)
+      unless is_null_or_white_space(password_delegation_app)
         query_parameters['passwordDelegationApp'] = password_delegation_app
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_browser_sms_template)
+      unless is_null_or_white_space(rba_browser_sms_template)
         query_parameters['rbaBrowserSmsTemplate'] = rba_browser_sms_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_sms_template)
+      unless is_null_or_white_space(rba_city_sms_template)
         query_parameters['rbaCitySmsTemplate'] = rba_city_sms_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_sms_template)
+      unless is_null_or_white_space(rba_country_sms_template)
         query_parameters['rbaCountrySmsTemplate'] = rba_country_sms_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_sms_template)
+      unless is_null_or_white_space(rba_ip_sms_template)
         query_parameters['rbaIpSmsTemplate'] = rba_ip_sms_template
       end
-      unless isNullOrWhiteSpace(rba_oneclick_email_template)
+      unless is_null_or_white_space(rba_oneclick_email_template)
         query_parameters['rbaOneclickEmailTemplate'] = rba_oneclick_email_template
       end
-      unless isNullOrWhiteSpace(rba_otp_sms_template)
+      unless is_null_or_white_space(rba_otp_sms_template)
         query_parameters['rbaOTPSmsTemplate'] = rba_otp_sms_template
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 
@@ -222,60 +222,60 @@ module LoginRadius
     # 9.2.6
     def rba_login_by_phone(phone_authentication_model, email_template = '', fields = '', login_url = '', password_delegation = false, password_delegation_app = '', rba_browser_email_template = '', rba_browser_sms_template = '', rba_city_email_template = '', rba_city_sms_template = '', rba_country_email_template = '', rba_country_sms_template = '', rba_ip_email_template = '', rba_ip_sms_template = '', rba_oneclick_email_template = '', rba_otp_sms_template = '', sms_template = '', verification_url = '')
       if phone_authentication_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('phone_authentication_model')
+        raise LoginRadius::Error.new, get_validation_message('phone_authentication_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
       unless password_delegation == false
         query_parameters['passwordDelegation'] = password_delegation
       end
-      unless isNullOrWhiteSpace(password_delegation_app)
+      unless is_null_or_white_space(password_delegation_app)
         query_parameters['passwordDelegationApp'] = password_delegation_app
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_browser_sms_template)
+      unless is_null_or_white_space(rba_browser_sms_template)
         query_parameters['rbaBrowserSmsTemplate'] = rba_browser_sms_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_sms_template)
+      unless is_null_or_white_space(rba_city_sms_template)
         query_parameters['rbaCitySmsTemplate'] = rba_city_sms_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_sms_template)
+      unless is_null_or_white_space(rba_country_sms_template)
         query_parameters['rbaCountrySmsTemplate'] = rba_country_sms_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_sms_template)
+      unless is_null_or_white_space(rba_ip_sms_template)
         query_parameters['rbaIpSmsTemplate'] = rba_ip_sms_template
       end
-      unless isNullOrWhiteSpace(rba_oneclick_email_template)
+      unless is_null_or_white_space(rba_oneclick_email_template)
         query_parameters['rbaOneclickEmailTemplate'] = rba_oneclick_email_template
       end
-      unless isNullOrWhiteSpace(rba_otp_sms_template)
+      unless is_null_or_white_space(rba_otp_sms_template)
         query_parameters['rbaOTPSmsTemplate'] = rba_otp_sms_template
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
 

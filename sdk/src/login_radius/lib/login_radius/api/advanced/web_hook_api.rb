@@ -32,8 +32,8 @@ module LoginRadius
     # @return Response Containing List of Webhhook Data
     # 40.1
     def get_web_hook_subscribed_u_r_ls(event)
-      if isNullOrWhiteSpace(event)
-        raise LoginRadius::Error.new, getValidationMessage('event')
+      if is_null_or_white_space(event)
+        raise LoginRadius::Error.new, get_validation_message('event')
       end
 
       query_parameters = {}
@@ -53,7 +53,7 @@ module LoginRadius
     # 40.2
     def web_hook_subscribe(web_hook_subscribe_model)
       if web_hook_subscribe_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('web_hook_subscribe_model')
+        raise LoginRadius::Error.new, get_validation_message('web_hook_subscribe_model')
       end
 
       query_parameters = {}
@@ -87,7 +87,7 @@ module LoginRadius
     # 40.4
     def web_hook_unsubscribe(web_hook_subscribe_model)
       if web_hook_subscribe_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('web_hook_subscribe_model')
+        raise LoginRadius::Error.new, get_validation_message('web_hook_subscribe_model')
       end
 
       query_parameters = {}

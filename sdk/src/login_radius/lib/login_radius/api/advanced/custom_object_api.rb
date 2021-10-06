@@ -34,14 +34,14 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 6.1
     def create_custom_object_by_token(access_token, object_name, payload)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
       if payload.blank?
-        raise LoginRadius::Error.new, getValidationMessage('payload')
+        raise LoginRadius::Error.new, get_validation_message('payload')
       end
 
       query_parameters = {}
@@ -64,17 +64,17 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 6.2
     def update_custom_object_by_token(access_token, object_name, object_record_id, payload, update_type = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
       if payload.blank?
-        raise LoginRadius::Error.new, getValidationMessage('payload')
+        raise LoginRadius::Error.new, get_validation_message('payload')
       end
 
       query_parameters = {}
@@ -97,11 +97,11 @@ module LoginRadius
     # @return Complete user CustomObject data
     # 6.3
     def get_custom_object_by_token(access_token, object_name)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
 
       query_parameters = {}
@@ -122,14 +122,14 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 6.4
     def get_custom_object_by_record_id_and_token(access_token, object_name, object_record_id)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
 
       query_parameters = {}
@@ -150,14 +150,14 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 6.5
     def delete_custom_object_by_token(access_token, object_name, object_record_id)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
 
       query_parameters = {}
@@ -178,14 +178,14 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 19.1
     def create_custom_object_by_uid(object_name, payload, uid)
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
       if payload.blank?
-        raise LoginRadius::Error.new, getValidationMessage('payload')
+        raise LoginRadius::Error.new, get_validation_message('payload')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -208,17 +208,17 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 19.2
     def update_custom_object_by_uid(object_name, object_record_id, payload, uid, update_type = '')
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
       if payload.blank?
-        raise LoginRadius::Error.new, getValidationMessage('payload')
+        raise LoginRadius::Error.new, get_validation_message('payload')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -241,11 +241,11 @@ module LoginRadius
     # @return Complete user CustomObject data
     # 19.3
     def get_custom_object_by_uid(object_name, uid)
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -266,14 +266,14 @@ module LoginRadius
     # @return Response containing Definition for Complete user custom object data
     # 19.4
     def get_custom_object_by_record_id(object_name, object_record_id, uid)
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -294,14 +294,14 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 19.5
     def delete_custom_object_by_record_id(object_name, object_record_id, uid)
-      if isNullOrWhiteSpace(object_name)
-        raise LoginRadius::Error.new, getValidationMessage('object_name')
+      if is_null_or_white_space(object_name)
+        raise LoginRadius::Error.new, get_validation_message('object_name')
       end
-      if isNullOrWhiteSpace(object_record_id)
-        raise LoginRadius::Error.new, getValidationMessage('object_record_id')
+      if is_null_or_white_space(object_record_id)
+        raise LoginRadius::Error.new, get_validation_message('object_record_id')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}

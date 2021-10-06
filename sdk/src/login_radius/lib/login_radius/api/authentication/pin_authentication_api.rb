@@ -34,10 +34,10 @@ module LoginRadius
     # 9.22
     def pin_login(login_by_pin_model, session_token)
       if login_by_pin_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('login_by_pin_model')
+        raise LoginRadius::Error.new, get_validation_message('login_by_pin_model')
       end
-      if isNullOrWhiteSpace(session_token)
-        raise LoginRadius::Error.new, getValidationMessage('session_token')
+      if is_null_or_white_space(session_token)
+        raise LoginRadius::Error.new, get_validation_message('session_token')
       end
 
       query_parameters = {}
@@ -58,15 +58,15 @@ module LoginRadius
     # 42.1
     def send_forgot_pin_email_by_email(forgot_pin_link_by_email_model, email_template = '', reset_pin_url = '')
       if forgot_pin_link_by_email_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('forgot_pin_link_by_email_model')
+        raise LoginRadius::Error.new, get_validation_message('forgot_pin_link_by_email_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(reset_pin_url)
+      unless is_null_or_white_space(reset_pin_url)
         query_parameters['resetPINUrl'] = reset_pin_url
       end
 
@@ -84,15 +84,15 @@ module LoginRadius
     # 42.2
     def send_forgot_pin_email_by_username(forgot_pin_link_by_user_name_model, email_template = '', reset_pin_url = '')
       if forgot_pin_link_by_user_name_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('forgot_pin_link_by_user_name_model')
+        raise LoginRadius::Error.new, get_validation_message('forgot_pin_link_by_user_name_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(reset_pin_url)
+      unless is_null_or_white_space(reset_pin_url)
         query_parameters['resetPINUrl'] = reset_pin_url
       end
 
@@ -108,7 +108,7 @@ module LoginRadius
     # 42.3
     def reset_pin_by_reset_token(reset_pin_by_reset_token)
       if reset_pin_by_reset_token.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_reset_token')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_reset_token')
       end
 
       query_parameters = {}
@@ -126,7 +126,7 @@ module LoginRadius
     # 42.4
     def reset_pin_by_email_and_security_answer(reset_pin_by_security_question_answer_and_email_model)
       if reset_pin_by_security_question_answer_and_email_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_security_question_answer_and_email_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_security_question_answer_and_email_model')
       end
 
       query_parameters = {}
@@ -144,7 +144,7 @@ module LoginRadius
     # 42.5
     def reset_pin_by_username_and_security_answer(reset_pin_by_security_question_answer_and_username_model)
       if reset_pin_by_security_question_answer_and_username_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_security_question_answer_and_username_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_security_question_answer_and_username_model')
       end
 
       query_parameters = {}
@@ -162,7 +162,7 @@ module LoginRadius
     # 42.6
     def reset_pin_by_phone_and_security_answer(reset_pin_by_security_question_answer_and_phone_model)
       if reset_pin_by_security_question_answer_and_phone_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_security_question_answer_and_phone_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_security_question_answer_and_phone_model')
       end
 
       query_parameters = {}
@@ -181,12 +181,12 @@ module LoginRadius
     # 42.7
     def send_forgot_pin_sms_by_phone(forgot_pin_otp_by_phone_model, sms_template = '')
       if forgot_pin_otp_by_phone_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('forgot_pin_otp_by_phone_model')
+        raise LoginRadius::Error.new, get_validation_message('forgot_pin_otp_by_phone_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -202,11 +202,11 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 42.8
     def change_pin_by_access_token(access_token, change_pin_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if change_pin_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('change_pin_model')
+        raise LoginRadius::Error.new, get_validation_message('change_pin_model')
       end
 
       query_parameters = {}
@@ -225,7 +225,7 @@ module LoginRadius
     # 42.9
     def reset_pin_by_phone_and_otp(reset_pin_by_phone_and_otp_model)
       if reset_pin_by_phone_and_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_phone_and_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_phone_and_otp_model')
       end
 
       query_parameters = {}
@@ -243,7 +243,7 @@ module LoginRadius
     # 42.10
     def reset_pin_by_email_and_otp(reset_pin_by_email_and_otp_model)
       if reset_pin_by_email_and_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_email_and_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_email_and_otp_model')
       end
 
       query_parameters = {}
@@ -261,7 +261,7 @@ module LoginRadius
     # 42.11
     def reset_pin_by_username_and_otp(reset_pin_by_username_and_otp_model)
       if reset_pin_by_username_and_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_pin_by_username_and_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_pin_by_username_and_otp_model')
       end
 
       query_parameters = {}
@@ -280,10 +280,10 @@ module LoginRadius
     # 42.12
     def set_pin_by_pin_auth_token(pin_required_model, pin_auth_token)
       if pin_required_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('pin_required_model')
+        raise LoginRadius::Error.new, get_validation_message('pin_required_model')
       end
-      if isNullOrWhiteSpace(pin_auth_token)
-        raise LoginRadius::Error.new, getValidationMessage('pin_auth_token')
+      if is_null_or_white_space(pin_auth_token)
+        raise LoginRadius::Error.new, get_validation_message('pin_auth_token')
       end
 
       query_parameters = {}
@@ -301,8 +301,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 44.1
     def in_validate_pin_session_token(session_token)
-      if isNullOrWhiteSpace(session_token)
-        raise LoginRadius::Error.new, getValidationMessage('session_token')
+      if is_null_or_white_space(session_token)
+        raise LoginRadius::Error.new, get_validation_message('session_token')
       end
 
       query_parameters = {}

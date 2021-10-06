@@ -32,8 +32,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Roles data
     # 18.6
     def get_roles_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -53,10 +53,10 @@ module LoginRadius
     # 18.7
     def assign_roles_by_uid(account_roles_model, uid)
       if account_roles_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('account_roles_model')
+        raise LoginRadius::Error.new, get_validation_message('account_roles_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -76,10 +76,10 @@ module LoginRadius
     # 18.8
     def unassign_roles_by_uid(account_roles_model, uid)
       if account_roles_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('account_roles_model')
+        raise LoginRadius::Error.new, get_validation_message('account_roles_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -97,8 +97,8 @@ module LoginRadius
     # @return Complete user RoleContext data
     # 18.9
     def get_role_context_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -116,8 +116,8 @@ module LoginRadius
     # @return Complete user RoleContext data
     # 18.10
     def get_role_context_by_context_name(context_name)
-      if isNullOrWhiteSpace(context_name)
-        raise LoginRadius::Error.new, getValidationMessage('context_name')
+      if is_null_or_white_space(context_name)
+        raise LoginRadius::Error.new, get_validation_message('context_name')
       end
 
       query_parameters = {}
@@ -137,10 +137,10 @@ module LoginRadius
     # 18.11
     def update_role_context_by_uid(account_role_context_model, uid)
       if account_role_context_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('account_role_context_model')
+        raise LoginRadius::Error.new, get_validation_message('account_role_context_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -159,11 +159,11 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.12
     def delete_role_context_by_uid(context_name, uid)
-      if isNullOrWhiteSpace(context_name)
-        raise LoginRadius::Error.new, getValidationMessage('context_name')
+      if is_null_or_white_space(context_name)
+        raise LoginRadius::Error.new, get_validation_message('context_name')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -183,14 +183,14 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.13
     def delete_roles_from_role_context_by_uid(context_name, role_context_remove_role_model, uid)
-      if isNullOrWhiteSpace(context_name)
-        raise LoginRadius::Error.new, getValidationMessage('context_name')
+      if is_null_or_white_space(context_name)
+        raise LoginRadius::Error.new, get_validation_message('context_name')
       end
       if role_context_remove_role_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('role_context_remove_role_model')
+        raise LoginRadius::Error.new, get_validation_message('role_context_remove_role_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -210,14 +210,14 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.14
     def delete_additional_permission_from_role_context_by_uid(context_name, role_context_additional_permission_remove_role_model, uid)
-      if isNullOrWhiteSpace(context_name)
-        raise LoginRadius::Error.new, getValidationMessage('context_name')
+      if is_null_or_white_space(context_name)
+        raise LoginRadius::Error.new, get_validation_message('context_name')
       end
       if role_context_additional_permission_remove_role_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('role_context_additional_permission_remove_role_model')
+        raise LoginRadius::Error.new, get_validation_message('role_context_additional_permission_remove_role_model')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -251,7 +251,7 @@ module LoginRadius
     # 41.2
     def create_roles(roles_model)
       if roles_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('roles_model')
+        raise LoginRadius::Error.new, get_validation_message('roles_model')
       end
 
       query_parameters = {}
@@ -269,8 +269,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 41.3
     def delete_role(role)
-      if isNullOrWhiteSpace(role)
-        raise LoginRadius::Error.new, getValidationMessage('role')
+      if is_null_or_white_space(role)
+        raise LoginRadius::Error.new, get_validation_message('role')
       end
 
       query_parameters = {}
@@ -290,10 +290,10 @@ module LoginRadius
     # 41.4
     def add_role_permissions(permissions_model, role)
       if permissions_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('permissions_model')
+        raise LoginRadius::Error.new, get_validation_message('permissions_model')
       end
-      if isNullOrWhiteSpace(role)
-        raise LoginRadius::Error.new, getValidationMessage('role')
+      if is_null_or_white_space(role)
+        raise LoginRadius::Error.new, get_validation_message('role')
       end
 
       query_parameters = {}
@@ -313,10 +313,10 @@ module LoginRadius
     # 41.5
     def remove_role_permissions(permissions_model, role)
       if permissions_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('permissions_model')
+        raise LoginRadius::Error.new, get_validation_message('permissions_model')
       end
-      if isNullOrWhiteSpace(role)
-        raise LoginRadius::Error.new, getValidationMessage('role')
+      if is_null_or_white_space(role)
+        raise LoginRadius::Error.new, get_validation_message('role')
       end
 
       query_parameters = {}

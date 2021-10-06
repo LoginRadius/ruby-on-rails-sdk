@@ -32,8 +32,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.1
     def exchange_access_token(token)
-      if isNullOrWhiteSpace(token)
-        raise LoginRadius::Error.new, getValidationMessage('token')
+      if is_null_or_white_space(token)
+        raise LoginRadius::Error.new, get_validation_message('token')
       end
 
       query_parameters = {}
@@ -53,8 +53,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.2
     def refresh_access_token(access_token, expires_in, is_web = false)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -78,8 +78,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.9
     def validate_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -98,8 +98,8 @@ module LoginRadius
     # @return Response containing Definition for Complete Validation data
     # 20.10
     def in_validate_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -118,8 +118,8 @@ module LoginRadius
     # @return Response containing Definition for Complete active sessions
     # 20.11.1
     def get_active_session(token)
-      if isNullOrWhiteSpace(token)
-        raise LoginRadius::Error.new, getValidationMessage('token')
+      if is_null_or_white_space(token)
+        raise LoginRadius::Error.new, get_validation_message('token')
       end
 
       query_parameters = {}
@@ -138,8 +138,8 @@ module LoginRadius
     # @return Response containing Definition for Complete active sessions
     # 20.11.2
     def get_active_session_by_account_id(account_id)
-      if isNullOrWhiteSpace(account_id)
-        raise LoginRadius::Error.new, getValidationMessage('account_id')
+      if is_null_or_white_space(account_id)
+        raise LoginRadius::Error.new, get_validation_message('account_id')
       end
 
       query_parameters = {}
@@ -158,8 +158,8 @@ module LoginRadius
     # @return Response containing Definition for Complete active sessions
     # 20.11.3
     def get_active_session_by_profile_id(profile_id)
-      if isNullOrWhiteSpace(profile_id)
-        raise LoginRadius::Error.new, getValidationMessage('profile_id')
+      if is_null_or_white_space(profile_id)
+        raise LoginRadius::Error.new, get_validation_message('profile_id')
       end
 
       query_parameters = {}
@@ -178,8 +178,8 @@ module LoginRadius
     # @return Response Containing List of Album Data
     # 22.2.1
     def get_albums(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -197,11 +197,11 @@ module LoginRadius
     # @return Response Model containing Albums with next cursor
     # 22.2.2
     def get_albums_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -219,8 +219,8 @@ module LoginRadius
     # @return Response Containing List of Audio Data
     # 24.2.1
     def get_audios(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -238,11 +238,11 @@ module LoginRadius
     # @return Response Model containing Audio with next cursor
     # 24.2.2
     def get_audios_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -260,8 +260,8 @@ module LoginRadius
     # @return Response Containing List of CheckIn Data
     # 25.2.1
     def get_check_ins(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -279,11 +279,11 @@ module LoginRadius
     # @return Response Model containing Checkins with next cursor
     # 25.2.2
     def get_check_ins_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -302,13 +302,13 @@ module LoginRadius
     # @return Response containing Definition of Contact Data with Cursor
     # 27.1
     def get_contacts(access_token, next_cursor = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
-      unless isNullOrWhiteSpace(next_cursor)
+      unless is_null_or_white_space(next_cursor)
         query_parameters['nextCursor'] = next_cursor
       end
 
@@ -323,8 +323,8 @@ module LoginRadius
     # @return Response Containing List of Events Data
     # 28.2.1
     def get_events(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -342,11 +342,11 @@ module LoginRadius
     # @return Response Model containing Events with next cursor
     # 28.2.2
     def get_events_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -364,8 +364,8 @@ module LoginRadius
     # @return Response Containing List of Contacts Data
     # 29.2.1
     def get_followings(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -383,11 +383,11 @@ module LoginRadius
     # @return Response containing Definition of Contact Data with Cursor
     # 29.2.2
     def get_followings_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -405,8 +405,8 @@ module LoginRadius
     # @return Response Containing List of Groups Data
     # 30.2.1
     def get_groups(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -424,11 +424,11 @@ module LoginRadius
     # @return Response Model containing Groups with next cursor
     # 30.2.2
     def get_groups_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -446,8 +446,8 @@ module LoginRadius
     # @return Response Containing List of Likes Data
     # 31.2.1
     def get_likes(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -465,11 +465,11 @@ module LoginRadius
     # @return Response Model containing Likes with next cursor
     # 31.2.2
     def get_likes_with_cursor(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
@@ -487,8 +487,8 @@ module LoginRadius
     # @return Response Containing List of Status Data
     # 32.1
     def get_mentions(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -508,17 +508,17 @@ module LoginRadius
     # @return Response containing Definition for Complete Validation data
     # 33.1
     def post_message(access_token, message, subject, to)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(message)
-        raise LoginRadius::Error.new, getValidationMessage('message')
+      if is_null_or_white_space(message)
+        raise LoginRadius::Error.new, get_validation_message('message')
       end
-      if isNullOrWhiteSpace(subject)
-        raise LoginRadius::Error.new, getValidationMessage('subject')
+      if is_null_or_white_space(subject)
+        raise LoginRadius::Error.new, get_validation_message('subject')
       end
-      if isNullOrWhiteSpace(to)
-        raise LoginRadius::Error.new, getValidationMessage('to')
+      if is_null_or_white_space(to)
+        raise LoginRadius::Error.new, get_validation_message('to')
       end
 
       query_parameters = {}
@@ -539,11 +539,11 @@ module LoginRadius
     # @return Response containing Definition of Complete page data
     # 34.1
     def get_page(access_token, page_name)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(page_name)
-        raise LoginRadius::Error.new, getValidationMessage('page_name')
+      if is_null_or_white_space(page_name)
+        raise LoginRadius::Error.new, get_validation_message('page_name')
       end
 
       query_parameters = {}
@@ -562,11 +562,11 @@ module LoginRadius
     # @return Response Containing List of Photos Data
     # 35.1
     def get_photos(access_token, album_id)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(album_id)
-        raise LoginRadius::Error.new, getValidationMessage('album_id')
+      if is_null_or_white_space(album_id)
+        raise LoginRadius::Error.new, get_validation_message('album_id')
       end
 
       query_parameters = {}
@@ -584,8 +584,8 @@ module LoginRadius
     # @return Response Containing List of Posts Data
     # 36.1
     def get_posts(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -609,26 +609,26 @@ module LoginRadius
     # @return Response conatining Definition of Validation and Short URL data
     # 37.2
     def status_posting(access_token, caption, description, imageurl, status, title, url, shorturl = '0')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(caption)
-        raise LoginRadius::Error.new, getValidationMessage('caption')
+      if is_null_or_white_space(caption)
+        raise LoginRadius::Error.new, get_validation_message('caption')
       end
-      if isNullOrWhiteSpace(description)
-        raise LoginRadius::Error.new, getValidationMessage('description')
+      if is_null_or_white_space(description)
+        raise LoginRadius::Error.new, get_validation_message('description')
       end
-      if isNullOrWhiteSpace(imageurl)
-        raise LoginRadius::Error.new, getValidationMessage('imageurl')
+      if is_null_or_white_space(imageurl)
+        raise LoginRadius::Error.new, get_validation_message('imageurl')
       end
-      if isNullOrWhiteSpace(status)
-        raise LoginRadius::Error.new, getValidationMessage('status')
+      if is_null_or_white_space(status)
+        raise LoginRadius::Error.new, get_validation_message('status')
       end
-      if isNullOrWhiteSpace(title)
-        raise LoginRadius::Error.new, getValidationMessage('title')
+      if is_null_or_white_space(title)
+        raise LoginRadius::Error.new, get_validation_message('title')
       end
-      if isNullOrWhiteSpace(url)
-        raise LoginRadius::Error.new, getValidationMessage('url')
+      if is_null_or_white_space(url)
+        raise LoginRadius::Error.new, get_validation_message('url')
       end
 
       query_parameters = {}
@@ -639,7 +639,7 @@ module LoginRadius
       query_parameters['status'] = status
       query_parameters['title'] = title
       query_parameters['url'] = url
-      unless isNullOrWhiteSpace(shorturl)
+      unless is_null_or_white_space(shorturl)
         query_parameters['shorturl'] = shorturl
       end
 
@@ -655,11 +655,11 @@ module LoginRadius
     # @return Response containing Definition for Complete status data
     # 37.6
     def trackable_status_posting(access_token, status_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if status_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('status_model')
+        raise LoginRadius::Error.new, get_validation_message('status_model')
       end
 
       query_parameters = {}
@@ -682,26 +682,26 @@ module LoginRadius
     # @return Response containing Definition for Complete status data
     # 37.7
     def get_trackable_status_stats(access_token, caption, description, imageurl, status, title, url)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(caption)
-        raise LoginRadius::Error.new, getValidationMessage('caption')
+      if is_null_or_white_space(caption)
+        raise LoginRadius::Error.new, get_validation_message('caption')
       end
-      if isNullOrWhiteSpace(description)
-        raise LoginRadius::Error.new, getValidationMessage('description')
+      if is_null_or_white_space(description)
+        raise LoginRadius::Error.new, get_validation_message('description')
       end
-      if isNullOrWhiteSpace(imageurl)
-        raise LoginRadius::Error.new, getValidationMessage('imageurl')
+      if is_null_or_white_space(imageurl)
+        raise LoginRadius::Error.new, get_validation_message('imageurl')
       end
-      if isNullOrWhiteSpace(status)
-        raise LoginRadius::Error.new, getValidationMessage('status')
+      if is_null_or_white_space(status)
+        raise LoginRadius::Error.new, get_validation_message('status')
       end
-      if isNullOrWhiteSpace(title)
-        raise LoginRadius::Error.new, getValidationMessage('title')
+      if is_null_or_white_space(title)
+        raise LoginRadius::Error.new, get_validation_message('title')
       end
-      if isNullOrWhiteSpace(url)
-        raise LoginRadius::Error.new, getValidationMessage('url')
+      if is_null_or_white_space(url)
+        raise LoginRadius::Error.new, get_validation_message('url')
       end
 
       query_parameters = {}
@@ -724,8 +724,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Status Update data
     # 37.8
     def trackable_status_fetching(post_id)
-      if isNullOrWhiteSpace(post_id)
-        raise LoginRadius::Error.new, getValidationMessage('post_id')
+      if is_null_or_white_space(post_id)
+        raise LoginRadius::Error.new, get_validation_message('post_id')
       end
 
       query_parameters = {}
@@ -744,13 +744,13 @@ module LoginRadius
     # @return Response containing Definition for Complete UserProfile data
     # 38.2
     def get_refreshed_social_user_profile(access_token, fields = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -766,11 +766,11 @@ module LoginRadius
     # @return Response containing Definition of Video Data with Cursor
     # 39.2
     def get_videos(access_token, next_cursor)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(next_cursor)
-        raise LoginRadius::Error.new, getValidationMessage('next_cursor')
+      if is_null_or_white_space(next_cursor)
+        raise LoginRadius::Error.new, get_validation_message('next_cursor')
       end
 
       query_parameters = {}
