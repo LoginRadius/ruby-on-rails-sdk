@@ -35,7 +35,7 @@ Or
 
 
 ````
- gem 'login_radius', '~> 11.2.2'
+ gem 'login_radius', '~> 11.3.0'
 ````
 
 
@@ -5210,7 +5210,23 @@ response = WebHookApi.web_hook_unsubscribe(web_hook_subscribe_model)
 
  ```
  
-  
+
+### Generate SOTT Manually
+SOTT is a secure one-time token that can be created using the API key, API secret, and a timestamp ( start time and end time ). You can manually create a SOTT using the following function.
+
+
+
+```
+time_difference=10 # (Optional) The time_difference will be used to set the expiration time of SOTT, If you do not pass time_difference then the default expiration time of SOTT is 10 minutes.
+
+api_key="" # (Optional) LoginRadius Api Key.
+
+api_secret="" # (Optional) LoginRadius Api Secret (Only Primary Api Secret is used to generate the SOTT manually).
+
+
+sott = AuthenticationApi.local_generate_sott(time_difference,api_key,api_secret);
+print sott
+```
   
  
  

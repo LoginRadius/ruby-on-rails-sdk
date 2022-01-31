@@ -280,20 +280,25 @@ module LoginRadius
     end
 
     # Local - Generate SOTT:
-    # Generates a Secured One Time Token locally.
+    # Generates a Secured One Time Token manually.
     #
-    # @params validity_length [Integer]    Length of time the SOTT is valid for in minutes
-    #
+    # @params time_difference [Integer]   (Optional)The time_difference will be used to set the expiration time of SOTT, If you do not pass time_difference then the default expiration time of SOTT is 10 minutes.
+    # @params api_key [String] (Optional) LoginRadius Api Key.
+    # @params api_secret [String] (Optional) LoginRadius Api Secret.
     # @returns sott [String]               LoginRadius Secured One Time Token
-    def local_generate_sott(validity_length = 10)
-      start_time = Time.now.getutc().strftime('%Y/%m/%d %H:%M:%S')
-      end_time = (Time.now.getutc() + (validity_length*60)).strftime('%Y/%m/%d %H:%M:%S')
+    def local_generate_sott(time_difference = 10, api_key="", api_secret="")
 
-      plain_text = start_time + '#' + ENV['API_KEY'] + '#' + end_time
+      key=!isNullOrWhiteSpace(api_key) ? api_key:ENV['API_KEY']
+
+      secret=!isNullOrWhiteSpace(api_secret) ? api_secret:ENV['API_SECRET']
+
+      start_time = Time.now.getutc().strftime('%Y/%m/%d %H:%M:%S')
+      end_time = (Time.now.getutc() + (time_difference*60)).strftime('%Y/%m/%d %H:%M:%S')
+      plain_text = start_time + '#' + key + '#' + end_time
       iter = 10000
       salt = "\x00\x00\x00\x00\x00\x00\x00\x00"
       key_len = KEY_SIZE / 8
-      cipher_key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(ENV['API_SECRET'], salt, iter, key_len)
+      cipher_key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(secret, salt, iter, key_len)
 
       cipher = OpenSSL::Cipher.new('aes-' + KEY_SIZE.to_s + '-cbc')
       cipher.encrypt
