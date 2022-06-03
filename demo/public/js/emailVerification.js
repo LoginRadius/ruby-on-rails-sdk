@@ -1,6 +1,6 @@
 const url = location.href;
 const params = url.split("?")[1];
-const serverUrl = "http://localhost:3000/api";
+const serverUrl = "http://127.0.0.1:3000/api";
 let paramsObj = {};
 
 if (params) {

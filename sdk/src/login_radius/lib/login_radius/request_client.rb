@@ -282,6 +282,46 @@ module LoginRadius
     # Local - Generate SOTT:
     # Generates a Secured One Time Token manually.
     #
+    # Do not pass the time difference if you are passing start_time & end_time.		
+    # @params time_difference [Integer]   (Optional)The time_difference will be used to set the expiration time of SOTT, If you do not pass time_difference then the default expiration time of SOTT is 10 minutes.
+    # @params api_key [String] (Optional) LoginRadius Api Key.
+    # @params api_secret [String] (Optional) LoginRadius Api Secret.
+    # You can pass the start_time , end_time interval and the SOTT will be valid for this time duration. 
+    # @params start_time [String] (Optional) The start time of the SOTT.
+    # @params end_time [String] (Optional) The end time of the SOTT.
+    # @returns sott [String]               LoginRadius Secured One Time Token
+    def get_sott(time_difference="", api_key="", api_secret="",start_time="",end_time="")
+
+      key= !isNullOrWhiteSpace(api_key) ? api_key:ENV['API_KEY']
+      time_difference= !isNullOrWhiteSpace(time_difference) ? time_difference.to_i : 10
+      secret=!isNullOrWhiteSpace(api_secret) ? api_secret:ENV['API_SECRET']
+      start_date_time=!isNullOrWhiteSpace(start_time)&&!isNullOrWhiteSpace(end_time)? start_time:Time.now.getutc().strftime('%Y/%m/%d %H:%M:%S')
+      end_date_time =!isNullOrWhiteSpace(start_time)&&!isNullOrWhiteSpace(end_time)? end_time:(Time.now.getutc() + (time_difference*60)).strftime('%Y/%m/%d %H:%M:%S')
+
+      
+      plain_text = start_date_time + '#' + key + '#' + end_date_time
+      iter = 10000
+      salt = "\x00\x00\x00\x00\x00\x00\x00\x00"
+      key_len = KEY_SIZE / 8
+      cipher_key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(secret, salt, iter, key_len)
+
+      cipher = OpenSSL::Cipher.new('aes-' + KEY_SIZE.to_s + '-cbc')
+      cipher.encrypt
+      cipher.key = cipher_key
+      cipher.iv = INIT_VECTOR
+
+      encrypted = cipher.update(plain_text) + cipher.final
+      encrypted_b64 = Base64.strict_encode64(encrypted)
+
+      hash = Digest::MD5.hexdigest(encrypted_b64)
+      sott = encrypted_b64 + '*' + hash
+      return sott
+    end
+
+   # DEPRECATED: Please use get_sott instead.
+    # Local - Generate SOTT:
+    # Generates a Secured One Time Token manually.
+    #
     # @params time_difference [Integer]   (Optional)The time_difference will be used to set the expiration time of SOTT, If you do not pass time_difference then the default expiration time of SOTT is 10 minutes.
     # @params api_key [String] (Optional) LoginRadius Api Key.
     # @params api_secret [String] (Optional) LoginRadius Api Secret.
