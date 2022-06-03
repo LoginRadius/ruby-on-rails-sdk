@@ -7,7 +7,7 @@ module Api
       fields = ''
       welcome_email_template = ''
 
-      sott = AuthenticationApi.local_generate_sott(10)
+      sott = AuthenticationApi.get_sott(10)
       # p sott
       response = AuthenticationApi.user_registration_by_email(data, sott, email_template, fields, verification_url, welcome_email_template)
 

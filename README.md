@@ -27,22 +27,22 @@ This library is meant to help you with a quick implementation of the LoginRadius
 Add this line to your application's Gemfile:
 
 
-````
+````shell
  gem "login_radius", :path => "gemfilepath";
 ````
 
 Or
 
 
-````
- gem 'login_radius', '~> 11.3.0'
+````shell
+ gem 'login_radius', '~> 11.4.0'
 ````
 
 
 And then execute:
 
 
-````
+````bash
  $ bundle
 ````
 
@@ -51,25 +51,28 @@ And then execute:
 Or install it yourself as:
 
 
-````
+````bash
  $ gem install login_radius
 ````
 
 #### Usage
 1)Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
 
-```
+```ruby
 SITE_NAME: "<site name>"
 API_KEY: "<api-key>"
 API_SECRET: "<api-secret>"
 CUSTOM_API_DOMAIN: "<custom-domain-url-if-any>"
 API_REQUEST_SIGNING: "false"
 ```
+
+To know your Site Name,API Key and Secret. Kindly follow the steps in the [Document](https://www.loginradius.com/docs/api/v2/admin-console/platform-security/api-key-and-secret).
+
 ### X-Origin-IP
 
 LoginRadius allows you to add X-Origin-IP in your headers and it determines the IP address of the client's request,this can also be useful to overcome analytics discrepancies where the analytics depend on header data.
 
-```
+```ruby
 Origin_IP: "<Client Ip Address>"
 
 ```
@@ -81,7 +84,7 @@ Create `login_radius.rb` in `/config/initializers`:
 
 
 
-```
+```ruby
 require 'login_radius'
 
 ::AccountApi = LoginRadius::AccountApi.new
@@ -169,7 +172,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -195,7 +198,7 @@ response = AuthenticationApi.update_profile_by_access_token(access_token, user_p
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -215,7 +218,7 @@ response = AuthenticationApi.unlock_account_by_token(access_token, unlock_profil
  
  
 
- ```
+ ```ruby
 
 
  email_verification_by_otp_model ={ 
@@ -238,7 +241,7 @@ response = AuthenticationApi.verify_email_by_otp(email_verification_by_otp_model
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_security_answer_and_email_model ={ 
@@ -259,7 +262,7 @@ response = AuthenticationApi.reset_password_by_security_answer_and_email(reset_p
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_security_answer_and_phone_model ={ 
@@ -280,7 +283,7 @@ response = AuthenticationApi.reset_password_by_security_answer_and_phone(reset_p
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_security_answer_and_user_name_model ={ 
@@ -301,7 +304,7 @@ response = AuthenticationApi.reset_password_by_security_answer_and_user_name(res
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_reset_token_model ={ 
@@ -321,7 +324,7 @@ response = AuthenticationApi.reset_password_by_reset_token(reset_password_by_res
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_email_and_otp_model ={ 
@@ -342,7 +345,7 @@ response = AuthenticationApi.reset_password_by_email_otp(reset_password_by_email
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_user_name_model ={ 
@@ -363,7 +366,7 @@ response = AuthenticationApi.reset_password_by_otp_and_user_name(reset_password_
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  new_password = "<new_password>" #Required
@@ -382,7 +385,7 @@ response = AuthenticationApi.change_password(access_token, new_password, old_pas
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  username = "<username>" #Required
@@ -400,7 +403,7 @@ response = AuthenticationApi.set_or_change_user_name(access_token, username)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  email_template = "<email_template>" #Optional
@@ -419,7 +422,7 @@ response = AuthenticationApi.auth_resend_email_verification(email, email_templat
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  email = "<email>" #Required
@@ -440,7 +443,7 @@ response = AuthenticationApi.add_email(access_token, email, type, email_template
  
  
 
- ```
+ ```ruby
 
 
  email_authentication_model ={ 
@@ -464,7 +467,7 @@ response = AuthenticationApi.login_by_email(email_authentication_model, email_te
  
  
 
- ```
+ ```ruby
 
 
  user_name_authentication_model ={ 
@@ -488,7 +491,7 @@ response = AuthenticationApi.login_by_user_name(user_name_authentication_model, 
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  reset_password_url = "<reset_password_url>" #Required
@@ -507,7 +510,7 @@ response = AuthenticationApi.forgot_password(email, reset_password_url, email_te
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  candidate_token = "<candidate_token>" #Required
@@ -525,7 +528,7 @@ response = AuthenticationApi.link_social_identities(access_token, candidate_toke
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  client_guid = "<client_guid>" #Required
@@ -543,7 +546,7 @@ response = AuthenticationApi.link_social_identities_by_ping(access_token, client
  
  
 
- ```
+ ```ruby
 
 
  auth_user_registration_model ={ 
@@ -574,7 +577,7 @@ response = AuthenticationApi.user_registration_by_email(auth_user_registration_m
  
  
 
- ```
+ ```ruby
 
 
  auth_user_registration_model_with_captcha ={ 
@@ -606,7 +609,7 @@ response = AuthenticationApi.user_registration_by_captcha(auth_user_registration
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
 
@@ -623,7 +626,7 @@ response = AuthenticationApi.get_security_questions_by_email(email)
  
  
 
- ```
+ ```ruby
 
  user_name = "<user_name>" #Required
 
@@ -640,7 +643,7 @@ response = AuthenticationApi.get_security_questions_by_user_name(user_name)
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
 
@@ -657,7 +660,7 @@ response = AuthenticationApi.get_security_questions_by_phone(phone)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -674,7 +677,7 @@ response = AuthenticationApi.get_security_questions_by_access_token(access_token
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -691,7 +694,7 @@ response = AuthenticationApi.auth_validate_access_token(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  prevent_refresh = true #Optional
@@ -709,7 +712,7 @@ response = AuthenticationApi.auth_in_validate_access_token(access_token, prevent
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -726,7 +729,7 @@ response = AuthenticationApi.get_access_token_info(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  fields = nil #Optional
@@ -747,7 +750,7 @@ response = AuthenticationApi.get_profile_by_access_token(access_token, fields, e
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  welcome_email_template = "<welcome_email_template>" #Optional
@@ -765,7 +768,7 @@ response = AuthenticationApi.send_welcome_email(access_token, welcome_email_temp
  
  
 
- ```
+ ```ruby
 
  deletetoken = "<deletetoken>" #Required
 
@@ -779,7 +782,7 @@ This API is used to get a user's profile using the clientGuid parameter if no ca
 
 
 
- ```
+ ```ruby
 
  client_guid = "<client_guid>" #Required
  email_template = "<email_template>" #Optional
@@ -798,7 +801,7 @@ response = AuthenticationApi.get_profile_by_ping(client_guid, email_template, fi
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
 
@@ -815,7 +818,7 @@ response = AuthenticationApi.check_email_availability(email)
  
  
 
- ```
+ ```ruby
 
  verification_token = "<verification_token>" #Required
  fields = nil #Optional
@@ -835,7 +838,7 @@ response = AuthenticationApi.verify_email(verification_token, fields, url, welco
  
  
 
- ```
+ ```ruby
 
  username = "<username>" #Required
 
@@ -852,7 +855,7 @@ response = AuthenticationApi.check_user_name_availability(username)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  fields = nil #Optional
@@ -870,7 +873,7 @@ response = AuthenticationApi.accept_privacy_policy(access_token, fields)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -887,7 +890,7 @@ response = AuthenticationApi.get_privacy_policy_history_by_access_token(access_t
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  delete_url = "<delete_url>" #Optional
@@ -906,7 +909,7 @@ response = AuthenticationApi.delete_account_with_email_confirmation(access_token
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  email = "<email>" #Required
@@ -924,7 +927,7 @@ response = AuthenticationApi.remove_email(access_token, email)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  provider = "<provider>" #Required
@@ -976,7 +979,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  account_user_profile_update_model ={ 
@@ -999,7 +1002,7 @@ response = AccountApi.update_account_by_uid(account_user_profile_update_model, u
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
  uid = "<uid>" #Required
@@ -1018,7 +1021,7 @@ response = AccountApi.update_phone_id_by_uid(phone, uid, fields)
  
  
 
- ```
+ ```ruby
 
  password = "<password>" #Required
  uid = "<uid>" #Required
@@ -1036,7 +1039,7 @@ response = AccountApi.set_account_password_by_uid(password, uid)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
  email_template = "<email_template>" #Optional
@@ -1055,7 +1058,7 @@ response = AccountApi.invalidate_account_email_verification(uid, email_template,
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
  sms_template = "<sms_template>" #Optional
@@ -1073,7 +1076,7 @@ response = AccountApi.reset_phone_id_verification_by_uid(uid, sms_template)
  
  
 
- ```
+ ```ruby
 
 
  upsert_email_model ={ 
@@ -1097,7 +1100,7 @@ response = AccountApi.upsert_email(upsert_email_model, uid, fields)
  
  
 
- ```
+ ```ruby
 
 
  update_uid_model ={ 
@@ -1117,7 +1120,7 @@ response = AccountApi.account_update_uid(update_uid_model, uid)
  
  
 
- ```
+ ```ruby
 
 
  account_create_model ={ 
@@ -1143,7 +1146,7 @@ response = AccountApi.create_account(account_create_model, fields)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  email_template = "<email_template>" #Optional
@@ -1163,7 +1166,7 @@ response = AccountApi.get_forgot_password_token(email, email_template, reset_pas
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
 
@@ -1180,7 +1183,7 @@ response = AccountApi.get_email_verification_token(email)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -1197,7 +1200,7 @@ response = AccountApi.get_privacy_policy_history_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  fields = nil #Optional
@@ -1215,7 +1218,7 @@ response = AccountApi.get_account_profile_by_email(email, fields)
  
  
 
- ```
+ ```ruby
 
  user_name = "<user_name>" #Required
  fields = nil #Optional
@@ -1233,7 +1236,7 @@ response = AccountApi.get_account_profile_by_user_name(user_name, fields)
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
  fields = nil #Optional
@@ -1251,7 +1254,7 @@ response = AccountApi.get_account_profile_by_phone(phone, fields)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
  fields = nil #Optional
@@ -1269,7 +1272,7 @@ response = AccountApi.get_account_profile_by_uid(uid, fields)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -1286,7 +1289,7 @@ response = AccountApi.get_account_password_hash_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -1303,7 +1306,7 @@ response = AccountApi.get_access_token_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  refresh_token = "<refresh_token>" #Required
 
@@ -1320,7 +1323,7 @@ response = AccountApi.refresh_access_token_by_refresh_token(refresh_token)
  
  
 
- ```
+ ```ruby
 
  refresh_token = "<refresh_token>" #Required
 
@@ -1337,7 +1340,7 @@ response = AccountApi.revoke_refresh_token(refresh_token)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  fields = nil #Optional
@@ -1355,7 +1358,7 @@ response = AccountApi.get_account_identities_by_email(email, fields)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -1372,7 +1375,7 @@ response = AccountApi.delete_account_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  uid = "<uid>" #Required
@@ -1391,7 +1394,7 @@ response = AccountApi.remove_email(email, uid, fields)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
 
@@ -1452,7 +1455,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  message = "<message>" #Required
@@ -1472,7 +1475,7 @@ response = SocialApi.post_message(access_token, message, subject, to)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  caption = "<caption>" #Required
@@ -1496,7 +1499,7 @@ response = SocialApi.status_posting(access_token, caption, description, imageurl
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1521,7 +1524,7 @@ response = SocialApi.trackable_status_posting(access_token, status_model)
  
  
 
- ```
+ ```ruby
 
  token = "<token>" #Required
 
@@ -1538,7 +1541,7 @@ response = SocialApi.exchange_access_token(token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  expires_in = 0 #Optional
@@ -1557,7 +1560,7 @@ response = SocialApi.refresh_access_token(access_token, expires_in, is_web)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1574,7 +1577,7 @@ response = SocialApi.validate_access_token(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1591,7 +1594,7 @@ response = SocialApi.in_validate_access_token(access_token)
  
  
 
- ```
+ ```ruby
 
  token = "<token>" #Required
 
@@ -1608,7 +1611,7 @@ response = SocialApi.get_active_session(token)
  
  
 
- ```
+ ```ruby
 
  account_id = "<account_id>" #Required
 
@@ -1625,7 +1628,7 @@ response = SocialApi.get_active_session_by_account_id(account_id)
  
  
 
- ```
+ ```ruby
 
  profile_id = "<profile_id>" #Required
 
@@ -1642,7 +1645,7 @@ response = SocialApi.get_active_session_by_profile_id(profile_id)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1659,7 +1662,7 @@ response = SocialApi.get_albums(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1677,7 +1680,7 @@ response = SocialApi.get_albums_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1694,7 +1697,7 @@ response = SocialApi.get_audios(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1712,7 +1715,7 @@ response = SocialApi.get_audios_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1729,7 +1732,7 @@ response = SocialApi.get_check_ins(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1747,7 +1750,7 @@ response = SocialApi.get_check_ins_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Optional
@@ -1765,7 +1768,7 @@ response = SocialApi.get_contacts(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1782,7 +1785,7 @@ response = SocialApi.get_events(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1800,7 +1803,7 @@ response = SocialApi.get_events_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1817,7 +1820,7 @@ response = SocialApi.get_followings(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1835,7 +1838,7 @@ response = SocialApi.get_followings_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1852,7 +1855,7 @@ response = SocialApi.get_groups(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1870,7 +1873,7 @@ response = SocialApi.get_groups_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1887,7 +1890,7 @@ response = SocialApi.get_likes(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -1905,7 +1908,7 @@ response = SocialApi.get_likes_with_cursor(access_token, next_cursor)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1922,7 +1925,7 @@ response = SocialApi.get_mentions(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  page_name = "<page_name>" #Required
@@ -1940,7 +1943,7 @@ response = SocialApi.get_page(access_token, page_name)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  album_id = "<album_id>" #Required
@@ -1958,7 +1961,7 @@ response = SocialApi.get_photos(access_token, album_id)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -1975,7 +1978,7 @@ response = SocialApi.get_posts(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  caption = "<caption>" #Required
@@ -1998,7 +2001,7 @@ response = SocialApi.get_trackable_status_stats(access_token, caption, descripti
  
  
 
- ```
+ ```ruby
 
  post_id = "<post_id>" #Required
 
@@ -2015,7 +2018,7 @@ response = SocialApi.trackable_status_fetching(post_id)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  fields = nil #Optional
@@ -2033,7 +2036,7 @@ response = SocialApi.get_social_user_profile(access_token, fields)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  fields = nil #Optional
@@ -2051,7 +2054,7 @@ response = SocialApi.get_refreshed_social_user_profile(access_token, fields)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  next_cursor = "<next_cursor>" #Required
@@ -2089,7 +2092,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  object_name = "<object_name>" #Required
@@ -2111,7 +2114,7 @@ response = CustomObjectApi.update_custom_object_by_token(access_token, object_na
  
  
 
- ```
+ ```ruby
 
  object_name = "<object_name>" #Required
  object_record_id = "<object_record_id>" #Required
@@ -2133,7 +2136,7 @@ response = CustomObjectApi.update_custom_object_by_uid(object_name, object_recor
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  object_name = "<object_name>" #Required
@@ -2153,7 +2156,7 @@ response = CustomObjectApi.create_custom_object_by_token(access_token, object_na
  
  
 
- ```
+ ```ruby
 
  object_name = "<object_name>" #Required
 
@@ -2173,7 +2176,7 @@ response = CustomObjectApi.create_custom_object_by_uid(object_name, object, uid)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  object_name = "<object_name>" #Required
@@ -2191,7 +2194,7 @@ response = CustomObjectApi.get_custom_object_by_token(access_token, object_name)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  object_name = "<object_name>" #Required
@@ -2210,7 +2213,7 @@ response = CustomObjectApi.get_custom_object_by_record_id_and_token(access_token
  
  
 
- ```
+ ```ruby
 
  object_name = "<object_name>" #Required
  uid = "<uid>" #Required
@@ -2228,7 +2231,7 @@ response = CustomObjectApi.get_custom_object_by_uid(object_name, uid)
  
  
 
- ```
+ ```ruby
 
  object_name = "<object_name>" #Required
  object_record_id = "<object_record_id>" #Required
@@ -2247,7 +2250,7 @@ response = CustomObjectApi.get_custom_object_by_record_id(object_name, object_re
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  object_name = "<object_name>" #Required
@@ -2266,7 +2269,7 @@ response = CustomObjectApi.delete_custom_object_by_token(access_token, object_na
  
  
 
- ```
+ ```ruby
 
  object_name = "<object_name>" #Required
  object_record_id = "<object_record_id>" #Required
@@ -2306,7 +2309,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  reset_password_by_otp_model ={ 
@@ -2327,7 +2330,7 @@ response = PhoneAuthenticationApi.reset_password_by_phone_otp(reset_password_by_
  
  
 
- ```
+ ```ruby
 
  otp = "<otp>" #Required
  phone = "<phone>" #Required
@@ -2347,7 +2350,7 @@ response = PhoneAuthenticationApi.phone_verification_by_otp(otp, phone, fields, 
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  otp = "<otp>" #Required
@@ -2366,7 +2369,7 @@ response = PhoneAuthenticationApi.phone_verification_otp_by_access_token(access_
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  phone = "<phone>" #Required
@@ -2385,7 +2388,7 @@ response = PhoneAuthenticationApi.update_phone_number(access_token, phone, sms_t
  
  
 
- ```
+ ```ruby
 
 
  phone_authentication_model ={ 
@@ -2408,7 +2411,7 @@ response = PhoneAuthenticationApi.login_by_phone(phone_authentication_model, fie
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
  sms_template = "<sms_template>" #Optional
@@ -2426,7 +2429,7 @@ response = PhoneAuthenticationApi.forgot_password_by_phone_otp(phone, sms_templa
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
  sms_template = "<sms_template>" #Optional
@@ -2444,7 +2447,7 @@ response = PhoneAuthenticationApi.phone_resend_verification_otp(phone, sms_templ
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  phone = "<phone>" #Required
@@ -2463,7 +2466,7 @@ response = PhoneAuthenticationApi.phone_resend_verification_otp_by_token(access_
  
  
 
- ```
+ ```ruby
 
 
  auth_user_registration_model ={ 
@@ -2491,7 +2494,7 @@ response = PhoneAuthenticationApi.user_registration_by_phone(auth_user_registrat
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
 
@@ -2508,7 +2511,7 @@ response = PhoneAuthenticationApi.check_phone_number_availability(phone)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2566,7 +2569,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2587,7 +2590,7 @@ response = MultiFactorAuthenticationApi.mfa_update_setting(access_token, multi_f
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2609,7 +2612,7 @@ response = MultiFactorAuthenticationApi.mfa_update_by_access_token(access_token,
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  phone_no_2fa = "<phone_no_2fa>" #Required
@@ -2628,7 +2631,7 @@ response = MultiFactorAuthenticationApi.mfa_update_phone_number_by_token(access_
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2650,7 +2653,7 @@ response = MultiFactorAuthenticationApi.mfa_validate_email_otp_by_access_token(a
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2677,7 +2680,7 @@ response = MultiFactorAuthenticationApi.mfa_security_question_answer_by_access_t
  
  
 
- ```
+ ```ruby
 
 
  multi_factor_auth_model_with_lockout ={ 
@@ -2703,7 +2706,7 @@ response = MultiFactorAuthenticationApi.mfa_validate_otp_by_phone(multi_factor_a
  
  
 
- ```
+ ```ruby
 
  google_authenticator_code = "<google_authenticator_code>" #Required
  second_factor_authentication_token = "<second_factor_authentication_token>" #Required
@@ -2726,7 +2729,7 @@ response = MultiFactorAuthenticationApi.mfa_validate_google_auth_code(google_aut
  
  
 
- ```
+ ```ruby
 
 
  multi_factor_auth_model_by_backup_code ={ 
@@ -2751,7 +2754,7 @@ response = MultiFactorAuthenticationApi.mfa_validate_backup_code(multi_factor_au
  
  
 
- ```
+ ```ruby
 
  phone_no_2fa = "<phone_no_2fa>" #Required
  second_factor_authentication_token = "<second_factor_authentication_token>" #Required
@@ -2770,7 +2773,7 @@ response = MultiFactorAuthenticationApi.mfa_update_phone_number(phone_no_2fa, se
  
  
 
- ```
+ ```ruby
 
 
  multi_factor_auth_model_by_email_otp ={ 
@@ -2796,7 +2799,7 @@ response = MultiFactorAuthenticationApi.mfa_validate_email_otp(multi_factor_auth
  
  
 
- ```
+ ```ruby
 
 
  security_question_answer_update_model ={ 
@@ -2822,7 +2825,7 @@ response = MultiFactorAuthenticationApi.mfa_security_question_answer(security_qu
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  password = "<password>" #Required
@@ -2847,7 +2850,7 @@ response = MultiFactorAuthenticationApi.mfa_login_by_email(email, password, emai
  
  
 
- ```
+ ```ruby
 
  password = "<password>" #Required
  username = "<username>" #Required
@@ -2872,7 +2875,7 @@ response = MultiFactorAuthenticationApi.mfa_login_by_user_name(password, usernam
  
  
 
- ```
+ ```ruby
 
  password = "<password>" #Required
  phone = "<phone>" #Required
@@ -2897,7 +2900,7 @@ response = MultiFactorAuthenticationApi.mfa_login_by_phone(password, phone, emai
  
  
 
- ```
+ ```ruby
 
 
  email_id_model ={ 
@@ -2919,7 +2922,7 @@ response = MultiFactorAuthenticationApi.mfa_email_otp(email_id_model, second_fac
  
  
 
- ```
+ ```ruby
 
 
  security_question_answer_update_model ={ 
@@ -2949,7 +2952,7 @@ response = MultiFactorAuthenticationApi.mfa_security_question_answer_verificatio
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  sms_template_2fa = "<sms_template_2fa>" #Optional
@@ -2967,7 +2970,7 @@ response = MultiFactorAuthenticationApi.mfa_configure_by_access_token(access_tok
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -2984,7 +2987,7 @@ response = MultiFactorAuthenticationApi.mfa_backup_code_by_access_token(access_t
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3001,7 +3004,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_backup_code_by_access_token(ac
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  email_id = "<email_id>" #Required
@@ -3020,7 +3023,7 @@ response = MultiFactorAuthenticationApi.mfa_email_otp_by_access_token(access_tok
  
  
 
- ```
+ ```ruby
 
  second_factor_authentication_token = "<second_factor_authentication_token>" #Required
  sms_template_2fa = "<sms_template_2fa>" #Optional
@@ -3038,7 +3041,7 @@ response = MultiFactorAuthenticationApi.mfa_resend_otp(second_factor_authenticat
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -3055,7 +3058,7 @@ response = MultiFactorAuthenticationApi.mfa_backup_code_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -3072,7 +3075,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_backup_code_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  googleauthenticator = true #Required
@@ -3090,7 +3093,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_google_auth_by_token(access_to
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  otpauthenticator = true #Required
@@ -3108,7 +3111,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_sms_auth_by_token(access_token
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3125,7 +3128,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_email_otp_authenticator_by_acc
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3142,7 +3145,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_security_question_authenticato
  
  
 
- ```
+ ```ruby
 
  otpauthenticator = true #Required
  uid = "<uid>" #Required
@@ -3160,7 +3163,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_sms_authenticator_by_uid(otpau
  
  
 
- ```
+ ```ruby
 
  googleauthenticator = true #Required
  uid = "<uid>" #Required
@@ -3178,7 +3181,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_google_authenticator_by_uid(go
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -3195,7 +3198,7 @@ response = MultiFactorAuthenticationApi.mfa_reset_email_otp_authenticator_by_uid
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -3236,7 +3239,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_reset_token ={ 
@@ -3256,7 +3259,7 @@ response = PINAuthenticationApi.reset_pin_by_reset_token(reset_pin_by_reset_toke
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_security_question_answer_and_email_model ={ 
@@ -3277,7 +3280,7 @@ response = PINAuthenticationApi.reset_pin_by_email_and_security_answer(reset_pin
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_security_question_answer_and_username_model ={ 
@@ -3298,7 +3301,7 @@ response = PINAuthenticationApi.reset_pin_by_username_and_security_answer(reset_
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_security_question_answer_and_phone_model ={ 
@@ -3319,7 +3322,7 @@ response = PINAuthenticationApi.reset_pin_by_phone_and_security_answer(reset_pin
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3340,7 +3343,7 @@ response = PINAuthenticationApi.change_pin_by_access_token(access_token, change_
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_phone_and_otp_model ={ 
@@ -3361,7 +3364,7 @@ response = PINAuthenticationApi.reset_pin_by_phone_and_otp(reset_pin_by_phone_an
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_email_and_otp_model ={ 
@@ -3382,7 +3385,7 @@ response = PINAuthenticationApi.reset_pin_by_email_and_otp(reset_pin_by_email_an
  
  
 
- ```
+ ```ruby
 
 
  reset_pin_by_username_and_otp_model ={ 
@@ -3403,7 +3406,7 @@ response = PINAuthenticationApi.reset_pin_by_username_and_otp(reset_pin_by_usern
  
  
 
- ```
+ ```ruby
 
 
  login_by_pin_model ={ 
@@ -3423,7 +3426,7 @@ response = PINAuthenticationApi.pin_login(login_by_pin_model, session_token)
  
  
 
- ```
+ ```ruby
 
 
  forgot_pin_link_by_email_model ={ 
@@ -3444,7 +3447,7 @@ response = PINAuthenticationApi.send_forgot_pin_email_by_email(forgot_pin_link_b
  
  
 
- ```
+ ```ruby
 
 
  forgot_pin_link_by_user_name_model ={ 
@@ -3465,7 +3468,7 @@ response = PINAuthenticationApi.send_forgot_pin_email_by_username(forgot_pin_lin
  
  
 
- ```
+ ```ruby
 
 
  forgot_pin_otp_by_phone_model ={ 
@@ -3485,7 +3488,7 @@ response = PINAuthenticationApi.send_forgot_pin_sms_by_phone(forgot_pin_otp_by_p
  
  
 
- ```
+ ```ruby
 
 
  pin_required_model ={ 
@@ -3505,7 +3508,7 @@ response = PINAuthenticationApi.set_pin_by_pin_auth_token(pin_required_model, pi
  
  
 
- ```
+ ```ruby
 
  session_token = "<session_token>" #Required
 
@@ -3544,7 +3547,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3564,7 +3567,7 @@ response = ReAuthenticationApi.mfa_re_authenticate_by_otp(access_token, reauth_b
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3584,7 +3587,7 @@ response = ReAuthenticationApi.mfa_re_authenticate_by_backup_code(access_token, 
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3604,7 +3607,7 @@ response = ReAuthenticationApi.mfa_re_authenticate_by_google_auth(access_token, 
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3625,7 +3628,7 @@ response = ReAuthenticationApi.mfa_re_authenticate_by_password(access_token, pas
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3646,7 +3649,7 @@ response = ReAuthenticationApi.verify_pin_authentication(access_token, pin_auth_
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3668,7 +3671,7 @@ response = ReAuthenticationApi.re_auth_validate_email_otp(access_token, reauth_b
  
  
 
- ```
+ ```ruby
 
 
  event_based_multi_factor_token ={ 
@@ -3688,7 +3691,7 @@ response = ReAuthenticationApi.verify_multi_factor_otp_reauthentication(event_ba
  
  
 
- ```
+ ```ruby
 
 
  event_based_multi_factor_token ={ 
@@ -3708,7 +3711,7 @@ response = ReAuthenticationApi.verify_multi_factor_password_reauthentication(eve
  
  
 
- ```
+ ```ruby
 
 
  event_based_multi_factor_token ={ 
@@ -3728,7 +3731,7 @@ response = ReAuthenticationApi.verify_multi_factor_pin_reauthentication(event_ba
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3754,7 +3757,7 @@ response = ReAuthenticationApi.re_auth_by_security_question(access_token, securi
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  sms_template_2fa = "<sms_template_2fa>" #Optional
@@ -3772,7 +3775,7 @@ response = ReAuthenticationApi.mfa_re_authenticate(access_token, sms_template_2f
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  email_id = "<email_id>" #Required
@@ -3804,7 +3807,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3827,7 +3830,7 @@ response = ConsentManagementApi.update_consent_profile_by_access_token(access_to
  
  
 
- ```
+ ```ruby
 
  consent_token = "<consent_token>" #Required
 
@@ -3854,7 +3857,7 @@ response = ConsentManagementApi.submit_consent_by_consent_token(consent_token, c
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3881,7 +3884,7 @@ response = ConsentManagementApi.submit_consent_by_access_token(access_token, con
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -3898,7 +3901,7 @@ response = ConsentManagementApi.get_consent_logs_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
 
@@ -3915,7 +3918,7 @@ response = ConsentManagementApi.get_consent_logs(access_token)
  
  
 
- ```
+ ```ruby
 
  access_token = "<access_token>" #Required
  event = "<event>" #Required
@@ -3948,7 +3951,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  verification_token = "<verification_token>" #Required
  welcome_email_template = "<welcome_email_template>" #Optional
@@ -3966,7 +3969,7 @@ response = SmartLoginApi.smart_login_token_verification(verification_token, welc
  
  
 
- ```
+ ```ruby
 
  client_guid = "<client_guid>" #Required
  email = "<email>" #Required
@@ -3987,7 +3990,7 @@ response = SmartLoginApi.smart_login_by_email(client_guid, email, redirect_url, 
  
  
 
- ```
+ ```ruby
 
  client_guid = "<client_guid>" #Required
  username = "<username>" #Required
@@ -4008,7 +4011,7 @@ response = SmartLoginApi.smart_login_by_user_name(client_guid, username, redirec
  
  
 
- ```
+ ```ruby
 
  client_guid = "<client_guid>" #Required
  fields = nil #Optional
@@ -4041,7 +4044,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  otp = "<otp>" #Required
  phone = "<phone>" #Required
@@ -4061,7 +4064,7 @@ response = OneTouchLoginApi.one_touch_login_otp_verification(otp, phone, fields,
  
  
 
- ```
+ ```ruby
 
 
  one_touch_login_by_email_model ={ 
@@ -4085,7 +4088,7 @@ response = OneTouchLoginApi.one_touch_login_by_email(one_touch_login_by_email_mo
  
  
 
- ```
+ ```ruby
 
 
  one_touch_login_by_phone_model ={ 
@@ -4106,7 +4109,7 @@ response = OneTouchLoginApi.one_touch_login_by_phone(one_touch_login_by_phone_mo
  
  
 
- ```
+ ```ruby
 
  verification_token = "<verification_token>" #Required
  welcome_email_template = "<welcome_email_template>" #Optional
@@ -4124,7 +4127,7 @@ response = OneTouchLoginApi.one_touch_email_verification(verification_token, wel
  
  
 
- ```
+ ```ruby
 
  client_guid = "<client_guid>" #Required
  fields = nil #Optional
@@ -4159,7 +4162,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  password_less_login_otp_model ={ 
@@ -4178,7 +4181,7 @@ This API is used to verify the otp sent to the email when doing a passwordless l
  
  
 
- ```
+ ```ruby
 
 
  password_less_login_by_email_and_otp_model ={  
@@ -4201,7 +4204,7 @@ This API is used to verify the otp sent to the email when doing a passwordless l
  
  
 
- ```
+ ```ruby
 
 
  password_less_login_by_user_name_and_otp_model ={
@@ -4222,7 +4225,7 @@ response = PasswordLessLoginApi.passwordless_login_verification_by_user_name_and
  
  
 
- ```
+ ```ruby
 
  phone = "<phone>" #Required
  sms_template = "<sms_template>" #Optional
@@ -4240,7 +4243,7 @@ response = PasswordLessLoginApi.passwordless_login_by_phone(phone, sms_template)
  
  
 
- ```
+ ```ruby
 
  email = "<email>" #Required
  password_less_login_template = "<password_less_login_template>" #Optional
@@ -4259,7 +4262,7 @@ response = PasswordLessLoginApi.passwordless_login_by_email(email, password_less
  
  
 
- ```
+ ```ruby
 
  username = "<username>" #Required
  password_less_login_template = "<password_less_login_template>" #Optional
@@ -4278,7 +4281,7 @@ response = PasswordLessLoginApi.passwordless_login_by_user_name(username, passwo
  
  
 
- ```
+ ```ruby
 
  verification_token = "<verification_token>" #Required
  fields = nil #Optional
@@ -4308,7 +4311,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  time_difference = 0 #Optional
 
@@ -4318,7 +4321,7 @@ response = ConfigurationApi.get_server_info(time_difference)
  <h6 id="getConfigurations-get-"> Get Configuration (GET)</h6>
  This API is used to get the configurations which are set in the LoginRadius Admin Console for a particular LoginRadius site/environment. [More info](https://www.loginradius.com/docs/api/v2/customer-identity-api/configuration/get-configurations)
   
-  ```
+  ```ruby
   response = ConfigurationApi.get_configurations()
 ```
  
@@ -4352,7 +4355,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  account_roles_model ={ 
@@ -4372,7 +4375,7 @@ response = RoleApi.assign_roles_by_uid(account_roles_model, uid)
  
  
 
- ```
+ ```ruby
 
 
  account_role_context_model ={ 
@@ -4397,7 +4400,7 @@ response = RoleApi.update_role_context_by_uid(account_role_context_model, uid)
  
  
 
- ```
+ ```ruby
 
 
  permissions_model ={ 
@@ -4417,7 +4420,7 @@ response = RoleApi.add_role_permissions(permissions_model, role)
  
  
 
- ```
+ ```ruby
 
 
  roles_model ={ 
@@ -4439,7 +4442,7 @@ response = RoleApi.create_roles(roles_model)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -4456,7 +4459,7 @@ response = RoleApi.get_roles_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  uid = "<uid>" #Required
 
@@ -4473,7 +4476,7 @@ response = RoleApi.get_role_context_by_uid(uid)
  
  
 
- ```
+ ```ruby
 
  context_name = "<context_name>" #Required
 
@@ -4490,7 +4493,7 @@ response = RoleApi.get_role_context_by_context_name(context_name)
  
  
 
- ```
+ ```ruby
 
 
 response = RoleApi.get_roles_list()
@@ -4506,7 +4509,7 @@ response = RoleApi.get_roles_list()
  
  
 
- ```
+ ```ruby
 
 
  account_roles_model ={ 
@@ -4526,7 +4529,7 @@ response = RoleApi.unassign_roles_by_uid(account_roles_model, uid)
  
  
 
- ```
+ ```ruby
 
  context_name = "<context_name>" #Required
  uid = "<uid>" #Required
@@ -4544,7 +4547,7 @@ response = RoleApi.delete_role_context_by_uid(context_name, uid)
  
  
 
- ```
+ ```ruby
 
  context_name = "<context_name>" #Required
 
@@ -4565,7 +4568,7 @@ response = RoleApi.delete_roles_from_role_context_by_uid(context_name, role_cont
  
  
 
- ```
+ ```ruby
 
  context_name = "<context_name>" #Required
 
@@ -4586,7 +4589,7 @@ response = RoleApi.delete_additional_permission_from_role_context_by_uid(context
  
  
 
- ```
+ ```ruby
 
  role = "<role>" #Required
 
@@ -4603,7 +4606,7 @@ response = RoleApi.delete_role(role)
  
  
 
- ```
+ ```ruby
 
 
  permissions_model ={ 
@@ -4640,7 +4643,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  registration_data_update_model ={ 
@@ -4663,7 +4666,7 @@ response = CustomRegistrationDataApi.update_registration_data(registration_data_
  
  
 
- ```
+ ```ruby
 
  code = "<code>" #Required
  record_id = "<record_id>" #Required
@@ -4681,7 +4684,7 @@ response = CustomRegistrationDataApi.validate_registration_data_code(code, recor
  
  
 
- ```
+ ```ruby
 
 
  registration_data_create_model_list ={ 
@@ -4707,7 +4710,7 @@ response = CustomRegistrationDataApi.add_registration_data(registration_data_cre
  
  
 
- ```
+ ```ruby
 
  type = "<type>" #Required
  limit = 0 #Optional
@@ -4727,7 +4730,7 @@ response = CustomRegistrationDataApi.auth_get_registration_data(type, limit, par
  
  
 
- ```
+ ```ruby
 
  type = "<type>" #Required
  limit = 0 #Optional
@@ -4747,7 +4750,7 @@ response = CustomRegistrationDataApi.get_registration_data(type, limit, parent_i
  
  
 
- ```
+ ```ruby
 
  record_id = "<record_id>" #Required
 
@@ -4764,7 +4767,7 @@ response = CustomRegistrationDataApi.delete_registration_data(record_id)
  
  
 
- ```
+ ```ruby
 
  type = "<type>" #Required
 
@@ -4794,7 +4797,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  email_authentication_model ={ 
@@ -4831,7 +4834,7 @@ response = RiskBasedAuthenticationApi.rba_login_by_email(email_authentication_mo
  
  
 
- ```
+ ```ruby
 
 
  user_name_authentication_model ={ 
@@ -4868,7 +4871,7 @@ response = RiskBasedAuthenticationApi.rba_login_by_user_name(user_name_authentic
  
  
 
- ```
+ ```ruby
 
 
  phone_authentication_model ={ 
@@ -4916,7 +4919,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  time_difference = 0 #Optional
 
@@ -4953,7 +4956,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
  fb_access_token = "<fb_access_token>" #Required
  social_app_name = "<social_app_name>" #Optional
@@ -4971,7 +4974,7 @@ response = NativeSocialApi.get_access_token_by_facebook_access_token(fb_access_t
  
  
 
- ```
+ ```ruby
 
  tw_access_token = "<tw_access_token>" #Required
  tw_token_secret = "<tw_token_secret>" #Required
@@ -4990,7 +4993,7 @@ response = NativeSocialApi.get_access_token_by_twitter_access_token(tw_access_to
  
  
 
- ```
+ ```ruby
 
  google_access_token = "<google_access_token>" #Required
  client_id = "<client_id>" #Optional
@@ -5010,7 +5013,7 @@ response = NativeSocialApi.get_access_token_by_google_access_token(google_access
  
  
 
- ```
+ ```ruby
 
  id_token = "<id_token>" #Required
 
@@ -5027,7 +5030,7 @@ response = NativeSocialApi.get_access_token_by_google_j_w_t_access_token(id_toke
  
  
 
- ```
+ ```ruby
 
  ln_access_token = "<ln_access_token>" #Required
  social_app_name = "<social_app_name>" #Optional
@@ -5045,7 +5048,7 @@ response = NativeSocialApi.get_access_token_by_linkedin_access_token(ln_access_t
  
  
 
- ```
+ ```ruby
 
  fs_access_token = "<fs_access_token>" #Required
 
@@ -5062,7 +5065,7 @@ response = NativeSocialApi.get_access_token_by_foursquare_access_token(fs_access
  
  
 
- ```
+ ```ruby
 
  code = "<code>" #Required
  social_app_name = "<social_app_name>" #Optional
@@ -5080,7 +5083,7 @@ response = NativeSocialApi.get_access_token_by_apple_id_code(code, social_app_na
  
  
 
- ```
+ ```ruby
 
  code = "<code>" #Required
 
@@ -5097,7 +5100,7 @@ response = NativeSocialApi.get_access_token_by_we_chat_code(code)
  
  
 
- ```
+ ```ruby
 
  vk_access_token = "<vk_access_token>" #Required
 
@@ -5114,7 +5117,7 @@ response = NativeSocialApi.get_access_token_by_vkontakte_access_token(vk_access_
  
  
 
- ```
+ ```ruby
 
  google_authcode = "<google_authcode>" #Required
  social_app_name = "<social_app_name>" #Optional
@@ -5146,7 +5149,7 @@ List of APIs in this Section:<br>
  
  
 
- ```
+ ```ruby
 
 
  web_hook_subscribe_model ={ 
@@ -5166,7 +5169,7 @@ response = WebHookApi.web_hook_subscribe(web_hook_subscribe_model)
  
  
 
- ```
+ ```ruby
 
  event = "<event>" #Required
 
@@ -5183,7 +5186,7 @@ response = WebHookApi.get_web_hook_subscribed_u_r_ls(event)
  
  
 
- ```
+ ```ruby
 
 
 response = WebHookApi.webhook_test()
@@ -5199,7 +5202,7 @@ response = WebHookApi.webhook_test()
  
  
 
- ```
+ ```ruby
 
 
  web_hook_subscribe_model ={ 
@@ -5216,15 +5219,22 @@ SOTT is a secure one-time token that can be created using the API key, API secre
 
 
 
-```
+```ruby
+
+#do not pass the time difference if you are passing start_time & end_time.						
 time_difference=10 # (Optional) The time_difference will be used to set the expiration time of SOTT, If you do not pass time_difference then the default expiration time of SOTT is 10 minutes.
 
 api_key="" # (Optional) LoginRadius Api Key.
 
 api_secret="" # (Optional) LoginRadius Api Secret (Only Primary Api Secret is used to generate the SOTT manually).
 
+# You can pass the start and end time interval and the SOTT will be valid for this time duration. 
 
-sott = AuthenticationApi.local_generate_sott(time_difference,api_key,api_secret);
+start_time="2021-01-10 07:10:42"  # Valid Start Date with Date and time
+
+end_time="2023-01-15 07:20:42" # Valid End Date with Date and time
+
+sott = AuthenticationApi.get_sott(time_difference,api_key,api_secret,start_time,end_time);
 print sott
 ```
   
@@ -5256,6 +5266,7 @@ You can get a copy of our demo project at [GitHub](https://github.com/LoginRadiu
 #### Prerequisites
 Follow this guide to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/), and [this](https://guides.rubyonrails.org/) guide to install Rails.
 
+To know your API Key and Secret. Kindly follow the steps in the [Document](https://www.loginradius.com/docs/api/v2/admin-console/platform-security/api-key-and-secret).
 
 SET UP:
 

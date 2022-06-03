@@ -1,6 +1,16 @@
 > **LoginRadius Ruby On Rails SDK Change Log** provides information regarding what has changed, more specifically what changes, improvements and bug fix has been made to the SDK. For more details please refer to the [LoginRadius API Documention](https://docs.loginradius.com/api/v2/sdk-libraries/ruby)
 
 
+
+# Version 11.4.0
+Release on June 3, 2022
+
+## Enhancements
+
+ - We are introducing a new manual Sott generation method `get_sott()` with additional parameter `start_time` & `end_time` , we recomend using this method to generate SOTT manually , the old function `local_generate_sott()` will also exist but it is deprecated and will be removed in a future version of SDK.
+ - Enhancement in README.md file.
+
+
 # Version 11.3.0
 Release on January 28, 2022
 

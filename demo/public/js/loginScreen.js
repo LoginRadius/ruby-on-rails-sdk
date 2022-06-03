@@ -1,7 +1,7 @@
 var options = {
   redirecturl: {
-    afterlogin: "http://localhost:3000",
-    afterreset: "http://localhost:3000",
+    afterlogin: "http://127.0.0.1:3000",
+    afterreset: "http://127.0.0.1:3000",
   },
   socialsquarestyle: false,
   pagesshown: ["login", "signup", "forgotpassword"]
