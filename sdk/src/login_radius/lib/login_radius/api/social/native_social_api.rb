@@ -33,14 +33,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.3
     def get_access_token_by_facebook_access_token(fb__access__token, social_app_name = '')
-      if isNullOrWhiteSpace(fb__access__token)
-        raise LoginRadius::Error.new, getValidationMessage('fb__access__token')
+      if is_null_or_white_space(fb__access__token)
+        raise LoginRadius::Error.new, get_validation_message('fb__access__token')
       end
 
       query_parameters = {}
       query_parameters['fb_Access_Token'] = fb__access__token
       query_parameters['key'] = @api_key
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 
@@ -57,18 +57,18 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.4
     def get_access_token_by_twitter_access_token(tw__access__token, tw__token__secret, social_app_name = '')
-      if isNullOrWhiteSpace(tw__access__token)
-        raise LoginRadius::Error.new, getValidationMessage('tw__access__token')
+      if is_null_or_white_space(tw__access__token)
+        raise LoginRadius::Error.new, get_validation_message('tw__access__token')
       end
-      if isNullOrWhiteSpace(tw__token__secret)
-        raise LoginRadius::Error.new, getValidationMessage('tw__token__secret')
+      if is_null_or_white_space(tw__token__secret)
+        raise LoginRadius::Error.new, get_validation_message('tw__token__secret')
       end
 
       query_parameters = {}
       query_parameters['key'] = @api_key
       query_parameters['tw_Access_Token'] = tw__access__token
       query_parameters['tw_Token_Secret'] = tw__token__secret
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 
@@ -86,20 +86,20 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.5
     def get_access_token_by_google_access_token(google__access__token, client_id = '', refresh_token = '', social_app_name = '')
-      if isNullOrWhiteSpace(google__access__token)
-        raise LoginRadius::Error.new, getValidationMessage('google__access__token')
+      if is_null_or_white_space(google__access__token)
+        raise LoginRadius::Error.new, get_validation_message('google__access__token')
       end
 
       query_parameters = {}
       query_parameters['google_Access_Token'] = google__access__token
       query_parameters['key'] = @api_key
-      unless isNullOrWhiteSpace(client_id)
+      unless is_null_or_white_space(client_id)
         query_parameters['client_id'] = client_id
       end
-      unless isNullOrWhiteSpace(refresh_token)
+      unless is_null_or_white_space(refresh_token)
         query_parameters['refresh_token'] = refresh_token
       end
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 
@@ -114,8 +114,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.6
     def get_access_token_by_google_j_w_t_access_token(id__token)
-      if isNullOrWhiteSpace(id__token)
-        raise LoginRadius::Error.new, getValidationMessage('id__token')
+      if is_null_or_white_space(id__token)
+        raise LoginRadius::Error.new, get_validation_message('id__token')
       end
 
       query_parameters = {}
@@ -134,14 +134,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.7
     def get_access_token_by_linkedin_access_token(ln__access__token, social_app_name = '')
-      if isNullOrWhiteSpace(ln__access__token)
-        raise LoginRadius::Error.new, getValidationMessage('ln__access__token')
+      if is_null_or_white_space(ln__access__token)
+        raise LoginRadius::Error.new, get_validation_message('ln__access__token')
       end
 
       query_parameters = {}
       query_parameters['key'] = @api_key
       query_parameters['ln_Access_Token'] = ln__access__token
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 
@@ -156,8 +156,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.8
     def get_access_token_by_foursquare_access_token(fs__access__token)
-      if isNullOrWhiteSpace(fs__access__token)
-        raise LoginRadius::Error.new, getValidationMessage('fs__access__token')
+      if is_null_or_white_space(fs__access__token)
+        raise LoginRadius::Error.new, get_validation_message('fs__access__token')
       end
 
       query_parameters = {}
@@ -176,14 +176,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.12
     def get_access_token_by_apple_id_code(code, social_app_name = '')
-      if isNullOrWhiteSpace(code)
-        raise LoginRadius::Error.new, getValidationMessage('code')
+      if is_null_or_white_space(code)
+        raise LoginRadius::Error.new, get_validation_message('code')
       end
 
       query_parameters = {}
       query_parameters['code'] = code
       query_parameters['key'] = @api_key
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 
@@ -198,8 +198,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.13
     def get_access_token_by_we_chat_code(code)
-      if isNullOrWhiteSpace(code)
-        raise LoginRadius::Error.new, getValidationMessage('code')
+      if is_null_or_white_space(code)
+        raise LoginRadius::Error.new, get_validation_message('code')
       end
 
       query_parameters = {}
@@ -217,8 +217,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.15
     def get_access_token_by_vkontakte_access_token(vk_access_token)
-      if isNullOrWhiteSpace(vk_access_token)
-        raise LoginRadius::Error.new, getValidationMessage('vk_access_token')
+      if is_null_or_white_space(vk_access_token)
+        raise LoginRadius::Error.new, get_validation_message('vk_access_token')
       end
 
       query_parameters = {}
@@ -237,14 +237,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Token data
     # 20.16
     def get_access_token_by_google_auth_code(google_authcode, social_app_name = '')
-      if isNullOrWhiteSpace(google_authcode)
-        raise LoginRadius::Error.new, getValidationMessage('google_authcode')
+      if is_null_or_white_space(google_authcode)
+        raise LoginRadius::Error.new, get_validation_message('google_authcode')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['google_authcode'] = google_authcode
-      unless isNullOrWhiteSpace(social_app_name)
+      unless is_null_or_white_space(social_app_name)
         query_parameters['socialAppName'] = social_app_name
       end
 

@@ -33,14 +33,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Multi-Factor Authentication Settings data
     # 14.3
     def mfa_re_authenticate(access_token, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -56,11 +56,11 @@ module LoginRadius
     # @return Complete user Multi-Factor Authentication Token data
     # 14.4
     def mfa_re_authenticate_by_otp(access_token, reauth_by_otp_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if reauth_by_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reauth_by_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reauth_by_otp_model')
       end
 
       query_parameters = {}
@@ -79,11 +79,11 @@ module LoginRadius
     # @return Complete user Multi-Factor Authentication Token data
     # 14.5
     def mfa_re_authenticate_by_backup_code(access_token, reauth_by_backup_code_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if reauth_by_backup_code_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reauth_by_backup_code_model')
+        raise LoginRadius::Error.new, get_validation_message('reauth_by_backup_code_model')
       end
 
       query_parameters = {}
@@ -102,11 +102,11 @@ module LoginRadius
     # @return Complete user Multi-Factor Authentication Token data
     # 14.6
     def mfa_re_authenticate_by_google_auth(access_token, reauth_by_google_authenticator_code_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if reauth_by_google_authenticator_code_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reauth_by_google_authenticator_code_model')
+        raise LoginRadius::Error.new, get_validation_message('reauth_by_google_authenticator_code_model')
       end
 
       query_parameters = {}
@@ -126,17 +126,17 @@ module LoginRadius
     # @return Complete user Multi-Factor Authentication Token data
     # 14.7
     def mfa_re_authenticate_by_password(access_token, password_event_based_auth_model_with_lockout, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if password_event_based_auth_model_with_lockout.blank?
-        raise LoginRadius::Error.new, getValidationMessage('password_event_based_auth_model_with_lockout')
+        raise LoginRadius::Error.new, get_validation_message('password_event_based_auth_model_with_lockout')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -153,10 +153,10 @@ module LoginRadius
     # 18.38
     def verify_multi_factor_otp_reauthentication(event_based_multi_factor_token, uid)
       if event_based_multi_factor_token.blank?
-        raise LoginRadius::Error.new, getValidationMessage('event_based_multi_factor_token')
+        raise LoginRadius::Error.new, get_validation_message('event_based_multi_factor_token')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -176,10 +176,10 @@ module LoginRadius
     # 18.39
     def verify_multi_factor_password_reauthentication(event_based_multi_factor_token, uid)
       if event_based_multi_factor_token.blank?
-        raise LoginRadius::Error.new, getValidationMessage('event_based_multi_factor_token')
+        raise LoginRadius::Error.new, get_validation_message('event_based_multi_factor_token')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -199,10 +199,10 @@ module LoginRadius
     # 18.40
     def verify_multi_factor_pin_reauthentication(event_based_multi_factor_token, uid)
       if event_based_multi_factor_token.blank?
-        raise LoginRadius::Error.new, getValidationMessage('event_based_multi_factor_token')
+        raise LoginRadius::Error.new, get_validation_message('event_based_multi_factor_token')
       end
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -222,17 +222,17 @@ module LoginRadius
     # @return Response containing Definition response of MFA reauthentication
     # 42.13
     def verify_pin_authentication(access_token, pin_auth_event_based_auth_model_with_lockout, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if pin_auth_event_based_auth_model_with_lockout.blank?
-        raise LoginRadius::Error.new, getValidationMessage('pin_auth_event_based_auth_model_with_lockout')
+        raise LoginRadius::Error.new, get_validation_message('pin_auth_event_based_auth_model_with_lockout')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -248,11 +248,11 @@ module LoginRadius
     # @return Response containing Definition response of MFA reauthentication
     # 42.14
     def re_auth_validate_email_otp(access_token, reauth_by_email_otp_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if reauth_by_email_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reauth_by_email_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reauth_by_email_otp_model')
       end
 
       query_parameters = {}
@@ -272,18 +272,18 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 42.15
     def re_auth_send_email_otp(access_token, email_id, email_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(email_id)
-        raise LoginRadius::Error.new, getValidationMessage('email_id')
+      if is_null_or_white_space(email_id)
+        raise LoginRadius::Error.new, get_validation_message('email_id')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
       query_parameters['emailId'] = email_id
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -299,11 +299,11 @@ module LoginRadius
     # @return Response containing Definition response of MFA reauthentication
     # 42.16
     def re_auth_by_security_question(access_token, security_question_answer_update_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if security_question_answer_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+        raise LoginRadius::Error.new, get_validation_message('security_question_answer_update_model')
       end
 
       query_parameters = {}

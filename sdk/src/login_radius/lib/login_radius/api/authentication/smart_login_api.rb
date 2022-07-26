@@ -33,14 +33,14 @@ module LoginRadius
     # @return Complete verified response data
     # 8.4.1
     def smart_login_token_verification(verification_token, welcome_email_template = '')
-      if isNullOrWhiteSpace(verification_token)
-        raise LoginRadius::Error.new, getValidationMessage('verification_token')
+      if is_null_or_white_space(verification_token)
+        raise LoginRadius::Error.new, get_validation_message('verification_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['verificationToken'] = verification_token
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 
@@ -59,24 +59,24 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 9.17.1
     def smart_login_by_email(client_guid, email, redirect_url = '', smart_login_email_template = '', welcome_email_template = '')
-      if isNullOrWhiteSpace(client_guid)
-        raise LoginRadius::Error.new, getValidationMessage('client_guid')
+      if is_null_or_white_space(client_guid)
+        raise LoginRadius::Error.new, get_validation_message('client_guid')
       end
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['clientGuid'] = client_guid
       query_parameters['email'] = email
-      unless isNullOrWhiteSpace(redirect_url)
+      unless is_null_or_white_space(redirect_url)
         query_parameters['redirectUrl'] = redirect_url
       end
-      unless isNullOrWhiteSpace(smart_login_email_template)
+      unless is_null_or_white_space(smart_login_email_template)
         query_parameters['smartLoginEmailTemplate'] = smart_login_email_template
       end
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 
@@ -95,24 +95,24 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 9.17.2
     def smart_login_by_user_name(client_guid, username, redirect_url = '', smart_login_email_template = '', welcome_email_template = '')
-      if isNullOrWhiteSpace(client_guid)
-        raise LoginRadius::Error.new, getValidationMessage('client_guid')
+      if is_null_or_white_space(client_guid)
+        raise LoginRadius::Error.new, get_validation_message('client_guid')
       end
-      if isNullOrWhiteSpace(username)
-        raise LoginRadius::Error.new, getValidationMessage('username')
+      if is_null_or_white_space(username)
+        raise LoginRadius::Error.new, get_validation_message('username')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['clientGuid'] = client_guid
       query_parameters['username'] = username
-      unless isNullOrWhiteSpace(redirect_url)
+      unless is_null_or_white_space(redirect_url)
         query_parameters['redirectUrl'] = redirect_url
       end
-      unless isNullOrWhiteSpace(smart_login_email_template)
+      unless is_null_or_white_space(smart_login_email_template)
         query_parameters['smartLoginEmailTemplate'] = smart_login_email_template
       end
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 
@@ -128,14 +128,14 @@ module LoginRadius
     # @return Response containing User Profile Data and access token
     # 9.21.1
     def smart_login_ping(client_guid, fields = '')
-      if isNullOrWhiteSpace(client_guid)
-        raise LoginRadius::Error.new, getValidationMessage('client_guid')
+      if is_null_or_white_space(client_guid)
+        raise LoginRadius::Error.new, get_validation_message('client_guid')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['clientGuid'] = client_guid
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 

@@ -35,8 +35,8 @@ module LoginRadius
     # @return Complete user Registration data
     # 7.1
     def auth_get_registration_data(type, limit = '', parent_id = '', skip = '')
-      if isNullOrWhiteSpace(type)
-        raise LoginRadius::Error.new, getValidationMessage('type')
+      if is_null_or_white_space(type)
+        raise LoginRadius::Error.new, get_validation_message('type')
       end
 
       query_parameters = {}
@@ -44,7 +44,7 @@ module LoginRadius
       unless limit == false
         query_parameters['limit'] = limit
       end
-      unless isNullOrWhiteSpace(parent_id)
+      unless is_null_or_white_space(parent_id)
         query_parameters['parentId'] = parent_id
       end
       unless skip == false
@@ -63,11 +63,11 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 7.2
     def validate_registration_data_code(code, record_id)
-      if isNullOrWhiteSpace(code)
-        raise LoginRadius::Error.new, getValidationMessage('code')
+      if is_null_or_white_space(code)
+        raise LoginRadius::Error.new, get_validation_message('code')
       end
-      if isNullOrWhiteSpace(record_id)
-        raise LoginRadius::Error.new, getValidationMessage('record_id')
+      if is_null_or_white_space(record_id)
+        raise LoginRadius::Error.new, get_validation_message('record_id')
       end
 
       query_parameters = {}
@@ -91,8 +91,8 @@ module LoginRadius
     # @return Complete user Registration data Fields
     # 16.1
     def get_registration_data(type, limit = '', parent_id = '', skip = '')
-      if isNullOrWhiteSpace(type)
-        raise LoginRadius::Error.new, getValidationMessage('type')
+      if is_null_or_white_space(type)
+        raise LoginRadius::Error.new, get_validation_message('type')
       end
 
       query_parameters = {}
@@ -101,7 +101,7 @@ module LoginRadius
       unless limit == false
         query_parameters['limit'] = limit
       end
-      unless isNullOrWhiteSpace(parent_id)
+      unless is_null_or_white_space(parent_id)
         query_parameters['parentId'] = parent_id
       end
       unless skip == false
@@ -120,7 +120,7 @@ module LoginRadius
     # 16.2
     def add_registration_data(registration_data_create_model_list)
       if registration_data_create_model_list.blank?
-        raise LoginRadius::Error.new, getValidationMessage('registration_data_create_model_list')
+        raise LoginRadius::Error.new, get_validation_message('registration_data_create_model_list')
       end
 
       query_parameters = {}
@@ -140,10 +140,10 @@ module LoginRadius
     # 16.3
     def update_registration_data(registration_data_update_model, record_id)
       if registration_data_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('registration_data_update_model')
+        raise LoginRadius::Error.new, get_validation_message('registration_data_update_model')
       end
-      if isNullOrWhiteSpace(record_id)
-        raise LoginRadius::Error.new, getValidationMessage('record_id')
+      if is_null_or_white_space(record_id)
+        raise LoginRadius::Error.new, get_validation_message('record_id')
       end
 
       query_parameters = {}
@@ -161,8 +161,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 16.4
     def delete_registration_data(record_id)
-      if isNullOrWhiteSpace(record_id)
-        raise LoginRadius::Error.new, getValidationMessage('record_id')
+      if is_null_or_white_space(record_id)
+        raise LoginRadius::Error.new, get_validation_message('record_id')
       end
 
       query_parameters = {}
@@ -180,8 +180,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 16.5
     def delete_all_records_by_data_source(type)
-      if isNullOrWhiteSpace(type)
-        raise LoginRadius::Error.new, getValidationMessage('type')
+      if is_null_or_white_space(type)
+        raise LoginRadius::Error.new, get_validation_message('type')
       end
 
       query_parameters = {}

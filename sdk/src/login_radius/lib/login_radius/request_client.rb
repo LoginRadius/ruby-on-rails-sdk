@@ -66,12 +66,12 @@ module LoginRadius
       end
     end
 
-    def isNullOrWhiteSpace(params)
-      return params.blank? ? true : false
+    def is_null_or_white_space(params)
+      params.blank?
     end
 
-    def getValidationMessage(params)
-      return params + " is a required parameter."
+    def get_validation_message(params)
+      "#{params} is a required parameter."
     end
 
     # Sends a GET API request.

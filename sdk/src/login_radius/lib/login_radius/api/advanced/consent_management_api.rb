@@ -32,8 +32,8 @@ module LoginRadius
     # @return Response containing consent logs
     # 18.37
     def get_consent_logs_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -52,11 +52,11 @@ module LoginRadius
     # @return Response containing User Profile Data and access token
     # 43.1
     def submit_consent_by_consent_token(consent_token, consent_submit_model)
-      if isNullOrWhiteSpace(consent_token)
-        raise LoginRadius::Error.new, getValidationMessage('consent_token')
+      if is_null_or_white_space(consent_token)
+        raise LoginRadius::Error.new, get_validation_message('consent_token')
       end
       if consent_submit_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('consent_submit_model')
+        raise LoginRadius::Error.new, get_validation_message('consent_submit_model')
       end
 
       query_parameters = {}
@@ -74,8 +74,8 @@ module LoginRadius
     # @return Response containing consent logs
     # 43.2
     def get_consent_logs(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -94,11 +94,11 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 43.3
     def submit_consent_by_access_token(access_token, consent_submit_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if consent_submit_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('consent_submit_model')
+        raise LoginRadius::Error.new, get_validation_message('consent_submit_model')
       end
 
       query_parameters = {}
@@ -118,11 +118,11 @@ module LoginRadius
     # @return Response containing consent profile
     # 43.4
     def verify_consent_by_access_token(access_token, event, is_custom)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(event)
-        raise LoginRadius::Error.new, getValidationMessage('event')
+      if is_null_or_white_space(event)
+        raise LoginRadius::Error.new, get_validation_message('event')
       end
 
       query_parameters = {}
@@ -143,11 +143,11 @@ module LoginRadius
     # @return Response containing consent profile
     # 43.5
     def update_consent_profile_by_access_token(access_token, consent_update_model)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if consent_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('consent_update_model')
+        raise LoginRadius::Error.new, get_validation_message('consent_update_model')
       end
 
       query_parameters = {}

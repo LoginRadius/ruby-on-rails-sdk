@@ -36,18 +36,18 @@ module LoginRadius
     # 9.2.3
     def login_by_phone(phone_authentication_model, fields = '', login_url = '', sms_template = '')
       if phone_authentication_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('phone_authentication_model')
+        raise LoginRadius::Error.new, get_validation_message('phone_authentication_model')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -63,13 +63,13 @@ module LoginRadius
     # @return Response Containing Validation Data and SMS Data
     # 10.4
     def forgot_password_by_phone_otp(phone, sms_template = '')
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -88,7 +88,7 @@ module LoginRadius
     # 10.5
     def reset_password_by_phone_otp(reset_password_by_otp_model)
       if reset_password_by_otp_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('reset_password_by_otp_model')
+        raise LoginRadius::Error.new, get_validation_message('reset_password_by_otp_model')
       end
 
       query_parameters = {}
@@ -108,20 +108,20 @@ module LoginRadius
     # @return Response containing User Profile Data and access token
     # 11.1.1
     def phone_verification_by_otp(otp, phone, fields = '', sms_template = '')
-      if isNullOrWhiteSpace(otp)
-        raise LoginRadius::Error.new, getValidationMessage('otp')
+      if is_null_or_white_space(otp)
+        raise LoginRadius::Error.new, get_validation_message('otp')
       end
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['otp'] = otp
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -141,18 +141,18 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 11.1.2
     def phone_verification_otp_by_access_token(access_token, otp, sms_template = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(otp)
-        raise LoginRadius::Error.new, getValidationMessage('otp')
+      if is_null_or_white_space(otp)
+        raise LoginRadius::Error.new, get_validation_message('otp')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
       query_parameters['otp'] = otp
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -168,13 +168,13 @@ module LoginRadius
     # @return Response Containing Validation Data and SMS Data
     # 11.2.1
     def phone_resend_verification_otp(phone, sms_template = '')
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -194,17 +194,17 @@ module LoginRadius
     # @return Response Containing Validation Data and SMS Data
     # 11.2.2
     def phone_resend_verification_otp_by_token(access_token, phone, sms_template = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -224,17 +224,17 @@ module LoginRadius
     # @return Response Containing Validation Data and SMS Data
     # 11.5
     def update_phone_number(access_token, phone, sms_template = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -252,8 +252,8 @@ module LoginRadius
     # @return Response containing Definition Complete ExistResponse data
     # 11.6
     def check_phone_number_availability(phone)
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
@@ -271,8 +271,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 11.7
     def remove_phone_id_by_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -297,28 +297,28 @@ module LoginRadius
     # 17.1.2
     def user_registration_by_phone(auth_user_registration_model, sott, fields = '', options = '', sms_template = '', verification_url = '', welcome_email_template = '')
       if auth_user_registration_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('auth_user_registration_model')
+        raise LoginRadius::Error.new, get_validation_message('auth_user_registration_model')
       end
-      if isNullOrWhiteSpace(sott)
-        raise LoginRadius::Error.new, getValidationMessage('sott')
+      if is_null_or_white_space(sott)
+        raise LoginRadius::Error.new, get_validation_message('sott')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['sott'] = sott
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(options)
+      unless is_null_or_white_space(options)
         query_parameters['options'] = options
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
-      unless isNullOrWhiteSpace(welcome_email_template)
+      unless is_null_or_white_space(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
       end
 

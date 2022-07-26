@@ -33,14 +33,14 @@ module LoginRadius
     # @return Response containing Definition of Complete Multi-Factor Authentication Settings data
     # 5.7
     def mfa_configure_by_access_token(access_token, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -57,17 +57,17 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 5.9
     def mfa_update_setting(access_token, multi_factor_auth_model_with_lockout, fields = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if multi_factor_auth_model_with_lockout.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_with_lockout')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_with_lockout')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
 
@@ -85,20 +85,20 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 5.10
     def mfa_update_by_access_token(access_token, multi_factor_auth_model_by_google_authenticator_code, fields = '', sms_template = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if multi_factor_auth_model_by_google_authenticator_code.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_google_authenticator_code')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_by_google_authenticator_code')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
 
@@ -115,17 +115,17 @@ module LoginRadius
     # @return Response containing Definition for Complete SMS data
     # 5.11
     def mfa_update_phone_number_by_token(access_token, phone_no2_f_a, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(phone_no2_f_a)
-        raise LoginRadius::Error.new, getValidationMessage('phone_no2_f_a')
+      if is_null_or_white_space(phone_no2_f_a)
+        raise LoginRadius::Error.new, get_validation_message('phone_no2_f_a')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -144,8 +144,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 5.12.1
     def mfa_reset_google_auth_by_token(access_token, googleauthenticator)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -167,8 +167,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 5.12.2
     def mfa_reset_sms_auth_by_token(access_token, otpauthenticator)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -189,8 +189,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Backup Code data
     # 5.13
     def mfa_backup_code_by_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -208,8 +208,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Backup Code data
     # 5.14
     def mfa_reset_backup_code_by_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -229,18 +229,18 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 5.17
     def mfa_email_otp_by_access_token(access_token, email_id, email_template2_f_a = '')
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
-      if isNullOrWhiteSpace(email_id)
-        raise LoginRadius::Error.new, getValidationMessage('email_id')
+      if is_null_or_white_space(email_id)
+        raise LoginRadius::Error.new, get_validation_message('email_id')
       end
 
       query_parameters = {}
       query_parameters['access_token'] = access_token
       query_parameters['apiKey'] = @api_key
       query_parameters['emailId'] = email_id
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -256,11 +256,11 @@ module LoginRadius
     # @return Response containing Definition for Complete profile data
     # 5.18
     def mfa_validate_email_otp_by_access_token(access_token, multi_factor_auth_model_by_email_otp_with_lockout)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if multi_factor_auth_model_by_email_otp_with_lockout.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_email_otp_with_lockout')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_by_email_otp_with_lockout')
       end
 
       query_parameters = {}
@@ -278,8 +278,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 5.19
     def mfa_reset_email_otp_authenticator_by_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -298,11 +298,11 @@ module LoginRadius
     # @return Response containing Definition of Complete Validation data
     # 5.20
     def mfa_security_question_answer_by_access_token(access_token, security_question_answer_model_by_access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
       if security_question_answer_model_by_access_token.blank?
-        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_model_by_access_token')
+        raise LoginRadius::Error.new, get_validation_message('security_question_answer_model_by_access_token')
       end
 
       query_parameters = {}
@@ -320,8 +320,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 5.21
     def mfa_reset_security_question_authenticator_by_access_token(access_token)
-      if isNullOrWhiteSpace(access_token)
-        raise LoginRadius::Error.new, getValidationMessage('access_token')
+      if is_null_or_white_space(access_token)
+        raise LoginRadius::Error.new, get_validation_message('access_token')
       end
 
       query_parameters = {}
@@ -347,34 +347,34 @@ module LoginRadius
     # @return Complete user UserProfile data
     # 9.8.1
     def mfa_login_by_email(email, password, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
-      if isNullOrWhiteSpace(email)
-        raise LoginRadius::Error.new, getValidationMessage('email')
+      if is_null_or_white_space(email)
+        raise LoginRadius::Error.new, get_validation_message('email')
       end
-      if isNullOrWhiteSpace(password)
-        raise LoginRadius::Error.new, getValidationMessage('password')
+      if is_null_or_white_space(password)
+        raise LoginRadius::Error.new, get_validation_message('password')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -401,34 +401,34 @@ module LoginRadius
     # @return Complete user UserProfile data
     # 9.8.2
     def mfa_login_by_user_name(password, username, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
-      if isNullOrWhiteSpace(password)
-        raise LoginRadius::Error.new, getValidationMessage('password')
+      if is_null_or_white_space(password)
+        raise LoginRadius::Error.new, get_validation_message('password')
       end
-      if isNullOrWhiteSpace(username)
-        raise LoginRadius::Error.new, getValidationMessage('username')
+      if is_null_or_white_space(username)
+        raise LoginRadius::Error.new, get_validation_message('username')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -455,34 +455,34 @@ module LoginRadius
     # @return Complete user UserProfile data
     # 9.8.3
     def mfa_login_by_phone(password, phone, email_template = '', fields = '', login_url = '', sms_template = '', sms_template2_f_a = '', verification_url = '', email_template2_f_a = '')
-      if isNullOrWhiteSpace(password)
-        raise LoginRadius::Error.new, getValidationMessage('password')
+      if is_null_or_white_space(password)
+        raise LoginRadius::Error.new, get_validation_message('password')
       end
-      if isNullOrWhiteSpace(phone)
-        raise LoginRadius::Error.new, getValidationMessage('phone')
+      if is_null_or_white_space(phone)
+        raise LoginRadius::Error.new, get_validation_message('phone')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
-      unless isNullOrWhiteSpace(email_template)
+      unless is_null_or_white_space(email_template)
         query_parameters['emailTemplate'] = email_template
       end
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(login_url)
+      unless is_null_or_white_space(login_url)
         query_parameters['loginUrl'] = login_url
       end
-      unless isNullOrWhiteSpace(sms_template)
+      unless is_null_or_white_space(sms_template)
         query_parameters['smsTemplate'] = sms_template
       end
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
-      unless isNullOrWhiteSpace(verification_url)
+      unless is_null_or_white_space(verification_url)
         query_parameters['verificationUrl'] = verification_url
       end
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -509,31 +509,31 @@ module LoginRadius
     # 9.12
     def mfa_validate_otp_by_phone(multi_factor_auth_model_with_lockout, second_factor_authentication_token, fields = '', sms_template2_f_a = '' ,rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if multi_factor_auth_model_with_lockout.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_with_lockout')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_with_lockout')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
@@ -554,29 +554,29 @@ module LoginRadius
     # @return Complete user UserProfile data
     # 9.13
     def mfa_validate_google_auth_code(google_authenticator_code, second_factor_authentication_token, fields = '', rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
-      if isNullOrWhiteSpace(google_authenticator_code)
-        raise LoginRadius::Error.new, getValidationMessage('google_authenticator_code')
+      if is_null_or_white_space(google_authenticator_code)
+        raise LoginRadius::Error.new, get_validation_message('google_authenticator_code')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
@@ -601,28 +601,28 @@ module LoginRadius
     # 9.14
     def mfa_validate_backup_code(multi_factor_auth_model_by_backup_code, second_factor_authentication_token, fields = '', rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if multi_factor_auth_model_by_backup_code.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_backup_code')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_by_backup_code')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(fields)
+      unless is_null_or_white_space(fields)
         query_parameters['fields'] = fields
       end
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
@@ -639,17 +639,17 @@ module LoginRadius
     # @return Response containing Definition for Complete SMS data
     # 9.16
     def mfa_update_phone_number(phone_no2_f_a, second_factor_authentication_token, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(phone_no2_f_a)
-        raise LoginRadius::Error.new, getValidationMessage('phone_no2_f_a')
+      if is_null_or_white_space(phone_no2_f_a)
+        raise LoginRadius::Error.new, get_validation_message('phone_no2_f_a')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -668,14 +668,14 @@ module LoginRadius
     # @return Response containing Definition for Complete SMS data
     # 9.17
     def mfa_resend_otp(second_factor_authentication_token, sms_template2_f_a = '')
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(sms_template2_f_a)
+      unless is_null_or_white_space(sms_template2_f_a)
         query_parameters['smsTemplate2FA'] = sms_template2_f_a
       end
 
@@ -693,16 +693,16 @@ module LoginRadius
     # 9.18
     def mfa_email_otp(email_id_model, second_factor_authentication_token, email_template2_f_a = '')
       if email_id_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('email_id_model')
+        raise LoginRadius::Error.new, get_validation_message('email_id_model')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(email_template2_f_a)
+      unless is_null_or_white_space(email_template2_f_a)
         query_parameters['emailTemplate2FA'] = email_template2_f_a
       end
 
@@ -723,25 +723,25 @@ module LoginRadius
     # 9.25
     def mfa_validate_email_otp(multi_factor_auth_model_by_email_otp, second_factor_authentication_token, rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if multi_factor_auth_model_by_email_otp.blank?
-        raise LoginRadius::Error.new, getValidationMessage('multi_factor_auth_model_by_email_otp')
+        raise LoginRadius::Error.new, get_validation_message('multi_factor_auth_model_by_email_otp')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
@@ -758,10 +758,10 @@ module LoginRadius
     # 9.26
     def mfa_security_question_answer(security_question_answer_update_model, second_factor_authentication_token)
       if security_question_answer_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+        raise LoginRadius::Error.new, get_validation_message('security_question_answer_update_model')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
@@ -785,25 +785,25 @@ module LoginRadius
     # 9.27
     def mfa_security_question_answer_verification(security_question_answer_update_model, second_factor_authentication_token, rba_browser_email_template = '', rba_city_email_template = '', rba_country_email_template = '', rba_ip_email_template = '')
       if security_question_answer_update_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('security_question_answer_update_model')
+        raise LoginRadius::Error.new, get_validation_message('security_question_answer_update_model')
       end
-      if isNullOrWhiteSpace(second_factor_authentication_token)
-        raise LoginRadius::Error.new, getValidationMessage('second_factor_authentication_token')
+      if is_null_or_white_space(second_factor_authentication_token)
+        raise LoginRadius::Error.new, get_validation_message('second_factor_authentication_token')
       end
 
       query_parameters = {}
       query_parameters['apiKey'] = @api_key
       query_parameters['secondFactorAuthenticationToken'] = second_factor_authentication_token
-      unless isNullOrWhiteSpace(rba_browser_email_template)
+      unless is_null_or_white_space(rba_browser_email_template)
         query_parameters['rbaBrowserEmailTemplate'] = rba_browser_email_template
       end
-      unless isNullOrWhiteSpace(rba_city_email_template)
+      unless is_null_or_white_space(rba_city_email_template)
         query_parameters['rbaCityEmailTemplate'] = rba_city_email_template
       end
-      unless isNullOrWhiteSpace(rba_country_email_template)
+      unless is_null_or_white_space(rba_country_email_template)
         query_parameters['rbaCountryEmailTemplate'] = rba_country_email_template
       end
-      unless isNullOrWhiteSpace(rba_ip_email_template)
+      unless is_null_or_white_space(rba_ip_email_template)
         query_parameters['rbaIpEmailTemplate'] = rba_ip_email_template
       end
 
@@ -819,8 +819,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.21.1
     def mfa_reset_sms_authenticator_by_uid(otpauthenticator, uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -843,8 +843,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.21.2
     def mfa_reset_google_authenticator_by_uid(googleauthenticator, uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -866,8 +866,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Backup Code data
     # 18.25
     def mfa_backup_code_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -886,8 +886,8 @@ module LoginRadius
     # @return Response containing Definition of Complete Backup Code data
     # 18.26
     def mfa_reset_backup_code_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -906,8 +906,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.42
     def mfa_reset_email_otp_authenticator_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
@@ -926,8 +926,8 @@ module LoginRadius
     # @return Response containing Definition of Delete Request
     # 18.43
     def mfa_reset_security_question_authenticator_by_uid(uid)
-      if isNullOrWhiteSpace(uid)
-        raise LoginRadius::Error.new, getValidationMessage('uid')
+      if is_null_or_white_space(uid)
+        raise LoginRadius::Error.new, get_validation_message('uid')
       end
 
       query_parameters = {}
