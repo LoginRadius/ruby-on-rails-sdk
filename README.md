@@ -35,7 +35,7 @@ Or
 
 
 ````shell
- gem 'login_radius', '~> 11.4.0'
+ gem 'login_radius', '~> 11.5.0'
 ````
 
 
@@ -94,7 +94,6 @@ require 'login_radius'
 ::ConfigurationApi = LoginRadius::ConfigurationApi.new
 ::ConsentManagementApi = LoginRadius::ConsentManagementApi.new
 ::CustomObjectApi = LoginRadius::CustomObjectApi.new
-::CustomRegistrationDataApi = LoginRadius::CustomRegistrationDataApi.new
 ::MultiFactorAuthenticationApi = LoginRadius::MultiFactorAuthenticationApi.new
 ::ReAuthenticationApi = LoginRadius::ReAuthenticationApi.new
 ::WebHookApi = LoginRadius::WebHookApi.new
@@ -1412,9 +1411,6 @@ response = AccountApi.account_delete_by_email(email)
 
 List of APIs in this Section:<br>
 
-* POST : [Post Message API](#PostMessage-post-)<br>
-* POST : [Status Posting ](#StatusPosting-post-)<br>
-* POST : [Trackable Status Posting](#TrackableStatusPosting-post-)<br>
 * GET : [Access Token](#ExchangeAccessToken-get-)<br>
 * GET : [Refresh Token](#RefreshAccessToken-get-)<br>
 * GET : [Token Validate](#ValidateAccessToken-get-)<br>
@@ -1422,98 +1418,6 @@ List of APIs in this Section:<br>
 * GET : [Get Active Session Details](#GetActiveSession-get-)<br>
 * GET : [Get Active Session By Account Id](#GetActiveSessionByAccountID-get-)<br>
 * GET : [Get Active Session By Profile Id](#GetActiveSessionByProfileID-get-)<br>
-* GET : [Album](#GetAlbums-get-)<br>
-* GET : [Get Albums with cursor](#GetAlbumsWithCursor-get-)<br>
-* GET : [Audio](#GetAudios-get-)<br>
-* GET : [Get Audio With Cursor](#GetAudiosWithCursor-get-)<br>
-* GET : [Check In](#GetCheckIns-get-)<br>
-* GET : [Get CheckIns With Cursor](#GetCheckInsWithCursor-get-)<br>
-* GET : [Contact](#GetContacts-get-)<br>
-* GET : [Event](#GetEvents-get-)<br>
-* GET : [Get Events With Cursor](#GetEventsWithCursor-get-)<br>
-* GET : [Following](#GetFollowings-get-)<br>
-* GET : [Get Followings With Cursor](#GetFollowingsWithCursor-get-)<br>
-* GET : [Group](#GetGroups-get-)<br>
-* GET : [Get Groups With Cursor](#GetGroupsWithCursor-get-)<br>
-* GET : [Like](#GetLikes-get-)<br>
-* GET : [Get Likes With Cursor](#GetLikesWithCursor-get-)<br>
-* GET : [Mention](#GetMentions-get-)<br>
-* GET : [Page](#GetPage-get-)<br>
-* GET : [Photo](#GetPhotos-get-)<br>
-* GET : [Get Post](#GetPosts-get-)<br>
-* GET : [Get Trackable Status Stats](#GetTrackableStatusStats-get-)<br>
-* GET : [Trackable Status Fetching](#TrackableStatusFetching-get-)<br>
-* GET : [User Profile](#GetSocialUserProfile-get-)<br>
-* GET : [Refresh User Profile](#GetRefreshedSocialUserProfile-get-)<br>
-* GET : [Video](#GetVideos-get-)<br>
-
-
-
-<h6 id="PostMessage-post-"> Post Message API (POST)</h6>
- Post Message API is used to post messages to the user's contacts.<br><br><b>Supported Providers:</b> Twitter, LinkedIn <br><br>The Message API is used to post messages to the user?s contacts. This is one of the APIs that makes up the LoginRadius Friend Invite System. After using the Contact API, you can send messages to the retrieved contacts. This API requires setting permissions in your LoginRadius Dashboard.<br><br>GET & POST Message API work the same way except the API method is different  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/post-message-api)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- message = "<message>" #Required
- subject = "<subject>" #Required
- to = "<to>" #Required
-
-response = SocialApi.post_message(access_token, message, subject, to)
-
- ```
- 
-  
-  
- 
-<h6 id="StatusPosting-post-"> Status Posting  (POST)</h6>
- The Status API is used to update the status on the user's wall.<br><br><b>Supported Providers:</b>  Facebook, Twitter, LinkedIn  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/status-posting/)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- caption = "<caption>" #Required
- description = "<description>" #Required
- imageurl = "<imageurl>" #Required
- status = "<status>" #Required
- title = "<title>" #Required
- url = "<url>" #Required
- shorturl = "<shorturl>" #Optional
-
-response = SocialApi.status_posting(access_token, caption, description, imageurl, status, title, url, shorturl)
-
- ```
- 
-  
-  
- 
-<h6 id="TrackableStatusPosting-post-"> Trackable Status Posting (POST)</h6>
- The Trackable status API works very similar to the Status API but it returns a Post id that you can use to track the stats(shares, likes, comments) for a specific share/post/status update. This API requires setting permissions in your LoginRadius Dashboard.<br><br> The Trackable Status API is used to update the status on the user's wall and return an Post ID value. It is commonly referred to as Permission based sharing or Push notifications.<br><br> POST Input Parameter Format: application/x-www-form-urlencoded  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/trackable-status-posting/)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
- status_model ={ 
-"caption" => "<caption>",
-"description" => "<description>",
-"imageurl" => "<imageurl>",
-"status" => "<status>",
-"title" => "<title>",
-"url" => "<url>"}  #Required
-
-response = SocialApi.trackable_status_posting(access_token, status_model)
-
- ```
  
   
   
@@ -1633,433 +1537,6 @@ response = SocialApi.get_active_session_by_account_id(account_id)
  profile_id = "<profile_id>" #Required
 
 response = SocialApi.get_active_session_by_profile_id(profile_id)
-
- ```
- 
-  
-  
- 
-<h6 id="GetAlbums-get-"> Album (GET)</h6>
- <b>Supported Providers:</b> Facebook, Google, Live, Vkontakte.<br><br> This API returns the photo albums associated with the passed in access tokens Social Profile.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/album/)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_albums(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetAlbumsWithCursor-get-"> Get Albums with cursor (GET)</h6>
- <b>Supported Providers:</b> Facebook, Google, Live, Vkontakte.<br><br> This API returns the photo albums associated with the passed in access tokens Social Profile.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/album/)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_albums_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetAudios-get-"> Audio (GET)</h6>
- The Audio API is used to get audio files data from the user's social account.<br><br><b>Supported Providers:</b> Live, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/audio)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_audios(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetAudiosWithCursor-get-"> Get Audio With Cursor (GET)</h6>
- The Audio API is used to get audio files data from the user's social account.<br><br><b>Supported Providers:</b> Live, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/audio)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_audios_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetCheckIns-get-"> Check In (GET)</h6>
- The Check In API is used to get check Ins data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Foursquare, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/check-in)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_check_ins(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetCheckInsWithCursor-get-"> Get CheckIns With Cursor (GET)</h6>
- The Check In API is used to get check Ins data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Foursquare, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/check-in)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_check_ins_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetContacts-get-"> Contact (GET)</h6>
- The Contact API is used to get contacts/friends/connections data from the user's social account.This is one of the APIs that makes up the LoginRadius Friend Invite System. The data will normalized into LoginRadius' standard data format. This API requires setting permissions in your LoginRadius Dashboard. <br><br><b>Note:</b> Facebook restricts access to the list of friends that is returned. When using the Contacts API with Facebook you will only receive friends that have accepted some permissions with your app. <br><br><b>Supported Providers:</b> Facebook, Foursquare, Google, LinkedIn, Live, Twitter, Vkontakte, Yahoo  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/contact)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Optional
-
-response = SocialApi.get_contacts(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetEvents-get-"> Event (GET)</h6>
- The Event API is used to get the event data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Live  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/event)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_events(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetEventsWithCursor-get-"> Get Events With Cursor (GET)</h6>
- The Event API is used to get the event data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Live  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/event)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_events_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetFollowings-get-"> Following (GET)</h6>
- Get the following user list from the user's social account.<br><br><b>Supported Providers:</b> Twitter  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/following)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_followings(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetFollowingsWithCursor-get-"> Get Followings With Cursor (GET)</h6>
- Get the following user list from the user's social account.<br><br><b>Supported Providers:</b> Twitter  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/following)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_followings_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetGroups-get-"> Group (GET)</h6>
- The Group API is used to get group data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/group)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_groups(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetGroupsWithCursor-get-"> Get Groups With Cursor (GET)</h6>
- The Group API is used to get group data from the user's social account.<br><br><b>Supported Providers:</b> Facebook, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/group)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_groups_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetLikes-get-"> Like (GET)</h6>
- The Like API is used to get likes data from the user's social account.<br><br><b>Supported Providers:</b> Facebook  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/like)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_likes(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetLikesWithCursor-get-"> Get Likes With Cursor (GET)</h6>
- The Like API is used to get likes data from the user's social account.<br><br><b>Supported Providers:</b> Facebook  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/like)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_likes_with_cursor(access_token, next_cursor)
-
- ```
- 
-  
-  
- 
-<h6 id="GetMentions-get-"> Mention (GET)</h6>
- The Mention API is used to get mentions data from the user's social account.<br><br><b>Supported Providers:</b> Twitter  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/mention)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_mentions(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetPage-get-"> Page (GET)</h6>
- The Page API is used to get the page data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook, LinkedIn  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/page)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- page_name = "<page_name>" #Required
-
-response = SocialApi.get_page(access_token, page_name)
-
- ```
- 
-  
-  
- 
-<h6 id="GetPhotos-get-"> Photo (GET)</h6>
- The Photo API is used to get photo data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook, Foursquare, Google, Live, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/photo)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- album_id = "<album_id>" #Required
-
-response = SocialApi.get_photos(access_token, album_id)
-
- ```
- 
-  
-  
- 
-<h6 id="GetPosts-get-"> Get Post (GET)</h6>
- The Post API is used to get post message data from the user's social account.<br><br><b>Supported Providers:</b>  Facebook  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/post)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
-
-response = SocialApi.get_posts(access_token)
-
- ```
- 
-  
-  
- 
-<h6 id="GetTrackableStatusStats-get-"> Get Trackable Status Stats (GET)</h6>
- The Trackable status API works very similar to the Status API but it returns a Post id that you can use to track the stats(shares, likes, comments) for a specific share/post/status update. This API requires setting permissions in your LoginRadius Dashboard.<br><br> The Trackable Status API is used to update the status on the user's wall and return an Post ID value. It is commonly referred to as Permission based sharing or Push notifications.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/get-trackable-status-stats/)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- caption = "<caption>" #Required
- description = "<description>" #Required
- imageurl = "<imageurl>" #Required
- status = "<status>" #Required
- title = "<title>" #Required
- url = "<url>" #Required
-
-response = SocialApi.get_trackable_status_stats(access_token, caption, description, imageurl, status, title, url)
-
- ```
- 
-  
-  
- 
-<h6 id="TrackableStatusFetching-get-"> Trackable Status Fetching (GET)</h6>
- The Trackable status API works very similar to the Status API but it returns a Post id that you can use to track the stats(shares, likes, comments) for a specific share/post/status update. This API requires setting permissions in your LoginRadius Dashboard.<br><br> This API is used to retrieve a tracked post based on the passed in post ID value. This API requires setting permissions in your LoginRadius Dashboard.<br><br> <b>Note:</b> To utilize this API you need to find the ID for the post you want to track, which might require using Trackable Status Posting API first.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/trackable-status-fetching/)
-
- 
- 
-
- ```ruby
-
- post_id = "<post_id>" #Required
-
-response = SocialApi.trackable_status_fetching(post_id)
-
- ```
- 
-  
-  
- 
-<h6 id="GetSocialUserProfile-get-"> User Profile (GET)</h6>
- The User Profile API is used to get social profile data from the user's social account after authentication.<br><br><b>Supported Providers:</b>  All  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/user-profile)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- fields = nil #Optional
-
-response = SocialApi.get_social_user_profile(access_token, fields)
-
- ```
- 
-  
-  
- 
-<h6 id="GetRefreshedSocialUserProfile-get-"> Refresh User Profile (GET)</h6>
- The User Profile API is used to get the latest updated social profile data from the user's social account after authentication. The social profile will be retrieved via oAuth and OpenID protocols. The data is normalized into LoginRadius' standard data format. This API should be called using the access token retrieved from the refresh access token API.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/refresh-token/refresh-user-profile)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- fields = nil #Optional
-
-response = SocialApi.get_refreshed_social_user_profile(access_token, fields)
-
- ```
- 
-  
-  
- 
-<h6 id="GetVideos-get-"> Video (GET)</h6>
- The Video API is used to get video files data from the user's social account.<br><br><b>Supported Providers:</b>   Facebook, Google, Live, Vkontakte  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/advanced-social-api/video)
-
- 
- 
-
- ```ruby
-
- access_token = "<access_token>" #Required
- next_cursor = "<next_cursor>" #Required
-
-response = SocialApi.get_videos(access_token, next_cursor)
 
  ```
  
@@ -2469,19 +1946,27 @@ response = PhoneAuthenticationApi.phone_resend_verification_otp_by_token(access_
  ```ruby
 
 
- auth_user_registration_model ={ 
+ auth_user_registration_model ={
+"Email"=> [
+        {
+          "Type": "<type>",
+          "Value": "<value>"
+        }
+],
 "firstName" => "<firstName>",
 "lastName" => "<lastName>",
 "password" => "<password>",
-"phoneId" => "<phoneId>"}  #Required
+"phoneId" => "<phoneId>"
+}  #Required
  sott = "<sott>" #Required
  fields = nil #Optional
  options = "<options>" #Optional
  sms_template = "<sms_template>" #Optional
  verification_url = "<verification_url>" #Optional
  welcome_email_template = "<welcome_email_template>" #Optional
+ email_template = "<email_template>" #Optional
 
-response = PhoneAuthenticationApi.user_registration_by_phone(auth_user_registration_model, sott, fields, options, sms_template, verification_url, welcome_email_template)
+response = PhoneAuthenticationApi.user_registration_by_phone(auth_user_registration_model, sott, fields, options, sms_template, verification_url, welcome_email_template, email_template)
 
  ```
  
@@ -4079,10 +3564,7 @@ response = OneTouchLoginApi.one_touch_login_by_email(one_touch_login_by_email_mo
 
  ```
  
-  
-  
- 
-<h6 id="OneTouchLoginByPhone-post-"> One Touch Login by Phone (POST)</h6>
+ <h6 id="OneTouchLoginByPhone-post-"> One Touch Login by Phone (POST)</h6>
  This API is used to send one time password to a given phone number for a frictionless login/registration.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/one-touch-login/one-touch-login-by-phone-captcha/)
 
  
@@ -4099,7 +3581,6 @@ response = OneTouchLoginApi.one_touch_login_by_email(one_touch_login_by_email_mo
 response = OneTouchLoginApi.one_touch_login_by_phone(one_touch_login_by_phone_model, sms_template)
 
  ```
- 
   
   
  
@@ -4619,167 +4100,6 @@ response = RoleApi.remove_role_permissions(permissions_model, role)
  
   
   
- 
- 
-
-### CustomRegistrationData API
-
-
-List of APIs in this Section:<br>
-
-* PUT : [Update Registration Data](#UpdateRegistrationData-put-)<br>
-* POST : [Validate secret code](#ValidateRegistrationDataCode-post-)<br>
-* POST : [Add Registration Data](#AddRegistrationData-post-)<br>
-* GET : [Auth Get Registration Data Server](#AuthGetRegistrationData-get-)<br>
-* GET : [Get Registration Data](#GetRegistrationData-get-)<br>
-* DELETE : [Delete Registration Data](#DeleteRegistrationData-delete-)<br>
-* DELETE : [Delete All Records by Datasource](#DeleteAllRecordsByDataSource-delete-)<br>
-
-
-
-<h6 id="UpdateRegistrationData-put-"> Update Registration Data (PUT)</h6>
- This API allows you to update a dropdown item  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/update-registration-data)
-
- 
- 
-
- ```ruby
-
-
- registration_data_update_model ={ 
-"isActive" => true,
-"key" => "<key>",
-"type" => "<type>",
-"value" => "<value>"}  #Required
- record_id = "<record_id>" #Required
-
-response = CustomRegistrationDataApi.update_registration_data(registration_data_update_model, record_id)
-
- ```
- 
-  
-  
- 
-<h6 id="ValidateRegistrationDataCode-post-"> Validate secret code (POST)</h6>
- This API allows you to validate code for a particular dropdown member.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/validate-code)
-
- 
- 
-
- ```ruby
-
- code = "<code>" #Required
- record_id = "<record_id>" #Required
-
-response = CustomRegistrationDataApi.validate_registration_data_code(code, record_id)
-
- ```
- 
-  
-  
- 
-<h6 id="AddRegistrationData-post-"> Add Registration Data (POST)</h6>
- This API allows you to fill data into a dropdown list which you have created for user Registration. For more details on how to use this API please see our Custom Registration Data Overview  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/add-registration-data)
-
- 
- 
-
- ```ruby
-
-
- registration_data_create_model_list ={ 
-"data" => [   { 
- "code" => "<code>"  ,
-"isActive" => true ,
- "key" => "<key>"  ,
- "parentId" => "<parentId>"  ,
- "type" => "<type>"  ,
- "value" => "<value>"   
-}  ] }  #Required
-
-response = CustomRegistrationDataApi.add_registration_data(registration_data_create_model_list)
-
- ```
- 
-  
-  
- 
-<h6 id="AuthGetRegistrationData-get-"> Auth Get Registration Data Server (GET)</h6>
- This API is used to retrieve dropdown data.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/auth-get-registration-data)
-
- 
- 
-
- ```ruby
-
- type = "<type>" #Required
- limit = 0 #Optional
- parent_id = "<parent_id>" #Optional
- skip = 0 #Optional
-
-response = CustomRegistrationDataApi.auth_get_registration_data(type, limit, parent_id, skip)
-
- ```
- 
-  
-  
- 
-<h6 id="GetRegistrationData-get-"> Get Registration Data (GET)</h6>
- This API is used to retrieve dropdown data.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/get-registration-data)
-
- 
- 
-
- ```ruby
-
- type = "<type>" #Required
- limit = 0 #Optional
- parent_id = "<parent_id>" #Optional
- skip = 0 #Optional
-
-response = CustomRegistrationDataApi.get_registration_data(type, limit, parent_id, skip)
-
- ```
- 
-  
-  
- 
-<h6 id="DeleteRegistrationData-delete-"> Delete Registration Data (DELETE)</h6>
- This API allows you to delete an item from a dropdown list.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/delete-registration-data)
-
- 
- 
-
- ```ruby
-
- record_id = "<record_id>" #Required
-
-response = CustomRegistrationDataApi.delete_registration_data(record_id)
-
- ```
- 
-  
-  
- 
-<h6 id="DeleteAllRecordsByDataSource-delete-"> Delete All Records by Datasource (DELETE)</h6>
- This API allows you to delete all records contained in a datasource.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/custom-registration-data/delete-all-records-by-datasource)
-
- 
- 
-
- ```ruby
-
- type = "<type>" #Required
-
-response = CustomRegistrationDataApi.delete_all_records_by_data_source(type)
-
- ```
- 
-  
-  
- 
- 
-
 ### RiskBasedAuthentication API
 
 
@@ -4945,7 +4265,6 @@ List of APIs in this Section:<br>
 * GET : [Get Access Token By Foursquare Access Token](#GetAccessTokenByFoursquareAccessToken-get-)<br>
 * GET : [Access Token via Apple Id Code](#GetAccessTokenByAppleIdCode-get-)<br>
 * GET : [Access Token via WeChat Code](#GetAccessTokenByWeChatCode-get-)<br>
-* GET : [Access Token via Vkontakte Token](#GetAccessTokenByVkontakteAccessToken-get-)<br>
 * GET : [Access Token via Google AuthCode](#GetAccessTokenByGoogleAuthCode-get-)<br>
 
 
@@ -5088,23 +4407,6 @@ response = NativeSocialApi.get_access_token_by_apple_id_code(code, social_app_na
  code = "<code>" #Required
 
 response = NativeSocialApi.get_access_token_by_we_chat_code(code)
-
- ```
- 
-  
-  
- 
-<h6 id="GetAccessTokenByVkontakteAccessToken-get-"> Access Token via Vkontakte Token (GET)</h6>
- The API is used to get LoginRadius access token by sending Vkontakte's access token. It will be valid for the specific duration of time specified in the response.  [More Info](https://www.loginradius.com/docs/api/v2/customer-identity-api/social-login/native-social-login-api/access-token-via-vkontakte-token)
-
- 
- 
-
- ```ruby
-
- vk_access_token = "<vk_access_token>" #Required
-
-response = NativeSocialApi.get_access_token_by_vkontakte_access_token(vk_access_token)
 
  ```
  

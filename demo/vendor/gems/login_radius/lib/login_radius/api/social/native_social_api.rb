@@ -210,25 +210,6 @@ module LoginRadius
       get_request(resource_path, query_parameters, {})
     end
 
-    # The API is used to get LoginRadius access token by sending Vkontakte's access token. It will be valid for the specific duration of time specified in the response.
-    #
-    # @param vk_access_token - Vkontakte Access Token
-    #
-    # @return Response containing Definition of Complete Token data
-    # 20.15
-    def get_access_token_by_vkontakte_access_token(vk_access_token)
-      if isNullOrWhiteSpace(vk_access_token)
-        raise LoginRadius::Error.new, getValidationMessage('vk_access_token')
-      end
-
-      query_parameters = {}
-      query_parameters['key'] = @api_key
-      query_parameters['vk_access_token'] = vk_access_token
-
-      resource_path = 'api/v2/access_token/vkontakte'
-      get_request(resource_path, query_parameters, {})
-    end
-
     # The API is used to get LoginRadius access token by sending Google's AuthCode. It will be valid for the specific duration of time specified in the response.
     #
     # @param google_authcode - Google AuthCode

@@ -2,8 +2,8 @@
 
 Install the SDK by adding LoginRadius to your application's `Gemfile`.
 
-```
-gem 'login_radius', '~> 11.4.0'
+```shell
+gem 'login_radius', '~> 11.5.0'
 ```
 
 Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https://github.com/LoginRadius/ruby-on-rails-gem/tree/master).
@@ -12,7 +12,7 @@ Then, run `$ bundle`. A copy of the SDK can also be found on our [Github](https:
 
 1)Before using any of the functions available in the library, its corresponding module must first define the global constant in `config/application.yml`:
 
-```
+```ruby
 SITE_NAME: "<site name>"
 API_KEY: "<api-key>"
 API_SECRET: "<api-secret>"
@@ -26,7 +26,7 @@ Create `login_radius.rb` in `/config/initializers`:
 
 
 
-```
+```ruby
 require 'login_radius'
 
 ::AccountApi = LoginRadius::AccountApi.new
@@ -36,7 +36,6 @@ require 'login_radius'
 ::ConfigurationApi = LoginRadius::ConfigurationApi.new
 ::ConsentManagementApi = LoginRadius::ConsentManagementApi.new
 ::CustomObjectApi = LoginRadius::CustomObjectApi.new
-::CustomRegistrationDataApi = LoginRadius::CustomRegistrationDataApi.new
 ::MultiFactorAuthenticationApi = LoginRadius::MultiFactorAuthenticationApi.new
 ::ReAuthenticationApi = LoginRadius::ReAuthenticationApi.new
 ::WebHookApi = LoginRadius::WebHookApi.new

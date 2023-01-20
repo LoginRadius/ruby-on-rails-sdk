@@ -292,10 +292,11 @@ module LoginRadius
     # @param sms_template - SMS Template name
     # @param verification_url - Email verification url
     # @param welcome_email_template - Name of the welcome email template
+    # @param email_template - Name of the  email template
     #
     # @return Response containing Definition of Complete Validation, UserProfile data and Access Token
     # 17.1.2
-    def user_registration_by_phone(auth_user_registration_model, sott, fields = '', options = '', sms_template = '', verification_url = '', welcome_email_template = '')
+    def user_registration_by_phone(auth_user_registration_model, sott, fields = '', options = '', sms_template = '', verification_url = '', welcome_email_template = '', email_template = '')
       if auth_user_registration_model.blank?
         raise LoginRadius::Error.new, getValidationMessage('auth_user_registration_model')
       end
@@ -320,6 +321,9 @@ module LoginRadius
       end
       unless isNullOrWhiteSpace(welcome_email_template)
         query_parameters['welcomeEmailTemplate'] = welcome_email_template
+      end
+      unless isNullOrWhiteSpace(email_template)
+        query_parameters['emailTemplate'] = email_template
       end
 
       resource_path = 'identity/v2/auth/register'

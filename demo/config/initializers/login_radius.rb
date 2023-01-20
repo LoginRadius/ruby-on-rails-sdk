@@ -7,7 +7,6 @@ require "login_radius"
 ::ConfigurationApi = LoginRadius::ConfigurationApi.new
 ::ConsentManagementApi = LoginRadius::ConsentManagementApi.new
 ::CustomObjectApi = LoginRadius::CustomObjectApi.new
-::CustomRegistrationDataApi = LoginRadius::CustomRegistrationDataApi.new
 ::MultiFactorAuthenticationApi = LoginRadius::MultiFactorAuthenticationApi.new
 ::ReAuthenticationApi = LoginRadius::ReAuthenticationApi.new
 ::WebHookApi = LoginRadius::WebHookApi.new
