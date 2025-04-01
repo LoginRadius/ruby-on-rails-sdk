@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Created by LoginRadius Development Team
-# Copyright 2019 LoginRadius Inc. All rights reserved.
+# Copyright 2025 LoginRadius Inc. All rights reserved.
 require_relative '../../request_client'
 
 module LoginRadius
@@ -25,33 +25,32 @@ module LoginRadius
         unless @api_secret != '' && @api_secret != nil
     end
 
-    # This API is used to fatch all the subscribed URLs, for particular event
+    # This API is used to get details of a webhook subscription by Id
     #
-    # @param event - Allowed events: Login, Register, UpdateProfile, ResetPassword, ChangePassword, emailVerification, AddEmail, RemoveEmail, BlockAccount, DeleteAccount, SetUsername, AssignRoles, UnassignRoles, SetPassword, LinkAccount, UnlinkAccount, UpdatePhoneId, VerifyPhoneNumber, CreateCustomObject, UpdateCustomobject, DeleteCustomObject
+    # @param hook_id - Unique ID of the webhook
     #
-    # @return Response Containing List of Webhhook Data
+    # @return Response containing Definition for Complete WebHook data
     # 40.1
-    def get_web_hook_subscribed_u_r_ls(event)
-      if isNullOrWhiteSpace(event)
-        raise LoginRadius::Error.new, getValidationMessage('event')
+    def get_webhook_subscription_detail(hook_id)
+      if isNullOrWhiteSpace(hook_id)
+        raise LoginRadius::Error.new, getValidationMessage('hook_id')
       end
 
       query_parameters = {}
       query_parameters['apikey'] = @api_key
       query_parameters['apisecret'] = @api_secret
-      query_parameters['event'] = event
 
-      resource_path = 'api/v2/webhook'
+      resource_path = 'v2/manage/webhooks/' + hook_id
       get_request(resource_path, query_parameters, {})
     end
 
-    # API can be used to configure a WebHook on your LoginRadius site. Webhooks also work on subscribe and notification model, subscribe your hook and get a notification. Equivalent to RESThook but these provide security on basis of signature and RESThook work on unique URL. Following are the events that are allowed by LoginRadius to trigger a WebHook service call.
+    # This API is used to create a new webhook subscription on your LoginRadius site.
     #
     # @param web_hook_subscribe_model - Model Class containing Definition of payload for Webhook Subscribe API
     #
-    # @return Response containing Definition of Complete Validation data
+    # @return Response containing Definition for Complete WebHook data
     # 40.2
-    def web_hook_subscribe(web_hook_subscribe_model)
+    def create_webhook_subscription(web_hook_subscribe_model)
       if web_hook_subscribe_model.blank?
         raise LoginRadius::Error.new, getValidationMessage('web_hook_subscribe_model')
       end
@@ -60,42 +59,80 @@ module LoginRadius
       query_parameters['apikey'] = @api_key
       query_parameters['apisecret'] = @api_secret
 
-      resource_path = 'api/v2/webhook'
+      resource_path = 'v2/manage/webhooks'
       post_request(resource_path, query_parameters, web_hook_subscribe_model)
     end
 
-    # API can be used to test a subscribed WebHook.
+    # This API is used to delete webhook subscription
     #
-    #
-    # @return Response containing Definition of Complete Validation data
-    # 40.3
-    def webhook_test()
-
-      query_parameters = {}
-      query_parameters['apikey'] = @api_key
-      query_parameters['apisecret'] = @api_secret
-
-      resource_path = 'api/v2/webhook/test'
-      get_request(resource_path, query_parameters, {})
-    end
-
-    # API can be used to unsubscribe a WebHook configured on your LoginRadius site.
-    #
-    # @param web_hook_subscribe_model - Model Class containing Definition of payload for Webhook Subscribe API
+    # @param hook_id - Unique ID of the webhook
     #
     # @return Response containing Definition of Delete Request
-    # 40.4
-    def web_hook_unsubscribe(web_hook_subscribe_model)
-      if web_hook_subscribe_model.blank?
-        raise LoginRadius::Error.new, getValidationMessage('web_hook_subscribe_model')
+    # 40.3
+    def delete_webhook_subscription(hook_id)
+      if isNullOrWhiteSpace(hook_id)
+        raise LoginRadius::Error.new, getValidationMessage('hook_id')
       end
 
       query_parameters = {}
       query_parameters['apikey'] = @api_key
       query_parameters['apisecret'] = @api_secret
 
-      resource_path = 'api/v2/webhook'
-      delete_request(resource_path, query_parameters, web_hook_subscribe_model)
+      resource_path = 'v2/manage/webhooks/' + hook_id
+      delete_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to update a webhook subscription
+    #
+    # @param hook_id - Unique ID of the webhook
+    # @param web_hook_subscription_update_model - Model Class containing Definition for WebHookSubscriptionUpdateModel Property
+    #
+    # @return Response containing Definition for Complete WebHook data
+    # 40.4
+    def update_webhook_subscription(hook_id, web_hook_subscription_update_model)
+      if isNullOrWhiteSpace(hook_id)
+        raise LoginRadius::Error.new, getValidationMessage('hook_id')
+      end
+      if web_hook_subscription_update_model.blank?
+        raise LoginRadius::Error.new, getValidationMessage('web_hook_subscription_update_model')
+      end
+
+      query_parameters = {}
+      query_parameters['apikey'] = @api_key
+      query_parameters['apisecret'] = @api_secret
+
+      resource_path = 'v2/manage/webhooks/' + hook_id
+      put_request(resource_path, query_parameters, web_hook_subscription_update_model)
+    end
+
+    # This API is used to get the list of all the webhooks
+    #
+    #
+    # @return Response Containing List of Webhhook Data
+    # 40.5
+    def list_all_webhooks()
+
+      query_parameters = {}
+      query_parameters['apikey'] = @api_key
+      query_parameters['apisecret'] = @api_secret
+
+      resource_path = 'v2/manage/webhooks'
+      get_request(resource_path, query_parameters, {})
+    end
+
+    # This API is used to retrieve all the webhook events.
+    #
+    #
+    # @return Model Class containing Definition for WebHookEventModel Property
+    # 40.6
+    def get_webhook_events()
+
+      query_parameters = {}
+      query_parameters['apikey'] = @api_key
+      query_parameters['apisecret'] = @api_secret
+
+      resource_path = 'v2/manage/webhooks/events'
+      get_request(resource_path, query_parameters, {})
     end
   end
 end

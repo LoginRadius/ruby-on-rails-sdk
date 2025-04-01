@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Created by LoginRadius Development Team
-# Copyright 2019 LoginRadius Inc. All rights reserved.
+# Copyright 2025 LoginRadius Inc. All rights reserved.
 require_relative '../../request_client'
 
 module LoginRadius
